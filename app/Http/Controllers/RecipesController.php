@@ -34,6 +34,8 @@ class RecipesController extends Controller
         $recipe = $recipesRepository->getRecipeFromUrl($recipe);
         $recipe->category = $recipesRepository->getcategoryFromUrl($category);
         $recipe->ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
+        $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
+
         echo "<pre>";
         var_dump($recipe);
     }

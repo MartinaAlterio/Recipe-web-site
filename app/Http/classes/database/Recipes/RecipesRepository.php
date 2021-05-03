@@ -62,4 +62,9 @@ class RecipesRepository
         return $recipes;
     }
 
+    public function  getRecipeMethods (int $id_recipe) {
+        $methods = DB::select('select * from methods where id_recipe = :id', ['id'=>$id_recipe]);
+        return $methods;
+    }
+
 }
