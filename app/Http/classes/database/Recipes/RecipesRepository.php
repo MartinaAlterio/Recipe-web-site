@@ -23,7 +23,7 @@ class RecipesRepository
         return $category;
     }
 
-    public function getCategoryUrl(string $url) {
+    public function getCategoryFromUrl(string $url) {
         $category = DB::select('Select * from categories where url = :url', ['url'=>$url]);
         return $category[0] ?? null;
     }
@@ -33,7 +33,7 @@ class RecipesRepository
         return $category[0] ?? null;
     }
 
-    public function getRecipeUrl(string $url) {
+    public function getRecipeFromUrl(string $url) {
         $recipe = (DB::select('select * from recipes where url = :url', ['url'=>$url]));
         return $recipe[0] ?? null;
 }

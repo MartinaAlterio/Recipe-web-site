@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\RecipesController;
-use App\Http\Controllers\QueryRicetteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +16,8 @@ use App\Http\Controllers\QueryRicetteController;
 |
 */
 
-/*Route::get('/', [HomeController::class, 'index']);
-
-Route::get('/ingredienti', [IngredientiController::class, 'list']);
-Route::get('/ingredienti/{name}', [IngredientiController::class, 'dettaglio']);
-
-Route::get('/ricette', [RicetteController::class, 'categorie']);
-Route::get('/ricette/{sottocategoria}', [RicetteController::class, 'sottocategorie']);
-Route::get('/ricette/sottocategoria/{name}', [RicetteController::class, 'dettaglio']);
-Route::get('/listaricette', [QueryRicetteController::class, 'index']);*/
-
-Route::get('/test1', [IngredientsController::class, 'test1']);
 Route::get('/ricette', [RecipesController::class, 'recipes']);
 Route::get('/ricette/{category}', [RecipesController::class, 'category']);
 Route::get('/ricette/{category}/{recipe}', [RecipesController::class, 'recipe']);
-
+Route::get('/ingredienti', [IngredientsController::class, 'ingredients']);
+Route::get('/ingredienti/{url}', [IngredientsController::class, 'detailIngredient']);

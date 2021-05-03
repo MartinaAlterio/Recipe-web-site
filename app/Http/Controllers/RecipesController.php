@@ -24,15 +24,16 @@ class RecipesController extends Controller
     }
 
     public function category(RecipesRepository $recipesRepository, $category) {
-        $category = $recipesRepository->getCategoryUrl($category);
+        $category = $recipesRepository->getCategoryFromUrl($category);
         $category->recipes = $recipesRepository->getRecipesCategory($category->id);
         echo "<pre>";
         var_dump($category);
     }
 
-    public function recipe(RecipesRepository $recipesRepository, $category, $recipe) {
-        $recipe = $recipesRepository->getRecipeUrl($recipe);
-        $recipe->category = $recipesRepository->getcategoryUrl($category);
+    public function recipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
+        $recipe = $recipesRepository->getRecipeFromUrl($recipe);
+        $recipe->category = $recipesRepository->getcategoryFromUrl($category);
+        $recipe->ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
         echo "<pre>";
         var_dump($recipe);
     }

@@ -10,9 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class IngredientsController extends Controller
 {
-    public function test1(IngredientsRepository $ingredientsRepository) {
-        $ingredient = $ingredientsRepository->getRecipe(2);
-        echo "<pre>";
+    public function ingredients(IngredientsRepository $ingredientsRepository){
+        $list = $ingredientsRepository->getActiveIngredients();
+        echo"<pre>";
+        var_dump($list);
+    }
+
+    public function detailIngredient(IngredientsRepository $ingredientsRepository, $url) {
+        $ingredient = $ingredientsRepository->getIngedientFromUrl($url);
+        $ingredient->description = $ingredientsRepository->getIngredientDescription($ingredient->id);
+        echo"<pre>";
         var_dump($ingredient);
     }
 }
