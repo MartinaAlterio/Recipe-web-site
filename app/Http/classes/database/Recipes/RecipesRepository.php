@@ -6,7 +6,7 @@ namespace App\Http\classes\database\Recipes;
 use Illuminate\Support\Facades\DB;
 
 
-class RicetteRepository
+class RecipesRepository
 {
 
     public function getListMacro() {
@@ -23,17 +23,26 @@ class RicetteRepository
         return $category;
     }
 
+    public function getCategoryUrl(string $url) {
+        $category = DB::select('Select * from categories where url = :url', ['url'=>$url]);
+        return $category[0] ?? null;
+    }
+
     public function getCategory(int $id) {
         $category = (DB::select('select * from categories where id = :id', ['id'=>$id]));
         return $category[0] ?? null;
     }
+
+    public function getRecipeUrl(string $url) {
+        $recipe = (DB::select('select * from recipes where url = :url', ['url'=>$url]));
+        return $recipe[0] ?? null;
+}
 
     public function getRecipe(int $id) {
         $recipe = (DB::select('select * from recipes where id = :id', ['id'=>$id]));
         return $recipe[0] ?? null;
     }
 
-    //
     public function getRecipesCategory(int $id_category) {
         $list = (DB::select('select id_recipe from recipe_has_categories where id_category = :id', ['id'=>$id_category]));
         $recipes = [];

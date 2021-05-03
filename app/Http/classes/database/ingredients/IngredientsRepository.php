@@ -3,11 +3,11 @@
 
 namespace App\Http\classes\database\ingredients;
 
-use App\Http\classes\database\Recipes\RicetteRepository;
+use App\Http\classes\database\Recipes\RecipesRepository;
 use Illuminate\Support\Facades\DB;
 
 
-class IngredientiRepository
+class IngredientsRepository
 {
 
     public function getRecipe(int $id){
