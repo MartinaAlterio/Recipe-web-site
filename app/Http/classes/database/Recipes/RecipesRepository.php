@@ -3,12 +3,14 @@
 
 namespace App\Http\classes\database\Recipes;
 
+use App\Http\classes\database\ingredients\IngredientsRepository;
 use Illuminate\Support\Facades\DB;
 
 
 class RecipesRepository
 {
 
+    //metodi per recuperare i dati dal database
     public function getListMacro() {
         $list = (DB::select('Select * from categories where macro = :macro', ['macro'=>true]));
         return $list ?? null;
@@ -23,6 +25,11 @@ class RecipesRepository
         return $category;
     }
 
+    public function getCategories() {
+        $list = DB::select('select * from categories');
+        return $list ?? null;
+    }
+
     public function getCategoryFromUrl(string $url) {
         $category = DB::select('Select * from categories where url = :url', ['url'=>$url]);
         return $category[0] ?? null;
@@ -31,6 +38,11 @@ class RecipesRepository
     public function getCategory(int $id) {
         $category = (DB::select('select * from categories where id = :id', ['id'=>$id]));
         return $category[0] ?? null;
+    }
+
+    public function getCategoryName($id) {
+        $nameCategory = DB::select('select name from categories where id = :id', ['id'=>$id]);
+        return $nameCategory[0]->name ?? null;
     }
 
     public function getRecipeFromUrl(string $url) {
@@ -52,7 +64,11 @@ class RecipesRepository
         return $recipes;
     }
 
-    //recupea le ricette Importanti associate ad una singola categoria.
+    public function getAllRecipes() {
+        $list = DB::select('select * from recipes');
+        return $list;
+    }
+
     public function getImportantRecipesCategory(int $id_category) {
         $list = DB::select('select rc.id_recipe from recipe_has_categories as rc join recipes as r on r.id = rc.id_recipe where r.important = :important and rc.id_category = :id', ['important'=>1 ,'id'=>$id_category]);
         $recipes = [];
@@ -67,4 +83,16 @@ class RecipesRepository
         return $methods;
     }
 
+    //metodi di inserimento dati nel database
+    public function insertRecipe(string $name, string $url, string $subheading, string $description, string $final_notes, int $important) {
+        DB::insert('insert into recipes (name, url, subheading, description, final_notes, important) values (?, ?, ?, ?, ?, ?)', [$name, $url, $subheading, $description, $final_notes, $important]);
+        $id_recipe = DB::select('select id from recipes where name = :name', ['name'=>$name]);
+        return $id_recipe;
+    }
+
+    public function insertRecipeIngredient(int $id_recipe, string $name, string $url, int $active, IngredientsRepository $ingredientsRepository){
+            $ingredientsRepository->insertIngredient($name, $url, $active);
+            /*$id_ingredient = DB::select('select id from ingredients where name = :name', ['name'=>$value]);
+            DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient) values (?, ?)', [$id_recipe, $id_ingredient]);*/
+    }
 }

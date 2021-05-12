@@ -12,11 +12,11 @@ class HomeController extends Controller
 {
     public function index(HomeTextRepository $homeTextRepository) {
         $home = new \stdClass();
-        $home->title = $homeTextRepository->getTitle('Titolo');
-        $home->subtitle = $homeTextRepository->getSubtitle('Sottotitolo');
-        $home->recipes = $homeTextRepository->getIngredientsText('Ricette');
-        $home->ingredients = $homeTextRepository->getIngredientsText('Ingredienti');
-        $home->about_me = $homeTextRepository->getAboutMeText('Teresa');
+        $home->title = $homeTextRepository->getContent('Titolo', 'home');
+        $home->subtitle = $homeTextRepository->getContent('Sottotitolo', 'home');
+        $home->recipes = $homeTextRepository->getContent('Ricette', 'home');
+        $home->ingredients = $homeTextRepository->getContent('Ingredienti', 'home');
+        $home->about_me = $homeTextRepository->getContent('Teresa', 'home');
         echo"<pre>";
         var_dump($home);
 

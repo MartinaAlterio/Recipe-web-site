@@ -40,4 +40,48 @@ class RecipesController extends Controller
         var_dump($recipe);
     }
 
+    public function getMacro(RecipesRepository $recipesRepository) {
+        $list = $recipesRepository->getListMacro();
+        return view('CRUD.macros', compact('list'));
+    }
+
+    public function getCategories(RecipesRepository $recipesRepository) {
+        if(isset($_GET['id']) && isset($_GET['name'])) {
+            $id = $_GET['id'];
+            $name= $_GET['name'];
+            $list = $recipesRepository->getCategoriesMacro($id);
+            return view('CRUD.categorie', compact('list', 'id', 'name'));
+        } else {
+            $list = $recipesRepository->getCategories();
+            return view('CRUD.categorie', compact('list'));
+        }
+
+    }
+
+    public function getRecipes(RecipesRepository $recipesRepository) {
+        if(isset($_GET['id']) && isset($_GET['name'])) {
+            $id = $_GET['id'];
+            $name= $_GET['name'];
+            $list = $recipesRepository->getRecipesCategory($id);
+            return view('CRUD.recipes_category', compact('list', 'id', 'name'));
+        } else {
+            $listCategories = $recipesRepository->getCategories();
+            $list = $recipesRepository->getAllRecipes();
+            $categoriesName = [];
+            foreach ($list as $recipe) {
+                $recipe_categories[] = DB::select('select rc.id_category from recipe_has_categories as rc join categories as c on c.id = rc.id_category where rc.id_recipe = :id', ['id'=>$recipe->id]);
+                foreach ($recipe_categories as $categories) {
+                    $recipe->category = $categories;
+                    foreach ($categories as $category) {
+                        $category->name = $recipesRepository->getCategoryName($category->id_category);
+                    }
+                }
+            }
+            return view('CRUD.recipes_category', compact('list', 'listCategories'));
+        }
+
+
+    }
+
+
 }
