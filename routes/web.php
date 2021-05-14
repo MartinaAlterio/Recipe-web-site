@@ -17,7 +17,7 @@ use App\Http\Controllers\RecipesController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/ricette', [RecipesController::class, 'recipes']);
+Route::get('/ricette', [RecipesController::class, 'macro']);
 Route::get('/ricette/{category}', [RecipesController::class, 'category']);
 Route::get('/ricette/{category}/{recipe}', [RecipesController::class, 'recipe']);
 Route::get('/ingredienti', [IngredientsController::class, 'ingredients']);

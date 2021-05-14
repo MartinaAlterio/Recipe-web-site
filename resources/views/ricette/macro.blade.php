@@ -2,24 +2,27 @@
 
 @section('content')
     <div> foto ad effetto
-         <h1>Qui trovi l'elenco completo delle mie ricette!</h1>
+         <h1>Qui trovi l'elenco completo delle mie ricette!</h1> <br>
     </div>
 
-    <div>
-        <br>
-        @if(isset($list))
-            @foreach($list as $value)
-                <h1>{{$value->name}}</h1> <br>
-                @foreach($value->categories as $value)
-                    <p>-    {{$value->name}}</p> <br>
-                    @foreach($value->recipes as $value)
-                        <p>*    {{$value->name}}</p> <br>
+        @if(isset($macros))
+            <ul>
+                @foreach($macros as $value)
+
+                    <li>{{$value->name}}</li>
+                    @foreach($value->categories as $value)
+                        <li><a href="/ricette/{{$value->url}}">{{$value->name}}</a></li>
+                        @foreach($value->recipes as $recipe)
+                               <li><a href="/ricette/{{$value->url}}/{{$recipe->url}}">{{$recipe->name}}</a></li>
+                        @endforeach
                     @endforeach
+
                 @endforeach
-                <p>--------------</p>
-            @endforeach
+
+            </ul>
+
+
         @endif
-    </div>
 @endsection
 
 

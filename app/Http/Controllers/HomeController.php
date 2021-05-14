@@ -17,8 +17,6 @@ class HomeController extends Controller
         $home->recipes = $homeTextRepository->getContent('Ricette', 'home');
         $home->ingredients = $homeTextRepository->getContent('Ingredienti', 'home');
         $home->about_me = $homeTextRepository->getContent('Teresa', 'home');
-        echo"<pre>";
-        var_dump($home);
-
+        return view('home.index', compact('home'));
     }
 }

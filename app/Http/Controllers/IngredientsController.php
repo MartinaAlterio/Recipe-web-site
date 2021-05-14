@@ -12,16 +12,14 @@ class IngredientsController extends Controller
 {
     public function ingredients(IngredientsRepository $ingredientsRepository){
         $list = $ingredientsRepository->getActiveIngredients();
-        echo"<pre>";
-        var_dump($list);
+        return view('ingredienti.list', compact('list'));
     }
 
     public function detailIngredient(IngredientsRepository $ingredientsRepository, $url) {
         $ingredient = $ingredientsRepository->getIngedientFromUrl($url);
         if ($ingredient !== null) {
             $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
-            echo"<pre>";
-            var_dump($ingredient);
+            return view('ingredienti.detail', compact('ingredient'));
         } else {die('Ingredient inactive');}
 
     }

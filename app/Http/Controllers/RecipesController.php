@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class RecipesController extends Controller
 {
 
-    public function recipes(RecipesRepository $recipesRepository) {
+    public function macro(RecipesRepository $recipesRepository) {
         $macros = $recipesRepository->getListMacro();
         foreach ($macros as $macro) {
             $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
@@ -19,15 +19,13 @@ class RecipesController extends Controller
                 $category->recipes = $recipesRepository->getImportantRecipesCategory($category->id);
             }
         }
-        echo "<pre>";
-        var_dump($macros);
+        return view('ricette.macro', compact('macros'));
     }
 
     public function category(RecipesRepository $recipesRepository, $category) {
         $category = $recipesRepository->getCategoryFromUrl($category);
         $category->recipes = $recipesRepository->getRecipesCategory($category->id);
-        echo "<pre>";
-        var_dump($category);
+        return view('ricette.category', compact('category'));
     }
 
     public function recipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
@@ -35,11 +33,9 @@ class RecipesController extends Controller
         $recipe->category = $recipesRepository->getcategoryFromUrl($category);
         $recipe->ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
         $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
-
-        echo "<pre>";
-        var_dump($recipe);
+        return view('ricette.detail', compact('recipe'));
     }
-
+//metodi per l'interazione con il database
     public function getMacro(RecipesRepository $recipesRepository) {
         $list = $recipesRepository->getListMacro();
         return view('CRUD.macros', compact('list'));

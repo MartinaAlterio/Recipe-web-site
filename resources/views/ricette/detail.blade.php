@@ -1,21 +1,33 @@
 @extends('template')
 
 @section('content')
-
-    <div class="foto_dettaglio"> Foto ricetta
-        @foreach($nome as $titolo) <p>Nome ricetta: {{$titolo->titolo}}</p>@endforeach
-        <div> Ingredienti:
-        @foreach($ingredienti as $ingrediente)
-            @foreach($ingrediente as $nome)
-                    <p>{{$nome->nome}}</p>
-                @endforeach
-
-        @endforeach
-        </div>
+    <h1>{{$recipe->name}}</h1>
+    <p>Sottotitolo: {{$recipe->subheading}}</p>
+    <p>Descrizione: {{$recipe->description}}</p>
+    <div> Ingredienti:
+        <ul>
+            @foreach($recipe->ingredients as $ingredient)
+                @if($ingredient->active === 1)
+                    <li><a href="/ingredienti/{{$ingredient->url}}">{{$ingredient->name}}</a></li>
+                @else
+                    <li>{{$ingredient->name}}</li>
+                @endif
+            @endforeach
+        </ul>
     </div>
-    <div class="descrizione-dettaglio">Descrizione e dettagli tecnici</div>
-    <div>Form per le proporzioni</div>
+    <div>
+        <h4>Procedimento</h4>
+        <ul>
+            @foreach($recipe->methods as $method)
+                <li>{{$method->method}}</li>
+            @endforeach
+        </ul>
+
+    </div>
+
+    <div> {{$recipe->final_notes}} </div>
     <div>Collegamenti a ricette e ingredienti.</div>
+
 
 @endsection
 

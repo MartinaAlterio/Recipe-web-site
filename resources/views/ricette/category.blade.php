@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <div>nome sottocategoria {{$sottocategoria}}</div>
-    <div>titolo+ foto che scorrono lateralmente.(3 per riga)</div>
-    <div>titolo+ foto che scorrono lateralmente.(3 per riga)</div>
-    <div>titolo+ foto che scorrono lateralmente.(3 per riga)</div>
+    {{$category->name}}
+    <ul>
+        @foreach($category->recipes as $recipe)
+            <li><a href="/ricette/{{$category->url}}/{{$recipe->url}}">{{$recipe->name}}</a></li>
+        @endforeach
+    </ul>
+
 
 @endsection
