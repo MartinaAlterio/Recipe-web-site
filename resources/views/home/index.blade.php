@@ -1,22 +1,26 @@
 @extends('template')
 
 @section('content')
-    <div>
-        <h1>{{$home->title}}</h1>
+    <div class="title">
+        <div>
+            {{$home->title->content}}
+        </div>
+        <div>
+            {{$home->subtitle->content}}
+        </div>
     </div>
-    <div>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. </div>
     <div>
         <div>
-            <div>Foto</div>
-            <div>Descrizione</div>
+            <div>{{$home->recipes->content}}</div>
+            <div>{{$home->recipes->image}}</div>
         </div>
         <div>
-            <div>Foto</div>
-            <div>Descrizione</div>
+            <div>{{$home->ingredients->content}}</div>
+            <div>{{$home->ingredients->image}}</div>
         </div>
         <div>
-            <div>Foto</div>
-            <div>Descrizione</div>
+            <div>{{$home->about_me->content}}</div>
+            <div>{{$home->about_me->image}}</div>
         </div>
     </div>
 

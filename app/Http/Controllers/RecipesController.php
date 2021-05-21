@@ -35,7 +35,8 @@ class RecipesController extends Controller
         $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
         return view('ricette.detail', compact('recipe'));
     }
-//metodi per l'interazione con il database
+
+    //metodi per l'interazione con il database
     public function getMacro(RecipesRepository $recipesRepository) {
         $list = $recipesRepository->getListMacro();
         return view('CRUD.macros', compact('list'));
