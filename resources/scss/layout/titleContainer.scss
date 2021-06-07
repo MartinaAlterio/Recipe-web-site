@@ -1,0 +1,10 @@
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 600px;
+    background-position: bottom 42% right 50%;
+    background-repeat: no-repeat;
+    background-color: $black;
+}

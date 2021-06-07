@@ -1,0 +1,9 @@
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100px;
+  height: 800px;
+}
+
+/*# sourceMappingURL=titleContainer.css.map */

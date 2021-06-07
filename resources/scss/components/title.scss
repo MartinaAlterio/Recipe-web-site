@@ -1,0 +1,10 @@
+.title {
+    display: flex;
+    justify-content: center;
+    font-family: "DejaVu Sans" ;
+    font-size: 75px;
+    font-weight: lighter;
+    color: $beige;
+    text-shadow: 5px 5px 5px $black;
+    background-color:$background_title;
+}
