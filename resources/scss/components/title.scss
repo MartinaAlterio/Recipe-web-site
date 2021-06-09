@@ -1,10 +1,9 @@
 .title {
-    display: flex;
-    justify-content: center;
-    font-family: "DejaVu Sans" ;
+    text-align: center;
+    font-family: "maison neue";
     font-size: 75px;
     font-weight: lighter;
-    color: $beige;
-    text-shadow: 5px 5px 5px $black;
+    color: $titleColor;
     background-color:$background_title;
+    max-width: 100%;
 }

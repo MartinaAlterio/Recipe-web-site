@@ -179,14 +179,24 @@ select[multiple] {
 }
 
 .title {
-  display: flex;
-  justify-content: center;
-  font-family: "DejaVu Sans";
+  text-align: center;
+  font-family: "maison neue";
   font-size: 75px;
   font-weight: lighter;
-  color: #eccece;
-  text-shadow: 5px 5px 5px black;
-  background-color: rgba(0, 0, 0, 0.4);
+  color: #FEF2E4;
+  background-color: rgba(128, 90, 59, 0.62);
+  max-width: 100%;
+}
+
+.button {
+  font-size: large;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: rgba(245, 127, 46, 0.62);
+  color: #805a3b;
+  padding: 2px;
+  border: 3px solid #805a3b;
+  border-radius: 4px;
 }
 
 .titleContainer {
@@ -194,10 +204,51 @@ select[multiple] {
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
+  max-width: calc(100% - 100px);
+  margin: 0 50px;
   height: 600px;
   background-position: bottom 42% right 50%;
   background-repeat: no-repeat;
-  background-color: black;
+  position: relative;
+  top: 70px;
+}
+
+body {
+  background-color: rgba(253, 151, 79, 0.32);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  max-width: calc(100% - 100px);
+  margin: 0 50px;
+}
+
+.logo {
+  border: 7px solid #805a3b;
+  Font-size: 30px;
+  color: #805a3b;
+  background-color: rgba(198, 0, 0, 0.53);
+  text-align: center;
+  padding: 10px;
+  text-shadow: 1px 1px 1px black;
+  max-height: 70%;
+}
+
+.button {
+  padding: 2px;
+}
+
+.buttonContainer {
+  height: 50%;
+  max-width: 50%;
+  min-width: 22%;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
 }
 
 /*# sourceMappingURL=main.css.map */

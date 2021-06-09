@@ -8,11 +8,13 @@
 </head>
 <body>
     <!--header-->
-    <div>
-        <h1>Questo è l'header!</h1>
-        <a href="/ricette">Ricette</a>
-        <a href="/">Home</a>
-        <a href="/ingredienti">Ingredienti</a>
+    <div class="header">
+        <div class="logo">PAN&POMODORO</div>
+        <div class="buttonContainer">
+            <a href="/ricette" class="button">Ricette</a>
+            <a href="/" class="button">Home</a>
+            <a href="/ingredienti" class="button">Ingredienti</a>
+        </div>
     </div>
 
     @yield('content')

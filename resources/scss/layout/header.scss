@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    height: 70px;
+    width: 100%;
+    max-width: calc(100% - 100px);
+    margin: 0 50px;
+}
+.logo {
+    border: 7px solid $driftwood;
+    Font-size: 30px;
+    color: $driftwood;
+    background-color: $redpepper_trasparenza;
+    text-align: center;
+    padding: 10px;
+    text-shadow: 1px 1px 1px black;
+    max-height: 70%;
+}
+.button {
+    padding:2px;
+}
+.buttonContainer {
+    height: 50%;
+    max-width: 50%;
+    min-width: 22%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
