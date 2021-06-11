@@ -1,0 +1,60 @@
+.pageContainer {
+    width: 100%;
+    max-width: calc(100% - 100px);
+    margin: 0 auto;
+    position: relative;
+    top: 90px;
+}
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    height: 600px;
+    background-position: bottom 42% right 50%;
+}
+.subtitle {
+    background-color: $background_title;
+    color: $titleColor;
+    font-size: 35px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+}
+.textContainer {
+    margin: 50px 0;
+    color: $driftwood;
+    font-size: 20px;
+    text-shadow: 0.3px 0 0 $driftwood;
+    background-color: $mushroom;
+    font-family: 'Dosis', sans-serif;
+}
+.textContainer a {
+    text-decoration: $driftwood;
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    padding: inherit;
+    text-decoration-line: underline;
+    text-decoration-style: double;
+
+
+}
+.desciption {
+    background-color: $driftwood;
+    color: $mushroom;
+    font-size: 27px;
+
+}
+.ingredients {
+    border: 2px solid $driftwood;
+    display: block;
+    padding: 30px;
+    max-width: 1000px;
+    width: 50vh;
+    margin: 20px auto;
+    text-align: center;
+}

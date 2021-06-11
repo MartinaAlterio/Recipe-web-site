@@ -180,7 +180,7 @@ select[multiple] {
 
 .title {
   text-align: center;
-  font-family: "maison neue";
+  font-family: "Playfair Display", serif;
   font-size: 75px;
   font-weight: lighter;
   color: #FEF2E4;
@@ -199,20 +199,6 @@ select[multiple] {
   border-radius: 4px;
 }
 
-.titleContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-  max-width: calc(100% - 100px);
-  margin: 0 50px;
-  height: 600px;
-  background-position: bottom 42% right 50%;
-  background-repeat: no-repeat;
-  position: relative;
-  top: 70px;
-}
-
 body {
   background-color: rgba(253, 151, 79, 0.32);
 }
@@ -221,34 +207,97 @@ body {
   display: flex;
   justify-content: space-between;
   position: fixed;
-  height: 70px;
   width: 100%;
   max-width: calc(100% - 100px);
-  margin: 0 50px;
+  margin: 10px 50px;
+  height: 80px;
 }
 
 .logo {
   border: 7px solid #805a3b;
-  Font-size: 30px;
+  Font-size: 45px;
+  font-family: "Playfair Display", serif;
   color: #805a3b;
-  background-color: rgba(198, 0, 0, 0.53);
+  background-color: #d45454;
   text-align: center;
-  padding: 10px;
-  text-shadow: 1px 1px 1px black;
-  max-height: 70%;
+  padding: 4px 7px;
 }
 
 .button {
-  padding: 2px;
+  padding: 3px;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
 }
 
 .buttonContainer {
-  height: 50%;
   max-width: 50%;
-  min-width: 22%;
+  display: flex;
+  align-self: flex-end;
+}
+
+.pageContainer {
+  width: 100%;
+  max-width: calc(100% - 100px);
+  margin: 0 auto;
+  position: relative;
+  top: 90px;
+}
+
+.titleContainer {
   display: flex;
   justify-content: space-between;
-  align-self: flex-end;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  height: 600px;
+  background-position: bottom 42% right 50%;
+}
+
+.subtitle {
+  background-color: rgba(128, 90, 59, 0.62);
+  color: #FEF2E4;
+  font-size: 35px;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+}
+
+.textContainer {
+  margin: 50px 0;
+  color: #805a3b;
+  font-size: 20px;
+  text-shadow: 0.3px 0 0 #805a3b;
+  background-color: #FEF2E4;
+  font-family: "Dosis", sans-serif;
+}
+
+.textContainer a {
+  text-decoration: #805a3b;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: double;
+}
+
+.desciption {
+  background-color: #805a3b;
+  color: #FEF2E4;
+  font-size: 27px;
+}
+
+.ingredients {
+  border: 2px solid #805a3b;
+  display: block;
+  padding: 30px;
+  max-width: 1000px;
+  width: 50vh;
+  margin: 20px auto;
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */
