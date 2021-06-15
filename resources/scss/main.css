@@ -167,44 +167,44 @@ select[multiple] {
   max-width: 100%; }
 
 .button {
+  font-size: large;
   font-weight: bold;
   text-decoration: none;
-  background-color: #f8a267;
-  color: #6a5541;
-  border: 3px solid #6a5541;
-  border-radius: 4px;
-  padding: 3px;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 25px; }
+  background-color: rgba(245, 127, 46, 0.62);
+  color: #805a3b;
+  padding: 2px;
+  border: 3px solid #805a3b;
+  border-radius: 4px; }
 
 body {
   background-color: #feddc6; }
 
+h1 {
+  color: yellow; }
+
 .header {
-  width: 100%;
-  max-width: calc(100% - 100px);
   display: flex;
   justify-content: space-between;
   position: fixed;
-  margin: 0 50px;
-  height: 80px;
-  background-color: #feddc6;
-  z-index: 1;
-  padding-top: 10px; }
+  width: 100%;
+  max-width: calc(100% - 100px);
+  margin: 10px 50px;
+  height: 80px; }
 
 .logo {
-  border: 7px solid #6a5541;
+  border: 7px solid #805a3b;
   Font-size: 45px;
   font-family: 'Playfair Display', serif;
-  color: #6a5541;
+  color: #805a3b;
   background-color: #d45454;
   text-align: center;
-  padding: 4px 7px;
-  border-radius: 4px; }
+  padding: 4px 7px; }
 
 .button {
-  margin-left: 3px; }
+  padding: 3px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 25px; }
 
 .buttonContainer {
   max-width: 50%;
@@ -222,12 +222,10 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin: auto;
-  height: 700px;
-  background-size: cover;
-  background-position: bottom;
-  border: 2px solid #6a5541;
-  border-radius: 4px; }
+  width: 100%;
+  margin: 0 auto;
+  height: 600px;
+  background-size: cover; }
 
 .subtitle {
   background-color: rgba(128, 90, 59, 0.62);
@@ -237,17 +235,15 @@ body {
   text-align: center; }
 
 .textContainer {
-  width: 100%;
-  margin: 50px auto;
+  margin: 50px 0;
   color: #805a3b;
-  font-size: 27px;
-  font-weight: bold;
+  font-size: 20px;
   text-shadow: 0.3px 0 0 #805a3b;
-  background-color: #feddc6;
+  background-color: #FEF2E4;
   font-family: 'Dosis', sans-serif; }
 
 .textContainer a {
-  text-decoration: #6a5541;
+  text-decoration: #805a3b;
   background: none;
   border: none;
   font-size: inherit;
@@ -258,57 +254,17 @@ body {
   text-decoration-style: double; }
 
 .desciption {
-  background-color: #6a5541;
+  background-color: #805a3b;
   color: #FEF2E4;
-  border: 2px solid #6a5541;
-  border-radius: 4px;
-  padding: 10px; }
+  font-size: 27px; }
 
 .ingredients {
-  border: 2px solid #6a5541;
+  border: 2px solid #805a3b;
   display: block;
   padding: 30px;
   max-width: 1000px;
+  width: 50vh;
   margin: 20px auto;
-  text-align: center;
-  background-color: #FEF2E4;
-  border-radius: 4px; }
-
-.textContainer h2 {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 10px;
-  margin-bottom: 5px;
-  background-color: #FEF2E4;
-  width: max-content;
-  border-radius: 4px;
-  border: 2px solid #6a5541; }
-
-.ingredients li {
-  padding-top: 20px;
-  list-style-type: disc;
-  list-style-position: inside; }
-
-.methods {
-  background-color: #f8a267;
-  border: 2px solid #6a5541;
-  border-radius: 4px;
-  color: #6a5541;
-  text-align: center;
-  padding: 10px; }
-
-.image_method {
-  height: 500px;
-  background-size: cover;
-  border: 2px solid #6a5541;
-  border-radius: 4px; }
-
-.method {
-  background-color: #feddc6;
-  border: 5px solid #6a5541;
-  border-radius: 4px;
-  margin: 10px auto;
-  padding: 10px; }
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

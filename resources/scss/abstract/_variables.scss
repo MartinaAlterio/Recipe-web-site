@@ -1,18 +1,35 @@
 //colori
-$mushroom: #FEF2E4;
-$titleColor: $mushroom;
-$onion: rgba(245, 127, 46, 0.62);
-$onion-trasparenza: rgba(253, 151, 79, 0.32);
-$bodycolor: $onion-trasparenza;
-$redpepper: #c60000;
-$redpepper_trasparenza: rgb(212, 84, 84);
 $driftwood: #805a3b;
-$driftwood-tenue: #c1a28c;
-$backgroundHeader: $driftwood;
-$black: black;
+$driftwood1: #6a5541;
 $driftwood-trasparenza: rgba(128, 90, 59, 0.62);
-$background_title: $driftwood-trasparenza;
-$color_button: $driftwood;
+$driftwood_tenue: #c1a28c;
+$mushroom: #FEF2E4;
+$onion: #f8a267;
+$onion_tenue: #feddc6;
+$redpepper: #c60000;
+$redpepper_tenue: #d45454;
+
+$background_body: $onion_tenue;
 $background_button: $onion;
-$border_button: $driftwood;
-$background_text: $driftwood-tenue;
+$background_description: $driftwood1;
+$background_header: $onion_tenue;
+$background_ingredients: $mushroom;
+$background_logo: $redpepper_tenue;
+$background_text: $onion_tenue;
+$background_title: $driftwood-trasparenza;
+
+$border_button: $driftwood1;
+$border_logo: $driftwood1;
+$border_ingredients: $driftwood1;
+
+$color_button: $driftwood1;
+$color_description: $mushroom;
+$color_logo: $driftwood1;
+$color_title: $mushroom;
+
+$textdecoration_link_textcontainer: $driftwood1;
+
+
+
+
+

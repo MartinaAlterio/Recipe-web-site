@@ -1,11 +1,12 @@
 .button {
-    font-size: large;
     font-weight: bold;
     text-decoration: none;
     background-color: $background_button;
     color: $color_button;
-    padding: 2px;
     border: 3px solid $border_button;
     border-radius: 4px;
-
+    padding:3px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
 }

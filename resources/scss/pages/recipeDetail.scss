@@ -9,52 +9,94 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
-    height: 600px;
-    background-position: bottom 42% right 50%;
+    margin: auto;
+    height: 700px;
+    background-size: cover;
+    background-position: bottom;
+    border: 2px solid $driftwood1;
+    border-radius: 4px;
 }
 .subtitle {
     background-color: $background_title;
-    color: $titleColor;
+    color: $color_title;
     font-size: 35px;
     font-family: 'Playfair Display', serif;
     text-align: center;
 }
 .textContainer {
-    margin: 50px 0;
+    width: 100%;
+    margin: 50px auto;
     color: $driftwood;
-    font-size: 20px;
+    font-size: 27px;
+    font-weight: bold;
     text-shadow: 0.3px 0 0 $driftwood;
-    background-color: $mushroom;
+    background-color: $background_text;
     font-family: 'Dosis', sans-serif;
 }
 .textContainer a {
-    text-decoration: $driftwood;
+    text-decoration: $textdecoration_link_textcontainer;
     background: none;
     border: none;
     font-size: inherit;
     font-family: inherit;
-    font-size: inherit;
     font-weight: inherit;
     padding: inherit;
     text-decoration-line: underline;
     text-decoration-style: double;
-
-
 }
 .desciption {
-    background-color: $driftwood;
-    color: $mushroom;
-    font-size: 27px;
+    background-color: $background_description;
+    color: $color_description;
+    border: 2px solid $driftwood1;
+    border-radius: 4px;
+    padding: 10px;
 
 }
 .ingredients {
-    border: 2px solid $driftwood;
+    border: 2px solid $border_ingredients;
     display: block;
     padding: 30px;
     max-width: 1000px;
-    width: 50vh;
     margin: 20px auto;
     text-align: center;
+    background-color: $background_ingredients;
+    border-radius: 4px;
+}
+.textContainer h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: $mushroom;
+    width: max-content;
+    border-radius: 4px;
+    border: 2px solid $driftwood1;
+
+}
+.ingredients li {
+    padding-top: 20px;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+.methods {
+    background-color: $onion;
+    border: 2px solid $driftwood1;
+    border-radius: 4px;
+    color: $driftwood1;
+    text-align: center;
+    padding: 10px;
+}
+.image_method {
+    height: 500px;
+    background-size: cover;
+    border: 2px solid $driftwood1;
+    border-radius: 4px;
+}
+.method {
+    background-color: $onion_tenue;
+    border: 5px solid $driftwood1;
+    border-radius: 4px;
+    margin: 10px auto;
+    padding: 10px;
 }

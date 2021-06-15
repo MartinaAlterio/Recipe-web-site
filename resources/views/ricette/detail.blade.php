@@ -8,7 +8,7 @@
         </div>
         <div class="textContainer">
             <p class="desciption">Descrizione: {{$recipe->description}}</p>
-            <div class="ingredients"> Ingredienti:
+            <div class="ingredients"> <h2>INGREDIENTI:</h2>
                 <ul class="list">
                     @foreach($recipe->ingredients as $ingredient)
                         @if($ingredient->active === 1)
@@ -19,11 +19,12 @@
                     @endforeach
                 </ul>
             </div>
-            <div>
-                <h4>Procedimento</h4>
+            <div class="methods">
+                <h2>PROCEDIMENTO:</h2>
                 <ul>
                     @foreach($recipe->methods as $method)
-                        <li>{{$method->method}}</li>
+                        <li  style="background-image: url('{{asset('storage/images/recipes/'.$method->image)}}')" class="image_method"></li>
+                        <li class="method">{{$method->method}}</li>
                     @endforeach
                 </ul>
 

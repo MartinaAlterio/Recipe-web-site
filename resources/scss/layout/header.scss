@@ -1,30 +1,33 @@
 .header {
+    width: 100%;
+    max-width: calc(100% - 100px);
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 100%;
-    max-width: calc(100% - 100px);
-    margin: 10px 50px;
+    margin: 0 50px;
     height: 80px;
+    background-color: $background_header;
+    z-index: 1;
+    padding-top: 10px;
 }
 .logo {
-    border: 7px solid $driftwood;
+    border: 7px solid $border_logo;
     Font-size: 45px;
     font-family: 'Playfair Display', serif;
-    color: $driftwood;
-    background-color: $redpepper_trasparenza;
+    color: $color_logo;
+    background-color: $background_logo;
     text-align: center;
     padding: 4px 7px;
+    border-radius: 4px;
 }
 .button {
-    padding:3px;
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
+    margin-left: 3px;
 }
+
 .buttonContainer {
     max-width: 50%;
     display: flex;
     align-self: flex-end;
 }
+
 
