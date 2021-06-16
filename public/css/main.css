@@ -2,50 +2,40 @@
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
   margin: 0;
   padding: 0;
-  text-align: left;
-}
+  text-align: left; }
 
 html, body {
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  text-align: center;
-}
+  text-align: center; }
 
 fieldset, img {
   border: 0;
-  text-align: center;
-}
+  text-align: center; }
 
 address, caption, cite, code, dfn, th, var {
   font-style: normal;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 ol, ul {
-  list-style: none;
-}
+  list-style: none; }
 
 caption, th {
-  text-align: left;
-}
+  text-align: left; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%;
-  font-weight: normal;
-}
+  font-weight: normal; }
 
 q:before, q:after {
-  content: "";
-}
+  content: ''; }
 
 abbr, acronym {
-  border: 0;
-}
+  border: 0; }
 
 /* ----------------------------------------------------------------------------------------------------
 Super Form Reset
@@ -76,13 +66,11 @@ textarea {
   font-size: 13px;
   font-family: inherit;
   -webkit-appearance: none;
-  border-radius: 0;
-}
+  border-radius: 0; }
 
 /* Remove the stupid outer glow in Webkit */
 input:focus {
-  outline: 0;
-}
+  outline: 0; }
 
 /* Box Sizing Reset
 -----------------------------------------------*/
@@ -96,8 +84,7 @@ input[type=radio],
 select {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 /* Text Inputs
 -----------------------------------------------*/
@@ -116,16 +103,14 @@ input[type=time],
 input[type=url],
 input[type=week] {
   -webkit-appearance: none;
-  border-radius: 0;
-}
+  border-radius: 0; }
 
 /* Button Controls
 -----------------------------------------------*/
 input[type=checkbox],
 input[type=radio] {
   width: 13px;
-  height: 13px;
-}
+  height: 13px; }
 
 /* File Uploads
 -----------------------------------------------*/
@@ -134,33 +119,29 @@ input[type=radio] {
 /* Make webkit render the search input like a normal text field */
 input[type=search] {
   -webkit-appearance: textfield;
-  -webkit-box-sizing: content-box;
-}
+  -webkit-box-sizing: content-box; }
 
 /* Turn off the recent search for webkit. It adds about 15px padding on the left */
 ::-webkit-search-decoration {
-  display: none;
-}
+  display: none; }
 
 /* Buttons
 -----------------------------------------------*/
 button,
-input[type=reset],
-input[type=button],
-input[type=submit] {
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
   /* Fix IE7 display bug */
   overflow: visible;
   width: auto;
   -webkit-appearance: none;
-  border-radius: 0;
-}
+  border-radius: 0; }
 
 /* IE8 and FF freak out if this rule is within another selector */
 ::-webkit-file-upload-button {
   padding: 0;
   border: 0;
-  background: none;
-}
+  background: none; }
 
 /* Textarea
 -----------------------------------------------*/
@@ -168,25 +149,22 @@ textarea {
   /* Move the label to the top */
   vertical-align: top;
   /* Turn off scroll bars in IE unless needed */
-  overflow: auto;
-}
+  overflow: auto; }
 
 /* Selects
 -----------------------------------------------*/
 select[multiple] {
   /* Move the label to the top */
-  vertical-align: top;
-}
+  vertical-align: top; }
 
 .title {
   text-align: center;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-size: 75px;
   font-weight: lighter;
   color: #FEF2E4;
   background-color: rgba(128, 90, 59, 0.62);
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .button {
   font-size: large;
@@ -196,12 +174,10 @@ select[multiple] {
   color: #805a3b;
   padding: 2px;
   border: 3px solid #805a3b;
-  border-radius: 4px;
-}
+  border-radius: 4px; }
 
 body {
-  background-color: rgba(253, 151, 79, 0.32);
-}
+  background-color: rgba(253, 151, 79, 0.32); }
 
 .header {
   display: flex;
@@ -210,39 +186,34 @@ body {
   width: 100%;
   max-width: calc(100% - 100px);
   margin: 10px 50px;
-  height: 80px;
-}
+  height: 80px; }
 
 .logo {
   border: 7px solid #805a3b;
   Font-size: 45px;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   color: #805a3b;
   background-color: #d45454;
   text-align: center;
-  padding: 4px 7px;
-}
+  padding: 4px 7px; }
 
 .button {
   padding: 3px;
   text-align: center;
-  font-family: "Playfair Display", serif;
-  font-size: 25px;
-}
+  font-family: 'Playfair Display', serif;
+  font-size: 25px; }
 
 .buttonContainer {
   max-width: 50%;
   display: flex;
-  align-self: flex-end;
-}
+  align-self: flex-end; }
 
 .pageContainer {
   width: 100%;
   max-width: calc(100% - 100px);
   margin: 0 auto;
   position: relative;
-  top: 90px;
-}
+  top: 90px; }
 
 .titleContainer {
   display: flex;
@@ -251,16 +222,14 @@ body {
   width: 100%;
   margin: 0 auto;
   height: 600px;
-  background-position: bottom 42% right 50%;
-}
+  background-position: bottom 42% right 50%; }
 
 .subtitle {
   background-color: rgba(128, 90, 59, 0.62);
   color: #FEF2E4;
   font-size: 35px;
-  font-family: "Playfair Display", serif;
-  text-align: center;
-}
+  font-family: 'Playfair Display', serif;
+  text-align: center; }
 
 .textContainer {
   margin: 50px 0;
@@ -268,8 +237,7 @@ body {
   font-size: 20px;
   text-shadow: 0.3px 0 0 #805a3b;
   background-color: #FEF2E4;
-  font-family: "Dosis", sans-serif;
-}
+  font-family: 'Dosis', sans-serif; }
 
 .textContainer a {
   text-decoration: #805a3b;
@@ -281,14 +249,12 @@ body {
   font-weight: inherit;
   padding: inherit;
   text-decoration-line: underline;
-  text-decoration-style: double;
-}
+  text-decoration-style: double; }
 
 .desciption {
   background-color: #805a3b;
   color: #FEF2E4;
-  font-size: 27px;
-}
+  font-size: 27px; }
 
 .ingredients {
   border: 2px solid #805a3b;
@@ -297,7 +263,6 @@ body {
   max-width: 1000px;
   width: 50vh;
   margin: 20px auto;
-  text-align: center;
-}
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
