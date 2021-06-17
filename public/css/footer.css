@@ -1,8 +1,13 @@
 .container_footer {
   position: fixed;
   bottom: 0;
-  background-color: white;
+  max-width: 1300px;
+  height: 60px;
+  padding-bottom: 10px;
   z-index: 1;
-  width: 60px; }
+  background-color: white; }
+
+.footer {
+  margin: auto; }
 
 /*# sourceMappingURL=footer.css.map */

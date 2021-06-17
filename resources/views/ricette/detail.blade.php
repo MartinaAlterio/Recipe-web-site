@@ -7,12 +7,12 @@
             <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         </div>
         <div class="textContainer">
-            <p class="subject"> Descrizione:
-                <div class="description">
+            <h2 class="subject"> Descrizione:</h2>
+            <div class="description">
                 {{$recipe->description}}
-                </div>
-            </p>
-            <div class="ingredients"> Ingredienti:
+            </div>
+            <div class="ingredients">
+                <div class="subject">Ingredienti</div>
                 <ul class="list">
                     @foreach($recipe->ingredients as $ingredient)
                         @if($ingredient->active === 1)
@@ -24,10 +24,13 @@
                 </ul>
             </div>
             <div>
-                <h4>Procedimento</h4>
+                <h2 class="subject">Procedimento</h2>
                 <ul>
                     @foreach($recipe->methods as $method)
-                        <li>{{$method->method}}</li>
+                        <li class="text_image">
+                            <div class="text_method">{{$method->method}}</div>
+                            <div class="image_method" style="background-image: url('{{asset('storage/images/recipes/'.$method->image)}}')"></div>
+                        </li>
                     @endforeach
                 </ul>
 

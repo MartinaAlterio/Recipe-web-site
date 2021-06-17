@@ -161,10 +161,10 @@ select[multiple] {
   text-align: center;
   font-family: 'Dosis', sans-serif;
   font-size: 60px;
-  padding: 5px;
+  padding: 20px;
   font-weight: lighter;
   color: black;
-  background-color: rgba(252, 252, 252, 0.63);
+  background-color: rgba(252, 252, 252, 0.53);
   max-width: 100%; }
 
 .button {
@@ -180,10 +180,11 @@ body {
 
 .container_header {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  flex-wrap: wrap; }
 
 .header {
   display: flex;
@@ -199,8 +200,9 @@ body {
   Font-size: 45px;
   font-family: 'Playfair Display', serif;
   color: black;
-  text-align: center;
-  padding: 4px 7px; }
+  padding: 4px 7px;
+  align-self: flex-end;
+  margin-bottom: 15px; }
 
 .button {
   padding: 3px;
@@ -211,7 +213,21 @@ body {
 .buttonContainer {
   max-width: 50%;
   display: flex;
-  align-self: flex-end; }
+  align-self: flex-end;
+  margin-bottom: 15px; }
+
+.container_footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  padding-bottom: 10px;
+  z-index: 1;
+  background-color: white; }
+
+.footer {
+  max-width: 1300px;
+  margin: auto; }
 
 .pageContainer {
   width: 100%;
@@ -224,16 +240,17 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
   height: 600px;
   background-size: cover; }
 
 .textContainer {
-  margin: 50px 0;
+  margin: auto;
   color: black;
-  font-size: 20px;
-  font-family: 'Dosis', sans-serif; }
+  font-size: 30px;
+  font-family: 'Dosis', sans-serif;
+  max-width: 1300px; }
 
 .textContainer a {
   text-decoration: #805a3b;
@@ -241,23 +258,78 @@ body {
   border: none;
   font-size: inherit;
   font-family: inherit;
-  font-size: inherit;
   font-weight: inherit;
   padding: inherit;
   text-decoration-line: underline;
   text-decoration-style: double; }
 
+.subject {
+  max-width: max-content;
+  padding: 50px 2px 0px 2px;
+  background-color: white;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin: auto;
+  position: relative;
+  z-index: 1; }
+
 .description {
-  color: black;
-  font-size: 30px; }
+  margin: auto;
+  border-top: 2px solid black;
+  padding: 50px 20px;
+  position: relative;
+  top: -23px;
+  max-width: 1000px; }
 
 .ingredients {
-  border: 2px solid #805a3b;
-  display: block;
-  padding: 30px;
+  width: 100%;
   max-width: 1000px;
-  width: 50vh;
-  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  margin: auto; }
+
+.ingredients > .subject {
+  writing-mode: sideways-lr;
+  margin-right: 0;
+  text-align: center;
+  padding: 0;
+  position: relative;
+  right: -30px; }
+
+.list {
+  border-left: 2px solid black;
+  padding: 10px 70px;
+  width: 70%;
+  max-width: 700px;
+  margin: 10px;
   text-align: center; }
+
+.image_method {
+  width: 50%;
+  max-width: 600px;
+  height: 600px;
+  padding: 20px 0;
+  margin: auto; }
+
+.text_method {
+  width: 40%;
+  max-width: 600px;
+  height: max-content;
+  padding: 20px 5px;
+  margin: auto; }
+
+.text_image {
+  border-top: 2px solid black;
+  top: -23px;
+  display: flex;
+  position: relative;
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: auto; }
+
+.text_image:nth-child(2n) {
+  flex-direction: row-reverse; }
 
 /*# sourceMappingURL=main.css.map */
