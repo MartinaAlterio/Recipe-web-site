@@ -22,7 +22,7 @@
     @yield('content')
 
     <!--footer-->
-    <div>
+    <div class="footer">
         <h1>Questo è il footer!</h1>
     </div>
 </body>

@@ -191,7 +191,8 @@ body {
   height: 80px;
   background-color: #feddc6;
   z-index: 1;
-  padding-top: 10px; }
+  padding-top: 10px;
+  border-bottom: 1px solid #6a5541; }
 
 .logo {
   border: 7px solid #6a5541;
@@ -211,19 +212,32 @@ body {
   display: flex;
   align-self: flex-end; }
 
+.footer {
+  position: fixed;
+  bottom: 0px;
+  width: calc(100% - 100px);
+  height: 60px;
+  margin: 0 50px;
+  background-color: #feddc6;
+  border-top: 2px solid #6a5541;
+  padding-bottom: 10px;
+  z-index: 1; }
+
 .pageContainer {
   width: 100%;
   max-width: calc(100% - 100px);
   margin: 0 auto;
   position: relative;
-  top: 90px; }
+  top: 90px;
+  bottom: 90px; }
 
 .titleContainer {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   margin: auto;
-  height: 700px;
+  max-height: max-content;
+  min-height: 700px;
   background-size: cover;
   background-position: bottom;
   border: 2px solid #6a5541;
@@ -305,7 +319,7 @@ body {
   border-radius: 4px; }
 
 .method {
-  background-color: #feddc6;
+  background-color: #FEF2E4;
   border: 5px solid #6a5541;
   border-radius: 4px;
   margin: 10px auto;

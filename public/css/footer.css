@@ -1,3 +1,55 @@
+/*
+Error: Invalid CSS after ".": expected class name, was " footer"
+        on line 1 of footer.scss
 
+1: . footer {
+2:     position: fixed;
+3:     bottom: 10px;
+4:     width: calc(100% - 100px);
+5:     height: 60px;
+6:     margin: 0 50px;
 
-/*# sourceMappingURL=footer.css.map */
+Backtrace:
+footer.scss:1
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1308:in `expected'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1238:in `expected'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1233:in `tok!'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1097:in `ident!'
+/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:194:in `class_selector'
+/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:156:in `simple_selector_sequence'
+/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:108:in `selector'
+/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:83:in `selector_comma_sequence'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1216:in `expr!'
+/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:20:in `parse_selector'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:434:in `visit_rule'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `block in with_base'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:135:in `with_frame'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `with_base'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `map'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:179:in `with_environment'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:166:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:186:in `visit_root'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:157:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:10:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:36:in `css_tree'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:389:in `_render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:307:in `render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:383:in `run'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:63:in `process_result'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:50:in `parse'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:18:in `parse!'
+/usr/bin/sass:8:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \".\": expected class name, was \" footer\"\A         on line 1 of footer.scss\A \A 1: . footer {\A 2:     position: fixed;\A 3:     bottom: 10px;\A 4:     width: calc(100% - 100px);\A 5:     height: 60px;\A 6:     margin: 0 50px;"; }

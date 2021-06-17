@@ -4,13 +4,15 @@
     margin: 0 auto;
     position: relative;
     top: 90px;
+    bottom: 90px;
 }
 .titleContainer {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     margin: auto;
-    height: 700px;
+    max-height: max-content;
+    min-height: 700px;
     background-size: cover;
     background-position: bottom;
     border: 2px solid $driftwood1;
@@ -94,7 +96,7 @@
     border-radius: 4px;
 }
 .method {
-    background-color: $onion_tenue;
+    background-color: $mushroom;
     border: 5px solid $driftwood1;
     border-radius: 4px;
     margin: 10px auto;
