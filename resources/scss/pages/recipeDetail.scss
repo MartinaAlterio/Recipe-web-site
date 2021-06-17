@@ -12,21 +12,12 @@
     width: 100%;
     margin: 0 auto;
     height: 600px;
-    background-position: bottom 42% right 50%;
-}
-.subtitle {
-    background-color: $background_title;
-    color: $titleColor;
-    font-size: 35px;
-    font-family: 'Playfair Display', serif;
-    text-align: center;
+    background-size: cover;
 }
 .textContainer {
     margin: 50px 0;
-    color: $driftwood;
-    font-size: 20px;
-    text-shadow: 0.3px 0 0 $driftwood;
-    background-color: $mushroom;
+    color: black;
+    font-size: 20px;;
     font-family: 'Dosis', sans-serif;
 }
 .textContainer a {
@@ -43,10 +34,10 @@
 
 
 }
-.desciption {
-    background-color: $driftwood;
-    color: $mushroom;
-    font-size: 27px;
+.description {
+
+    color: $black;
+    font-size: 30px;
 
 }
 .ingredients {

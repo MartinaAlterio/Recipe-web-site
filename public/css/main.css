@@ -159,41 +159,46 @@ select[multiple] {
 
 .title {
   text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 75px;
+  font-family: 'Dosis', sans-serif;
+  font-size: 60px;
+  padding: 5px;
   font-weight: lighter;
-  color: #FEF2E4;
-  background-color: rgba(128, 90, 59, 0.62);
+  color: black;
+  background-color: rgba(252, 252, 252, 0.63);
   max-width: 100%; }
 
 .button {
   font-size: large;
   font-weight: bold;
-  text-decoration: none;
-  background-color: rgba(245, 127, 46, 0.62);
-  color: #805a3b;
-  padding: 2px;
-  border: 3px solid #805a3b;
-  border-radius: 4px; }
+  text-decoration-line: underline;
+  text-decoration-style: double;
+  color: black;
+  padding: 4px; }
 
 body {
-  background-color: rgba(253, 151, 79, 0.32); }
+  background-color: white; }
+
+.container_header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center; }
 
 .header {
   display: flex;
   justify-content: space-between;
-  position: fixed;
   width: 100%;
-  max-width: calc(100% - 100px);
-  margin: 10px 50px;
-  height: 80px; }
+  max-width: 1300px;
+  margin: auto;
+  height: 80px;
+  background-color: white;
+  padding: 10px 0; }
 
 .logo {
-  border: 7px solid #805a3b;
   Font-size: 45px;
   font-family: 'Playfair Display', serif;
-  color: #805a3b;
-  background-color: #d45454;
+  color: black;
   text-align: center;
   padding: 4px 7px; }
 
@@ -222,21 +227,12 @@ body {
   width: 100%;
   margin: 0 auto;
   height: 600px;
-  background-position: bottom 42% right 50%; }
-
-.subtitle {
-  background-color: rgba(128, 90, 59, 0.62);
-  color: #FEF2E4;
-  font-size: 35px;
-  font-family: 'Playfair Display', serif;
-  text-align: center; }
+  background-size: cover; }
 
 .textContainer {
   margin: 50px 0;
-  color: #805a3b;
+  color: black;
   font-size: 20px;
-  text-shadow: 0.3px 0 0 #805a3b;
-  background-color: #FEF2E4;
   font-family: 'Dosis', sans-serif; }
 
 .textContainer a {
@@ -251,10 +247,9 @@ body {
   text-decoration-line: underline;
   text-decoration-style: double; }
 
-.desciption {
-  background-color: #805a3b;
-  color: #FEF2E4;
-  font-size: 27px; }
+.description {
+  color: black;
+  font-size: 30px; }
 
 .ingredients {
   border: 2px solid #805a3b;

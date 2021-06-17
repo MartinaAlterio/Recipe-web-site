@@ -1,9 +1,10 @@
 .title {
     text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 75px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 60px;
+    padding: 5px;
     font-weight: lighter;
-    color: $titleColor;
+    color: $black;
     background-color:$background_title;
     max-width: 100%;
 }

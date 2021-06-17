@@ -4,10 +4,14 @@
     <div class="pageContainer">
         <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/'.$recipe->image)}}')">
             <h1 class="title">{{$recipe->name}}</h1>
-            <h2 class="subtitle">{{$recipe->subheading}}</h2>
+            <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         </div>
         <div class="textContainer">
-            <p class="desciption">Descrizione: {{$recipe->description}}</p>
+            <p class="subject"> Descrizione:
+                <div class="description">
+                {{$recipe->description}}
+                </div>
+            </p>
             <div class="ingredients"> Ingredienti:
                 <ul class="list">
                     @foreach($recipe->ingredients as $ingredient)

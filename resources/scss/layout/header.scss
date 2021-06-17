@@ -1,18 +1,24 @@
+.container_header {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .header {
     display: flex;
     justify-content: space-between;
-    position: fixed;
     width: 100%;
-    max-width: calc(100% - 100px);
-    margin: 10px 50px;
+    max-width: 1300px;
+    margin: auto;
     height: 80px;
+    background-color: white;
+    padding: 10px 0;
 }
 .logo {
-    border: 7px solid $driftwood;
     Font-size: 45px;
     font-family: 'Playfair Display', serif;
-    color: $driftwood;
-    background-color: $redpepper_trasparenza;
+    color: black;
     text-align: center;
     padding: 4px 7px;
 }

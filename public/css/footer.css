@@ -1,3 +1,8 @@
-
+.container_footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  z-index: 1;
+  width: 60px; }
 
 /*# sourceMappingURL=footer.css.map */

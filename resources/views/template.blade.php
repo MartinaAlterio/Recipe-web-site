@@ -10,20 +10,23 @@
 </head>
 <body>
     <!--header-->
-    <div class="header">
-        <div class="logo">Pan&Pomodoro</div>
-        <div class="buttonContainer">
-            <a href="/ricette" class="button">Ricette</a>
-            <a href="/" class="button">Home</a>
-            <a href="/ingredienti" class="button">Ingredienti</a>
+    <div class="container_header">
+        <div class="header">
+            <div class="logo">Pan&Pomodoro</div>
+            <div class="buttonContainer">
+                <a href="/ricette" class="button">Ricette</a>
+                <a href="/" class="button">Home</a>
+                <a href="/ingredienti" class="button">Ingredienti</a>
+            </div>
         </div>
     </div>
+
 
     @yield('content')
 
     <!--footer-->
-    <div>
-        <h1>Questo è il footer!</h1>
+    <div class="container_footer">
+        <div class="footer">Questo è il footer!</div>
     </div>
 </body>
 </html>
