@@ -22,20 +22,11 @@
     max-width: 1300px;
 }
 .textContainer a {
-    text-decoration: $driftwood;
-    background: none;
-    border: none;
-    font-size: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    padding: inherit;
-    text-decoration-line: underline;
-    text-decoration-style: double;
 }
 .subject {
     max-width: max-content;
-    padding: 50px 2px 0px 2px;
-    background-color: white;
+    padding: 50px 5px 0 5px;
+    background-color: $white;
     text-align: center;
     font-family: 'Dosis', sans-serif;
     font-size: 40px;
@@ -46,7 +37,7 @@
 }
 .description {
     margin: auto;
-    border-top: 2px solid black;
+    border-top: 2px solid $black;
     padding: 50px 20px;
     position: relative;
     top: -23px;
@@ -63,12 +54,12 @@
     writing-mode: sideways-lr;
     margin-right: 0;
     text-align: center;
-    padding: 0;
+    padding: 5px 0 5px 0;
     position: relative;
     right: -30px;
 }
 .list {
-    border-left: 2px solid black;
+    border-left: 2px solid $black;
     padding: 10px 70px;
     width: 70%;
     max-width: 700px;
@@ -90,7 +81,7 @@
     margin: auto;
 }
 .text_image {
-    border-top: 2px solid black;
+    border-top: 2px solid $black;
     top: -23px;
     display: flex;
     position: relative;

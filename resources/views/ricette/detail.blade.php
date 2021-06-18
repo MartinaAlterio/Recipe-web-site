@@ -7,7 +7,7 @@
             <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         </div>
         <div class="textContainer">
-            <h2 class="subject"> Descrizione:</h2>
+            <h2 class="subject"> Descrizione</h2>
             <div class="description">
                 {{$recipe->description}}
             </div>

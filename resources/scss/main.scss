@@ -1,10 +1,11 @@
 @charset "utf-8";
 
 @import "base/reset";
-@import "abstract/_variables";
+@import "abstract/variables";
 @import "components/title";
 @import "components/link";
 @import "layout/body";
 @import "layout/header";
 @import "layout/footer";
 @import "pages/recipeDetail";
+

@@ -163,8 +163,8 @@ select[multiple] {
   font-size: 60px;
   padding: 20px;
   font-weight: lighter;
-  color: black;
-  background-color: rgba(252, 252, 252, 0.53);
+  color: #212121;
+  background-color: #ffffff;
   max-width: 100%; }
 
 .button {
@@ -193,13 +193,13 @@ body {
   max-width: 1300px;
   margin: auto;
   height: 80px;
-  background-color: white;
+  background-color: #ffffff;
   padding: 10px 0; }
 
 .logo {
   Font-size: 45px;
   font-family: 'Playfair Display', serif;
-  color: black;
+  color: #212121;
   padding: 4px 7px;
   align-self: flex-end;
   margin-bottom: 15px; }
@@ -223,7 +223,7 @@ body {
   height: 60px;
   padding-bottom: 10px;
   z-index: 1;
-  background-color: white; }
+  background-color: #ffffff; }
 
 .footer {
   max-width: 1300px;
@@ -247,26 +247,15 @@ body {
 
 .textContainer {
   margin: auto;
-  color: black;
+  color: #212121;
   font-size: 30px;
   font-family: 'Dosis', sans-serif;
   max-width: 1300px; }
 
-.textContainer a {
-  text-decoration: #805a3b;
-  background: none;
-  border: none;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  padding: inherit;
-  text-decoration-line: underline;
-  text-decoration-style: double; }
-
 .subject {
   max-width: max-content;
-  padding: 50px 2px 0px 2px;
-  background-color: white;
+  padding: 50px 5px 0 5px;
+  background-color: #ffffff;
   text-align: center;
   font-family: 'Dosis', sans-serif;
   font-size: 40px;
@@ -277,7 +266,7 @@ body {
 
 .description {
   margin: auto;
-  border-top: 2px solid black;
+  border-top: 2px solid #212121;
   padding: 50px 20px;
   position: relative;
   top: -23px;
@@ -294,12 +283,12 @@ body {
   writing-mode: sideways-lr;
   margin-right: 0;
   text-align: center;
-  padding: 0;
+  padding: 5px 0 5px 0;
   position: relative;
   right: -30px; }
 
 .list {
-  border-left: 2px solid black;
+  border-left: 2px solid #212121;
   padding: 10px 70px;
   width: 70%;
   max-width: 700px;
@@ -321,7 +310,7 @@ body {
   margin: auto; }
 
 .text_image {
-  border-top: 2px solid black;
+  border-top: 2px solid #212121;
   top: -23px;
   display: flex;
   position: relative;
