@@ -4,7 +4,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    box-shadow: 0 0 10px #00000030;
 }
 .header {
     display: flex;
@@ -15,10 +15,10 @@
     height: 80px;
     background-color: $white;
     padding: 10px 0;
+    font-family: $serif_font;
 }
 .logo {
     Font-size: 45px;
-    font-family: 'Playfair Display', serif;
     color: $black;
     padding: 4px 7px;
     align-self: flex-end;
@@ -27,7 +27,6 @@
 .button {
     padding:3px;
     text-align: center;
-    font-family: 'Playfair Display', serif;
     font-size: 25px;
 }
 .buttonContainer {
@@ -35,5 +34,6 @@
     display: flex;
     align-self: flex-end;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 

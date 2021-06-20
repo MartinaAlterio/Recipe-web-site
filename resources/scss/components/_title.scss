@@ -1,10 +1,10 @@
 .title {
     text-align: center;
-    font-family: 'Dosis', sans-serif;
+    font-family: $main_font;
     font-size: 60px;
     padding: 20px;
     font-weight: lighter;
     color: $black;
-    background-color:$white;
+    background-color:$white_transparent;
     max-width: 100%;
 }

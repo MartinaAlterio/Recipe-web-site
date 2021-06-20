@@ -1,15 +1,14 @@
 .pageContainer {
     width: 100%;
-    max-width: calc(100% - 100px);
+    max-width: 1300px;
     margin: 0 auto;
-    position: relative;
-    top: 90px;
+    padding-top: 90px;
 }
 .titleContainer {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    max-width: 1300px;
+    width: 100%;
     margin: 0 auto;
     height: 600px;
     background-size: cover;
@@ -18,49 +17,72 @@
     margin: auto;
     color: $black;
     font-size: 30px;
-    font-family: 'Dosis', sans-serif;
-    max-width: 1300px;
+    max-width: 1000px;
 }
 .textContainer a {
+    text-decoration-line: underline;
+    color: $black;
+    text-decoration-style: double;
+    text-decoration-color: $black;
 }
 .subject {
     max-width: max-content;
+    position: relative;
+    width: 100%;
     padding: 50px 5px 0 5px;
     background-color: $white;
     text-align: center;
-    font-family: 'Dosis', sans-serif;
     font-size: 40px;
     font-weight: bold;
     margin: auto;
-    position: relative;
     z-index: 1;
+}
+.border {
+    width: 100%;
+    height: 40px;
+    background-color: $white;
+    border-top: 1px solid $black;
+    position: relative;
+    top: -20px;
+}
+.border-end {
+    width: 100%;
+    height: 20px;
+    background-color: $white;
+    border-top: 1px solid $black;
+    position: relative;
 }
 .description {
     margin: auto;
-    border-top: 2px solid $black;
-    padding: 50px 20px;
-    position: relative;
-    top: -23px;
+    padding: 10px 20px;
+    width: 100%;
     max-width: 1000px;
 }
 .ingredients{
     width: 100%;
-    max-width: 1000px;
     display: flex;
     flex-direction: row;
-    margin: auto;
+    height: 100%;
+    padding-top: 50px;
 }
 .ingredients>.subject {
-    writing-mode: sideways-lr;
-    margin-right: 0;
     text-align: center;
-    padding: 5px 0 5px 0;
+    transform: rotate(270deg);
+    width: 100%;
+    margin-right: -20px;
+}
+.ingredients>.border {
+    height: auto;
+    width: 20px;
+    background-color: $white;
+    border-left: 1px solid $black;
+    border-top: none;
     position: relative;
-    right: -30px;
+    top: 0;
+    left: -35px;
 }
 .list {
-    border-left: 2px solid $black;
-    padding: 10px 70px;
+    padding: 10px 70px 10px 0;
     width: 70%;
     max-width: 700px;
     margin: 10px;
@@ -71,7 +93,6 @@
     max-width: 600px;
     height: 600px;
     padding: 20px 0;
-    margin: auto;
 }
 .text_method {
     width: 40%;
@@ -81,14 +102,17 @@
     margin: auto;
 }
 .text_image {
-    border-top: 2px solid $black;
     top: -23px;
     display: flex;
     position: relative;
-    padding: 50px 20px;
-    max-width: 1000px;
-    margin: auto;
+    margin: 50px 0 50px 0;
+    max-width: 100%;
 }
 .text_image:nth-child(2n) {
     flex-direction: row-reverse;
+    border-top: none;
+    border-right: 1px solid $black;
+}
+.text_image:nth-child(2n+1) {
+    border-left: 1px solid $black;
 }
