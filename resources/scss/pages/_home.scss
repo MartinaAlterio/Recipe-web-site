@@ -1,8 +1,41 @@
-
-.subject {
-    font-size: 60px;
+.home+.container_header {
+    box-shadow: 0 0 10px $white;
 }
-.border {
+.home+.header {
+    color: $white;
+    background-color: transparent;
+    height: 120px;
+    max-width: calc(100% - 100px);
+}
+.home+.logo {
+    font-size: 80px;
+    padding-top: 20px;
+    margin-bottom: unset;
+}
+.home+.buttonContainer {
+    padding-top: 20px;
+    align-self: center;
+    margin-bottom: unset;
+}
+.home+.button {
+    color: $white;
+}
+.home_title {
+    height: 85vh;
+    background-position: center;
+}
+.home_page {
+    width: 100%;
+    max-width: 2100px;
+    padding-top: unset;
+}
+.home_subject {
+    font-family: $serif_font;
+    font-size: 60px;
+    font-weight: bold;
+    padding-top: 30px;
+}
+.home_border {
     border-top: 2px solid $black;
     top: -35px;
 }

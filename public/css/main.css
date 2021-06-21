@@ -188,6 +188,7 @@ body {
   box-shadow: 0 0 10px #00000030; }
 
 .header {
+  color: #212121;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -200,7 +201,6 @@ body {
 
 .logo {
   Font-size: 45px;
-  color: #212121;
   padding: 4px 7px;
   align-self: flex-end;
   margin-bottom: 15px; }
@@ -345,11 +345,39 @@ body {
 .text_image:nth-child(2n+1) {
   border-left: 1px solid #212121; }
 
-.subject {
-  font-size: 60px; }
+.body {
+  margin: 0 20px; }
 
-.border {
-  border-top: 2px solid #212121;
-  top: -35px; }
+.macroText {
+  max-width: 1300px; }
+
+.macroContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+
+.macro {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.text_macro {
+  width: 40%; }
+
+.image_macro {
+  width: 55%; }
+
+.list_macro {
+  font-size: 35px;
+  display: flex;
+  flex-direction: column; }
+
+.list_macro > a {
+  margin: 10px; }
+
+.list_recipes {
+  list-style: inside;
+  font-size: 30px; }
 
 /*# sourceMappingURL=main.css.map */

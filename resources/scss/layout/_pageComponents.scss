@@ -1,0 +1,61 @@
+.pageContainer {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 90px;
+}
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    height: 600px;
+    background-size: cover;
+}
+.textContainer {
+    margin: auto;
+    color: $black;
+    font-size: 30px;
+    max-width: 1000px;
+}
+.textContainer a {
+    text-decoration-line: underline;
+    color: $black;
+    text-decoration-style: double;
+    text-decoration-color: $black;
+}
+.subject {
+    max-width: max-content;
+    position: relative;
+    width: 100%;
+    padding: 50px 5px 0 5px;
+    background-color: $white;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: auto;
+    z-index: 1;
+}
+.border {
+    width: 100%;
+    height: 40px;
+    background-color: $white;
+    border-top: 1px solid $black;
+    position: relative;
+    top: -20px;
+}
+
+.border-end {
+    width: 100%;
+    height: 20px;
+    background-color: $white;
+    border-top: 1px solid $black;
+    position: relative;
+}
+.description {
+    margin: auto;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 1000px;
+}
