@@ -13,8 +13,8 @@
                 {{$recipe->description}}
             </div>
             <div class="ingredients">
-                <div class="subject">Ingredienti</div>
-                <div class="border"> </div>
+                <div class="subject subject_reverse">Ingredienti</div>
+                <div class="border border_reverse"> </div>
                 <ul class="list">
                     @foreach($recipe->ingredients as $ingredient)
                         @if($ingredient->active === 1)

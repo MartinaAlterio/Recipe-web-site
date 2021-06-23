@@ -294,13 +294,13 @@ body {
   height: 100%;
   padding-top: 50px; }
 
-.ingredients > .subject {
+.subject_reverse {
   text-align: center;
   transform: rotate(270deg);
   width: 100%;
   margin-right: -20px; }
 
-.ingredients > .border {
+.border_reverse {
   height: auto;
   width: 20px;
   background-color: #ffffff;
@@ -345,39 +345,19 @@ body {
 .text_image:nth-child(2n+1) {
   border-left: 1px solid #212121; }
 
-.body {
-  margin: 0 20px; }
-
 .macroText {
-  max-width: 1300px; }
-
-.macroContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column; }
+  max-width: 100%; }
 
 .macro {
-  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between; }
 
-.text_macro {
-  width: 40%; }
-
-.image_macro {
-  width: 55%; }
+.macro > .subject {
+  margin: 0;
+  width: 15%; }
 
 .list_macro {
-  font-size: 35px;
-  display: flex;
-  flex-direction: column; }
-
-.list_macro > a {
-  margin: 10px; }
-
-.list_recipes {
-  list-style: inside;
-  font-size: 30px; }
+  width: 80%;
+  height: 750px; }
 
 /*# sourceMappingURL=main.css.map */

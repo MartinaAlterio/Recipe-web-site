@@ -4,24 +4,24 @@
     <div class="pageContainer">
         <div class="textContainer macroText">
             @if(isset($macros))
-                <ul class="macroContainer">
+                <ul>
                     @foreach($macros as $value)
                         <div class="macro">
-                            <div class="text_macro">
-                                <li class="subject">{{$value->name}}</li>
-                                <div class="border"></div>
+                                <li class="subject subject_reverse">{{$value->name}}</li>
+                                <div class="border border_reverse"></div>
                                 <div class="list_macro">
                                     @foreach($value->categories as $value)
-                                        <li><a href="/ricette/{{$value->url}}">{{$value->name}}</a></li>
-                                        <div class="list_recipes">
-                                            @foreach($value->recipes as $recipe)
-                                                <li><a href="/ricette/{{$value->url}}/{{$recipe->url}}">{{$recipe->name}}</a></li>
-                                            @endforeach
+                                        <div class="macro_recipe">
+                                            <li class="name_macro"><a href="/ricette/{{$value->url}}">{{$value->name}}</a></li>
+                                            <div class="image_macro"> </div>
+                                            <div class="list_recipes">
+                                                @foreach($value->recipes as $recipe)
+                                                    <li class="recipe"><a href="/ricette/{{$value->url}}/{{$recipe->url}}">{{$recipe->name}}</a></li>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
-                            </div>
-                            <div class="image_macro"> </div>
                         </div>
                     @endforeach
                 </ul>
