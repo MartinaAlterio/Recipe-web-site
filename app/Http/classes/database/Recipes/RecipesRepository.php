@@ -15,6 +15,11 @@ class RecipesRepository
         $list = (DB::select('Select * from categories where macro = :macro', ['macro'=>true]));
         return $list ?? null;
     }
+    public function getImageMacro(int $id) {
+        $image = (DB::select('select image from categories where id = :id', ['id'=>$id]));
+
+        return $image[0] ?? null;
+    }
 
     public function getCategoriesMacro(int $id) {
         $list = (DB::select('select id_category from category_has_categories where id_macrocategory = :id', ['id'=>$id]));

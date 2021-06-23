@@ -346,18 +346,29 @@ body {
   border-left: 1px solid #212121; }
 
 .macroText {
-  max-width: 100%; }
+  max-width: 100%;
+  padding-top: 40px; }
 
 .macro {
   display: flex;
-  justify-content: space-between; }
+  flex-direction: row;
+  margin: auto; }
 
-.macro > .subject {
-  margin: 0;
-  width: 15%; }
+.TCmacro {
+  width: 80%;
+  margin: 30px 0; }
+
+.title_macro {
+  position: relative;
+  z-index: 1;
+  top: 250px; }
 
 .list_macro {
-  width: 80%;
-  height: 750px; }
+  display: flex;
+  flex-direction: column;
+  margin: auto; }
+
+.s_macro {
+  font-size: 30px; }
 
 /*# sourceMappingURL=main.css.map */

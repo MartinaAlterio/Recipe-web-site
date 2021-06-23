@@ -14,6 +14,7 @@ class RecipesController extends Controller
     public function macro(RecipesRepository $recipesRepository) {
         $macros = $recipesRepository->getListMacro();
         foreach ($macros as $macro) {
+            $macro->image = $recipesRepository->getImageMacro($macro->id);
             $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
             foreach ($macro->categories as $category) {
                 $category->recipes = $recipesRepository->getImportantRecipesCategory($category->id);
