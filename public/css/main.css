@@ -346,7 +346,6 @@ body {
   border-left: 1px solid #212121; }
 
 .macroText {
-  max-width: 100%;
   padding-top: 40px; }
 
 .macro {
@@ -356,19 +355,33 @@ body {
 
 .TCmacro {
   width: 80%;
-  margin: 30px 0; }
+  margin: 30px 0;
+  height: 400px;
+  background-position: center; }
 
 .title_macro {
+  background-color: rgba(255, 255, 255, 0.4);
   position: relative;
   z-index: 1;
-  top: 250px; }
+  top: 250px;
+  font-size: 70px;
+  text-shadow: 1.5px 1px 1px #a0aec0;
+  background-position: center;
+  padding: unset; }
+
+.container_list {
+  width: 30%;
+  display: flex; }
 
 .list_macro {
   display: flex;
   flex-direction: column;
-  margin: auto; }
+  max-height: 100%;
+  justify-content: space-evenly;
+  padding: 20px 30px; }
 
 .s_macro {
-  font-size: 30px; }
+  font-size: 30px;
+  padding: 10px; }
 
 /*# sourceMappingURL=main.css.map */
