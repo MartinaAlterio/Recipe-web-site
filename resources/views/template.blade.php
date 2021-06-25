@@ -10,7 +10,7 @@
 </head>
 <body>
     <!--header-->
-    <div class="container_header">
+    <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}">
         <div class="header">
             <div class="logo">Pan&Pomodoro</div>
             <div class="buttonContainer">
@@ -20,7 +20,6 @@
             </div>
         </div>
     </div>
-
 
     @yield('content')
 

@@ -384,4 +384,71 @@ body {
   font-size: 30px;
   padding: 10px; }
 
+.header_home.container_header {
+  box-shadow: 0 0 10px #ffffff; }
+.header_home .header {
+  color: #ffffff;
+  background-color: transparent;
+  height: 120px;
+  max-width: calc(100% - 100px); }
+.header_home .logo {
+  font-size: 80px;
+  padding-top: 20px;
+  margin-bottom: unset; }
+.header_home .buttonContainer {
+  padding-top: 20px;
+  align-self: center;
+  margin-bottom: unset; }
+.header_home .button {
+  color: #ffffff; }
+
+.home_title {
+  height: 85vh;
+  background-position: center; }
+
+.home_page {
+  width: 100%;
+  max-width: 2100px;
+  padding-top: unset; }
+
+.home_subject {
+  font-family: "Playfair Display", serif;
+  font-size: 60px;
+  font-weight: bold;
+  padding-top: 30px; }
+
+.home_border {
+  border-top: 2px solid #212121;
+  top: -35px; }
+
+.imageContainer {
+  width: 100%;
+  margin: auto;
+  max-width: 1300px;
+  font-size: 35px; }
+
+.main_image {
+  width: 100%;
+  height: 400px;
+  margin: 80px 0; }
+
+.category_description {
+  margin: 80px 0;
+  max-width: 1300px; }
+
+.recipe_container {
+  margin: 80px 0;
+  display: flex; }
+
+.image_recipe {
+  height: 300px;
+  background-size: cover;
+  background-position: center; }
+
+.image_title {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: auto; }
+
 /*# sourceMappingURL=main.css.map */

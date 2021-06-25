@@ -1,25 +1,28 @@
-.home+.container_header {
-    box-shadow: 0 0 10px $white;
+.header_home {
+    &.container_header {
+        box-shadow: 0 0 10px $white;
+    }
+    .header {
+        color: $white;
+        background-color: transparent;
+        height: 120px;
+        max-width: calc(100% - 100px);
+    }
+    .logo {
+        font-size: 80px;
+        padding-top: 20px;
+        margin-bottom: unset;
+    }
+    .buttonContainer {
+        padding-top: 20px;
+        align-self: center;
+        margin-bottom: unset;
+    }
+    .button {
+        color: $white;
+    }
 }
-.home+.header {
-    color: $white;
-    background-color: transparent;
-    height: 120px;
-    max-width: calc(100% - 100px);
-}
-.home+.logo {
-    font-size: 80px;
-    padding-top: 20px;
-    margin-bottom: unset;
-}
-.home+.buttonContainer {
-    padding-top: 20px;
-    align-self: center;
-    margin-bottom: unset;
-}
-.home+.button {
-    color: $white;
-}
+
 .home_title {
     height: 85vh;
     background-position: center;
