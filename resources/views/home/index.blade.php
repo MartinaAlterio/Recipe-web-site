@@ -8,24 +8,19 @@
         </div>
         <div class="border home_border"></div>
         <div class="textContainer">
-            <div>
+            <div class="text_image">
                 <div>{{$home->recipes->content}}</div>
-                <div>{{$home->recipes->image}}</div>
+                <div style="background-image: url('{{asset('storage/images/recipes/'.$home->recipes->image)}}')"></div>
             </div>
-            <div>
+            <div class="text_image">
                 <div>{{$home->ingredients->content}}</div>
-                <div>{{$home->ingredients->image}}</div>
+                <div style="background-image: url('{{asset('storage/images/recipes/'.$home->ingredients->image)}}')"></div>
             </div>
-            <div>
+            <div class="text_image">
                 <div>{{$home->about_me->content}}</div>
-                <div>{{$home->about_me->image}}</div>
+                <div style="background-image: url('{{asset('storage/images/recipes/'.$home->about_me->image)}}')"></div>
             </div>
         </div>
     </div>
 @endsection
 
-<!--bisogna rivedere l'idea immagine+testo per la schermata home.Creazione di serie di immagini che si susseguono dinamicamente.
-voglio modificare l'header nella home?
-voglio splittare la scritta tra top e bot dell'immagine?
-voglio una sola immagine?
-voglio la home altrettanto pulita?-->

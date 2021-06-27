@@ -235,7 +235,7 @@ body {
   width: 100%;
   max-width: 1300px;
   margin: auto;
-  padding: 160px 0; }
+  padding: 80px 0; }
 
 .titleContainer {
   display: flex;
@@ -404,6 +404,11 @@ body {
   margin-bottom: unset; }
 .header_home .button {
   color: #ffffff; }
+
+.home_page .textContainer {
+  max-width: 100%; }
+.home_page .text_image {
+  height: 400px; }
 
 .home_title {
   height: 85vh;
