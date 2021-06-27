@@ -12,10 +12,9 @@
     <!--header-->
     <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}">
         <div class="header">
-            <div class="logo">Pan&Pomodoro</div>
+            <div> <a href="/" class="logo">Pan&Pomodoro</a> </div>
             <div class="buttonContainer">
                 <a href="/ricette" class="button">Ricette</a>
-                <a href="/" class="button">Home</a>
                 <a href="/ingredienti" class="button">Ingredienti</a>
             </div>
         </div>

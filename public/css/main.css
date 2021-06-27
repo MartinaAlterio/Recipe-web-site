@@ -203,7 +203,9 @@ body {
   Font-size: 45px;
   padding: 4px 7px;
   align-self: flex-end;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  text-decoration: unset;
+  color: #212121; }
 
 .button {
   padding: 3px;
@@ -219,19 +221,21 @@ body {
 
 .container_footer {
   width: 100%;
-  height: 60px;
+  height: 100px;
   padding-bottom: 10px;
-  background-color: #ffffff; }
+  background-color: #212121;
+  box-shadow: 0 0 50px #00000090; }
 
 .footer {
   max-width: 1300px;
-  margin: auto; }
+  margin: auto;
+  color: #ffffff; }
 
 .pageContainer {
   width: 100%;
   max-width: 1300px;
-  margin: 0 auto;
-  padding-top: 90px; }
+  margin: auto;
+  padding: 160px 0; }
 
 .titleContainer {
   display: flex;
@@ -345,13 +349,11 @@ body {
 .text_image:nth-child(2n+1) {
   border-left: 1px solid #212121; }
 
-.macroText {
-  padding-top: 40px; }
-
 .macro {
   display: flex;
   flex-direction: row;
-  margin: auto; }
+  margin: auto;
+  margin-bottom: 80px; }
 
 .TCmacro {
   width: 80%;
@@ -394,7 +396,8 @@ body {
 .header_home .logo {
   font-size: 80px;
   padding-top: 20px;
-  margin-bottom: unset; }
+  margin-bottom: unset;
+  color: #ffffff; }
 .header_home .buttonContainer {
   padding-top: 20px;
   align-self: center;
