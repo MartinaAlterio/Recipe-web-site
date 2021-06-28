@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('content')
-    <div class="pageContainer">
+    <div class="pageContainer RecipeDetail">
         <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/'.$recipe->image)}}')">
             <h1 class="title">{{$recipe->name}}</h1>
             <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
@@ -25,19 +25,17 @@
                     @endforeach
                 </ul>
             </div>
-            <div>
+            <div class="method">
                 <h2 class="subject">Procedimento</h2>
                 <div class="border"> </div>
                 <ul>
                     @foreach($recipe->methods as $method)
-                        @for($i=0;$i<5; $i++)
                         <li class="text_image">
                             <div class="text_method">{{$method->method}}</div>
                             @if(isset($method->image))
                             <div class="image_method" style="background-image: url('{{asset('storage/images/recipes/'.$method->image)}}')"></div>
                                 @endif
                         </li>
-                        @endfor
                     @endforeach
                 </ul>
                 <div class="border-end"> </div>

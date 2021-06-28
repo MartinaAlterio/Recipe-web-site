@@ -235,22 +235,24 @@ body {
   width: 100%;
   max-width: 1300px;
   margin: auto;
-  padding: 80px 0; }
+  padding: 150px 0 40px 0; }
 
 .titleContainer {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-  height: 600px;
-  background-size: cover; }
+  margin: 50px auto;
+  height: 650px;
+  background-size: cover;
+  background-position: center; }
 
 .textContainer {
   margin: auto;
   color: #212121;
   font-size: 30px;
-  max-width: 1000px; }
+  max-width: 1000px;
+  background-position: center; }
 
 .textContainer a {
   text-decoration-line: underline;
@@ -272,7 +274,7 @@ body {
 
 .border {
   width: 100%;
-  height: 40px;
+  height: 1px;
   background-color: #ffffff;
   border-top: 1px solid #212121;
   position: relative;
@@ -286,7 +288,7 @@ body {
   position: relative; }
 
 .description {
-  margin: auto;
+  margin: 10px auto 50px auto;
   padding: 10px 20px;
   width: 100%;
   max-width: 1000px; }
@@ -294,7 +296,6 @@ body {
 .ingredients {
   width: 100%;
   display: flex;
-  flex-direction: row;
   height: 100%;
   padding-top: 50px; }
 
@@ -313,6 +314,9 @@ body {
   position: relative;
   top: 0;
   left: -35px; }
+
+.method {
+  margin: 50px auto; }
 
 .list {
   padding: 10px 70px 10px 0;
@@ -338,7 +342,7 @@ body {
   top: -23px;
   display: flex;
   position: relative;
-  margin: 50px 0 50px 0;
+  margin: 60px 0;
   max-width: 100%; }
 
 .text_image:nth-child(2n) {
@@ -349,19 +353,11 @@ body {
 .text_image:nth-child(2n+1) {
   border-left: 1px solid #212121; }
 
-.macro {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  margin-bottom: 80px; }
-
-.TCmacro {
+.macrocategories .titleContainer {
   width: 80%;
   margin: 30px 0;
-  height: 400px;
-  background-position: center; }
-
-.title_macro {
+  height: 400px; }
+.macrocategories .title {
   background-color: rgba(255, 255, 255, 0.4);
   position: relative;
   z-index: 1;
@@ -370,6 +366,12 @@ body {
   text-shadow: 1.5px 1px 1px #a0aec0;
   background-position: center;
   padding: unset; }
+
+.macro {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-bottom: 80px; }
 
 .container_list {
   width: 30%;
@@ -405,44 +407,72 @@ body {
 .header_home .button {
   color: #ffffff; }
 
-.home_page .textContainer {
+.homePage .textContainer {
   max-width: 100%; }
-.home_page .text_image {
-  height: 400px; }
-
-.home_title {
-  height: 85vh;
-  background-position: center; }
-
-.home_page {
-  width: 100%;
+.homePage .text_image {
+  height: 500px;
+  padding: 30px 0;
+  box-shadow: 0 0 5px #00000030;
+  border: unset;
+  margin: 80px auto; }
+.homePage.pageContainer {
   max-width: 2100px;
   padding-top: unset; }
-
-.home_subject {
+.homePage .titleContainer {
+  height: 850px;
+  margin-top: 0; }
+.homePage .subject {
   font-family: "Playfair Display", serif;
   font-size: 60px;
   font-weight: bold;
   padding-top: 30px; }
-
-.home_border {
+.homePage .border {
   border-top: 2px solid #212121;
   top: -35px; }
+.homePage .text_link {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  text-align: center; }
 
-.imageContainer {
-  width: 100%;
+.image {
+  width: 65%;
+  height: 100%;
   margin: auto;
+  background-size: cover;
+  background-position: center; }
+
+.categories .textContainer {
+  width: 100%;
   max-width: 1300px;
-  font-size: 35px; }
+  position: relative;
+  top: -50px;
+  font-size: 40px; }
+  .categories .textContainer a {
+    text-decoration: unset;
+    font-size: 35px;
+    letter-spacing: 3px;
+    font-weight: lighter; }
+.categories .button {
+  text-decoration: unset;
+  padding: 50px 0 20px 0;
+  height: 100px;
+  text-align: center; }
+.categories .subject {
+  font-size: 90px; }
+.categories .border {
+  top: -50px; }
+.categories .description {
+  margin: 120px 0;
+  max-width: 1300px; }
 
 .main_image {
   width: 100%;
-  height: 400px;
+  height: 500px;
   margin: 80px 0; }
-
-.category_description {
-  margin: 80px 0;
-  max-width: 1300px; }
 
 .recipe_container {
   margin: 80px 0;

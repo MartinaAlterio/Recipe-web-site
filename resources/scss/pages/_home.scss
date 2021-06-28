@@ -23,32 +23,51 @@
         color: $white;
     }
 }
-.home_page {
+.homePage {
 
     .textContainer {
         max-width: 100%;
     }
     .text_image {
-        height: 400px;
+        height: 500px;
+        padding: 30px 0;
+        box-shadow: 0 0 5px #00000030;
+        border: unset;
+        margin: 80px auto;
+    }
+    &.pageContainer {
+        max-width: 2100px;
+        padding-top: unset;
+    }
+    .titleContainer {
+        height: 850px;
+        margin-top: 0;
+    }
+    .subject {
+        font-family: $serif_font;
+        font-size: 60px;
+        font-weight: bold;
+        padding-top: 30px;
+    }
+    .border {
+        border-top: 2px solid $black;
+        top: -35px;
+    }
+    .text_link {
+        width:30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        padding: 10px;
+        text-align: center;
     }
 }
-
-.home_title {
-    height: 85vh;
+.image{
+    width: 65%;
+    height: 100%;
+    margin: auto;
+    background-size: cover;
     background-position: center;
-}
-.home_page {
-    width: 100%;
-    max-width: 2100px;
-    padding-top: unset;
-}
-.home_subject {
-    font-family: $serif_font;
-    font-size: 60px;
-    font-weight: bold;
-    padding-top: 30px;
-}
-.home_border {
-    border-top: 2px solid $black;
-    top: -35px;
 }

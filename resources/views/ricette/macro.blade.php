@@ -1,14 +1,14 @@
 @extends('template')
 
 @section('content')
-    <div class="pageContainer">
-        <div class="textContainer macroText">
+    <div class="pageContainer macrocategories">
+        <div class="textContainer">
             @if(isset($macros))
                 <ul>
                     @foreach($macros as $value)
                         <div class="macro">
-                            <div class="titleContainer TCmacro" style="background-image: url('{{asset('storage/images/recipes/'.$value->image->image)}}')">
-                                <li class="title title_macro">{{$value->name}}</li>
+                            <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/'.$value->image->image)}}')">
+                                <li class="title">{{$value->name}}</li>
                             </div>
                             <div class="container_list">
                                 <div class="list_macro">

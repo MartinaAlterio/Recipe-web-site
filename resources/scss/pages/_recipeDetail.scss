@@ -1,7 +1,6 @@
 .ingredients{
     width: 100%;
     display: flex;
-    flex-direction: row;
     height: 100%;
     padding-top: 50px;
 }
@@ -20,6 +19,9 @@
     position: relative;
     top: 0;
     left: -35px;
+}
+.method {
+    margin: 50px auto;
 }
 .list {
     padding: 10px 70px 10px 0;
@@ -45,7 +47,7 @@
     top: -23px;
     display: flex;
     position: relative;
-    margin: 50px 0 50px 0;
+    margin: 60px 0;
     max-width: 100%;
 }
 .text_image:nth-child(2n) {
