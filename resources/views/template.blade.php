@@ -24,7 +24,19 @@
 
     <!--footer-->
     <div class="container_footer">
-        <div class="footer">Questo è il footer!</div>
+        <div class="footer">
+            <div class="contacts">
+                <div>Contatti</div>
+                <div>riccardo123puzza@losappiamo.com</div>
+            </div>
+            <div class="social">
+                <div>Social</div>
+                <div>
+                    <p>instagram: <a href="instagram.com">RichiPuzzolone100</a></p>
+                    <p>facebook: <a href="facebook.com">Vihogiàdetto Chepuzzo</a> </p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -22,9 +22,9 @@
                     <a href="/ingredienti">Impara a capire gli ingredienti</a>
                 </div>
             </div>
-            <div class="text_image">
+            <div class="text_image ">
                 <div class="image" style="background-image: url('{{asset('storage/images/recipes/'.$home->about_me->image)}}')"></div>
-                <div class="text">{{$home->about_me->content}}</div>
+                <div class="text_link text">{{$home->about_me->content}}</div>
             </div>
         </div>
     </div>
