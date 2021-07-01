@@ -1,8 +1,8 @@
 @extends('template')
 
 @section('content')
-    <div class="pageContainer RecipeDetail">
-        <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/'.$recipe->image)}}')">
+    <div class="pageContainer recipeDetail">
+        <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')">
             <h1 class="title">{{$recipe->name}}</h1>
             <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         </div>
@@ -33,7 +33,7 @@
                         <li class="text_image">
                             <div class="text_method">{{$method->method}}</div>
                             @if(isset($method->image))
-                            <div class="image_method" style="background-image: url('{{asset('storage/images/recipes/'.$method->image)}}')"></div>
+                            <div class="image_method" style="background-image: url('{{asset('storage/images/recipes/detail/'.$method->image)}}')"></div>
                                 @endif
                         </li>
                     @endforeach

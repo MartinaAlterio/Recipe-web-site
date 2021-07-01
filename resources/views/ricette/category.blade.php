@@ -5,12 +5,12 @@
         <div class="subject">{{$category->name}}</div>
         <div class="border"></div>
         <div class="textContainer">
-            <div class="main_image"></div>
+            <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/category/'.$category->image)}}')"></div>
             <div class="description category_description"> {{$category->description}}</div>
             <ul class="recipe_container">
                 @foreach($category->recipes as $recipe)
                     <div class="image_title">
-                        <div class="image_recipe" style="background-image: url('{{asset('storage/images/recipes/'.$recipe->image)}}')"></div>
+                        <div class="image_recipe" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')"></div>
                         <li class="button"><a href="/ricette/{{$category->url}}/{{$recipe->url}}">{{strtoupper($recipe->name)}}</a></li>
                     </div>
                 @endforeach

@@ -7,7 +7,7 @@
                 <ul>
                     @foreach($macros as $value)
                         <div class="macro">
-                            <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/'.$value->image->image)}}')">
+                            <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/macro/'.$value->image->image)}}')">
                                 <li class="title">{{$value->name}}</li>
                             </div>
                             <div class="container_list">

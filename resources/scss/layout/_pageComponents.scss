@@ -27,7 +27,13 @@
     text-decoration-style: double;
     text-decoration-color: $black;
 }
+.text_image {
+    display: flex;
+    margin: 60px 0;
+    max-width: 100%;
+}
 .subject {
+    color: $black;
     max-width: max-content;
     position: relative;
     width: 100%;
