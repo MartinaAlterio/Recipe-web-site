@@ -1,33 +1,56 @@
 
 .header_home {
     transition-property: background-color;
-    transition-duration: 1s;
-    transition-delay: 0s;
+    transition-duration: 0.5s;
     &.container_header {
+        transition-property: box-shadow;
+        transition-duration: 2s;
         box-shadow: 0 0 10px $white;
     }
     &.over_header {
+        .header {
+            height: max-content;
+        }
+        .logo {
+            margin: auto;
+            padding-top: unset;
+            font-size: 50px;
+            height: max-content;
+        }
+        .buttonContainer {
+            padding-top: 15px;
+            height: max-content;
+        }
+        box-shadow: 0 0 2px $white;
+        height: max-content;
         background-color: $black;
     }
     .header {
+        transition-property: height;
+        transition-duration: 0.5s;
         background-color: transparent;
         color: $white;
         height: 120px;
         max-width: calc(100% - 100px);
     }
     .logo {
+        transition-property: font-size, padding-top, margin;
+        transition-duration: 1s;
         font-size: 80px;
         padding-top: 20px;
         margin-bottom: unset;
         color: $white;
     }
     .buttonContainer {
+        transition-property: padding-top;
+        transition-duration: 1s;
         padding-top: 20px;
         align-self: center;
         margin-bottom: unset;
     }
     .button {
         color: $white;
+        text-decoration-color: $white;
     }
 }
 .homePage {
@@ -37,9 +60,13 @@
     .text_image {
         height: 500px;
         padding: 30px 0;
-        box-shadow: 0 0 5px #00000030;
         border: unset;
         margin: 80px auto;
+        transition-property: box-shadow;
+        transition-duration: 1s;
+    }
+    .text_image:hover {
+        box-shadow: 0 0 5px #00000030;
     }
     &.pageContainer {
         max-width: 100%;
@@ -69,7 +96,13 @@
             font-size: 40px;
             max-width: max-content;
             margin: auto;
-            box-shadow: 0 0 10px #00000030;
+            text-decoration-style: solid;
+            text-decoration-color: $black;
+            transition-property: opacity;
+        }
+        a:hover {
+            opacity: 0.7;
+            text-decoration: unset;
         }
     }
 }
@@ -83,6 +116,8 @@
 .text {
     width: 90%;
     padding:20px;
-    font-size: 35px;
+    line-height: 1.4em;
+    text-align: center;
+    font-size: 28px;
 }
 

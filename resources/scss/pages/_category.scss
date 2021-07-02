@@ -22,14 +22,18 @@
         text-align: center;
     }
     .subject {
-        font-size: 90px;
+        font-size: 70px;
+        padding-bottom: 20px;
     }
     .border {
         top: -50px;
     }
     .description {
-        margin: 120px 0;
-        max-width: 1300px;
+        text-align: center;
+        margin: 40px auto 100px auto;
+        max-width: 800px;
+        font-size: 28px;
+        line-height: 1.4em;
     }
 }
 .recipe_container {

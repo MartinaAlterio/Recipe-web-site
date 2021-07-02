@@ -172,7 +172,8 @@ select[multiple] {
   font-weight: bold;
   text-decoration-line: underline;
   text-decoration-style: double;
-  color: black;
+  text-decoration-color: #212121;
+  color: #212121;
   padding: 4px; }
 
 body {
@@ -194,7 +195,7 @@ body {
   width: 100%;
   max-width: 1300px;
   margin: auto;
-  height: 80px;
+  height: 60px;
   background-color: #ffffff;
   padding: 10px 0;
   font-family: "Playfair Display", serif; }
@@ -370,18 +371,30 @@ body {
   position: relative; }
 
 .macrocategories .titleContainer {
-  width: 80%;
+  width: 100%;
   margin: 30px 0;
-  height: 400px; }
+  height: 400px;
+  box-shadow: 0 0 40px #00000060; }
 .macrocategories .title {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(21, 21, 21, 0.5);
+  color: #ffffff;
   position: relative;
   z-index: 1;
   top: 250px;
   font-size: 70px;
-  text-shadow: 1.5px 1px 1px #a0aec0;
   background-position: center;
   padding: unset; }
+.macrocategories .subject {
+  font-size: 30px;
+  padding: 10px;
+  font-weight: bolder;
+  margin: unset;
+  background-color: unset; }
+  .macrocategories .subject a {
+    transition-property: opacity;
+    transition-duration: 0.5s; }
+.macrocategories .subject:hover a {
+  opacity: 0.5; }
 
 .macro {
   display: flex;
@@ -390,53 +403,73 @@ body {
   margin-bottom: 80px; }
 
 .container_list {
-  width: 30%;
+  width: 50%;
   display: flex; }
 
 .list_macro {
+  width: 100%;
   display: flex;
   flex-direction: column;
   max-height: 100%;
   justify-content: space-evenly;
   padding: 20px 30px; }
 
-.s_macro {
-  font-size: 30px;
-  padding: 10px; }
-
 .header_home {
   transition-property: background-color;
-  transition-duration: 1s;
-  transition-delay: 0s; }
+  transition-duration: 0.5s; }
   .header_home.container_header {
+    transition-property: box-shadow;
+    transition-duration: 2s;
     box-shadow: 0 0 10px #ffffff; }
   .header_home.over_header {
+    box-shadow: 0 0 2px #ffffff;
+    height: max-content;
     background-color: #212121; }
+    .header_home.over_header .header {
+      height: max-content; }
+    .header_home.over_header .logo {
+      margin: auto;
+      padding-top: unset;
+      font-size: 50px;
+      height: max-content; }
+    .header_home.over_header .buttonContainer {
+      padding-top: 15px;
+      height: max-content; }
   .header_home .header {
+    transition-property: height;
+    transition-duration: 0.5s;
     background-color: transparent;
     color: #ffffff;
     height: 120px;
     max-width: calc(100% - 100px); }
   .header_home .logo {
+    transition-property: font-size, padding-top, margin;
+    transition-duration: 1s;
     font-size: 80px;
     padding-top: 20px;
     margin-bottom: unset;
     color: #ffffff; }
   .header_home .buttonContainer {
+    transition-property: padding-top;
+    transition-duration: 1s;
     padding-top: 20px;
     align-self: center;
     margin-bottom: unset; }
   .header_home .button {
-    color: #ffffff; }
+    color: #ffffff;
+    text-decoration-color: #ffffff; }
 
 .homePage .textContainer {
   max-width: 100%; }
 .homePage .text_image {
   height: 500px;
   padding: 30px 0;
-  box-shadow: 0 0 5px #00000030;
   border: unset;
-  margin: 80px auto; }
+  margin: 80px auto;
+  transition-property: box-shadow;
+  transition-duration: 1s; }
+.homePage .text_image:hover {
+  box-shadow: 0 0 5px #00000030; }
 .homePage.pageContainer {
   max-width: 100%;
   padding-top: unset; }
@@ -461,7 +494,12 @@ body {
     font-size: 40px;
     max-width: max-content;
     margin: auto;
-    box-shadow: 0 0 10px #00000030; }
+    text-decoration-style: solid;
+    text-decoration-color: #212121;
+    transition-property: opacity; }
+  .homePage .text_link a:hover {
+    opacity: 0.7;
+    text-decoration: unset; }
 
 .image {
   width: 65%;
@@ -473,7 +511,9 @@ body {
 .text {
   width: 90%;
   padding: 20px;
-  font-size: 35px; }
+  line-height: 1.4em;
+  text-align: center;
+  font-size: 28px; }
 
 .categories .textContainer {
   width: 100%;
@@ -494,12 +534,16 @@ body {
   height: 100px;
   text-align: center; }
 .categories .subject {
-  font-size: 90px; }
+  font-size: 70px;
+  padding-bottom: 20px; }
 .categories .border {
   top: -50px; }
 .categories .description {
-  margin: 120px 0;
-  max-width: 1300px; }
+  text-align: center;
+  margin: 40px auto 100px auto;
+  max-width: 800px;
+  font-size: 28px;
+  line-height: 1.4em; }
 
 .recipe_container {
   margin: 80px 0;

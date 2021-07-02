@@ -20,7 +20,7 @@
                                                 <div class="image"> </div> style="background-image: url('{{asset('storage/images/recipes/'.$recipe->image)}}')"
                                             @endforeach
                                             </div>-->
-                                            <li class="subject s_macro"><a href="/ricette/{{$value->url}}">{{$value->name}}</a></li>
+                                            <li class="subject"><a href="/ricette/{{$value->url}}">{{$value->name}}</a></li>
                                         </div>
                                     @endforeach
                                 </div>
@@ -31,7 +31,6 @@
             @endif
         </div>
     </div>
-
 @endsection
 
 
