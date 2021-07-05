@@ -17,11 +17,21 @@ use App\Http\Controllers\RecipesController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/ricette', [RecipesController::class, 'macro']);
-Route::get('/ricette/{category}', [RecipesController::class, 'category']);
-Route::get('/ricette/{category}/{recipe}', [RecipesController::class, 'recipe']);
-Route::get('/ingredienti', [IngredientsController::class, 'ingredients']);
-Route::get('/ingredienti/{url}', [IngredientsController::class, 'detailIngredient']);
+
+Route::prefix('ricette')->group(function () {
+    Route::get('/', [RecipesController::class, 'macro']);
+
+    Route::get('/{category}', [RecipesController::class, 'category']);
+
+    Route::get('/{category}/{recipe}', [RecipesController::class, 'recipe']);
+});
+
+Route::prefix('ingredienti')->group(function () {
+    Route::get('/', [IngredientsController::class, 'ingredients']);
+
+    Route::get('/{url}', [IngredientsController::class, 'detailIngredient']);
+});
+
 Route::get('/database', function() {return view('CRUD.create');});
 Route::get('/database/ingredienti', [IngredientsController::class, 'getListIngredient'])->name('databaseIngredients');
 Route::post('/database/ingredienti', [IngredientsController::class, 'insertIngredient']);
@@ -31,3 +41,6 @@ Route::get('/database/macro', [RecipesController::class, 'getMacro']);
 Route::post('/database/macro', [RecipesController::class, 'insertMacro']);
 Route::get('/database/categorie', [RecipesController::class, 'getCategories']);
 Route::get('/database/ricette', [RecipesController::class, 'getRecipes']);
+Route::get('/riccardo', function () {
+    return view('riccardo');
+});

@@ -53,71 +53,53 @@
         text-decoration-color: $white;
     }
 }
-.homePage {
-    .textContainer {
+.main_container {
+    &--home {
+        max-width: 100%;
+        padding-top: unset;
+    }
+}
+
+.main_image {
+    &--home {
+        margin: unset;
+        height: 850px;
+    }
+}
+
+.main_title {
+    &--home {
+        font-family: $serif_font;
+        font-size: 60px;
+        font-weight: bold;
+        padding-top: 30px;
+    }
+}
+
+.border {
+    &--home {
+        border-top: 2px solid $black;
+        top: -35px;
+    }
+}
+
+.page_container {
+    &--home {
         max-width: 100%;
     }
-    .text_image {
+}
+
+.main_content {
+    &--home {
         height: 500px;
         padding: 30px 0;
         border: unset;
         margin: 80px auto;
         transition-property: box-shadow;
         transition-duration: 1s;
-    }
-    .text_image:hover {
-        box-shadow: 0 0 5px #00000030;
-    }
-    &.pageContainer {
-        max-width: 100%;
-        padding-top: unset;
-    }
-    .titleContainer {
-        height: 850px;
-        margin: 0;
-    }
-    .subject {
-        font-family: $serif_font;
-        font-size: 60px;
-        font-weight: bold;
-        padding-top: 30px;
-    }
-    .border {
-        border-top: 2px solid $black;
-        top: -35px;
-    }
-    .text_link {
-        width:30%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        a {
-            font-size: 40px;
-            max-width: max-content;
-            margin: auto;
-            text-decoration-style: solid;
-            text-decoration-color: $black;
-            transition-property: opacity;
-        }
-        a:hover {
-            opacity: 0.7;
-            text-decoration: unset;
+        &:hover {
+            box-shadow: 0 0 5px #00000030;
         }
     }
-}
-.image{
-    width: 65%;
-    height: 100%;
-    margin: auto;
-    background-size: cover;
-    background-position: center;
-}
-.text {
-    width: 90%;
-    padding:20px;
-    line-height: 1.4em;
-    text-align: center;
-    font-size: 28px;
 }
 

@@ -1,10 +1,10 @@
-.pageContainer {
+.main_container {
     width: 100%;
     max-width: 1300px;
     margin: auto;
     padding: 150px 0 40px 0;
 }
-.titleContainer {
+.main_image {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -14,25 +14,60 @@
     background-size: cover;
     background-position: center;
 }
-.textContainer {
+.page_container {
     margin: auto;
     color: $black;
     font-size: 30px;
     max-width: 1000px;
     background-position: center;
 }
-.textContainer a {
-    text-decoration-line: underline;
-    color: $black;
-    text-decoration-style: double;
-    text-decoration-color: $black;
-}
-.text_image {
+.main_content {
     display: flex;
     margin: 60px 0;
     max-width: 100%;
+    a {
+        text-decoration-line: underline;
+        color: $black;
+        text-decoration-style: double;
+        text-decoration-color: $black;
+    }
+    &__image {
+        width: 65%;
+        height: 100%;
+        margin: auto;
+        background-size: cover;
+        background-position: center;
+    }
+    &__text {
+        width:30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        a {
+            font-size: 40px;
+            max-width: max-content;
+            margin: auto;
+            text-decoration-style: solid;
+            text-decoration-color: $black;
+            transition-property: opacity;
+            color: $black;
+        }
+        a:hover {
+            opacity: 0.7;
+            text-decoration: unset;
+        }
+    }
+    &:nth-child(2n) {
+        flex-direction: row-reverse;
+        border-top: none;
+        border-right: 1px solid $black;
+    }
+    &:nth-child(2n+1) {
+        border-left: 1px solid $black;
+    }
 }
-.subject {
+.main_title {
     color: $black;
     max-width: max-content;
     position: relative;
@@ -67,3 +102,24 @@
     width: 100%;
     max-width: 1000px;
 }
+
+.text {
+    width: 90%;
+    padding:20px;
+    line-height: 1.4em;
+    text-align: center;
+    font-size: 28px;
+}
+
+
+.title {
+    text-align: center;
+    font-family: $main_font;
+    font-size: 60px;
+    padding: 20px;
+    font-weight: lighter;
+    color: $black;
+    background-color:$white_transparent;
+    max-width: 100%;
+}
+

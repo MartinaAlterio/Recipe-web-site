@@ -1,17 +1,20 @@
 @extends('template')
 
 @section('content')
-    <div class="pageContainer recipeDetail">
-        <div class="titleContainer" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')">
+    <div class="main_container">
+        <div class="main_image" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')">
             <h1 class="title">{{$recipe->name}}</h1>
             <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         </div>
-        <div class="textContainer">
-            <h2 class="subject"> Descrizione</h2>
-            <div class="border"> </div>
-            <div class="description">
-                {{$recipe->description}}
+        <div class="page_container">
+            <div class="text">
+                <h2 class="title title--text"> Descrizione</h2>
+                <div class="border border--detail"> </div>
+                <div class="text">
+                    {{$recipe->description}}
+                </div>
             </div>
+
             <div class="ingredients">
                 <div class="subject subject_reverse">Ingredienti</div>
                 <div class="border border_reverse"> </div>

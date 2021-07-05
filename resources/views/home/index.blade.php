@@ -1,30 +1,32 @@
 @extends('template')
 
 @section('content')
-    <div class="pageContainer homePage" >
-        <div class="titleContainer home_title" style="background-image: url('{{asset('storage/images/home/'.$home->title->image)}}')"></div>
-        <div class="subject">
+    <div class="main_container main_container--home" >
+        <div class="main_image main_image--home" style="background-image: url('{{asset('storage/images/home/'.$home->title->image)}}')"></div>
+        <div class="main_title main_title--home">
             {{$home->title->content}}
         </div>
-        <div class="border"></div>
-        <div class="textContainer">
-            <div class="text_image">
-                <div class="image" style="background-image: url('{{asset('storage/images/home/'.$home->recipes->image)}}')"></div>
-                <div class="text_link" >
+        <div class="border border--home"></div>
+        <div class="page_container page_container--home">
+            <div class="main_content main_content--home">
+                <div class="main_content__image" style="background-image: url('{{asset('storage/images/home/'.$home->recipes->image)}}')"></div>
+                <div class="main_content__text" >
                     <div class="text">{{$home->recipes->content}}</div>
                     <a href="/ricette">Scopri tutte le ricette</a>
                 </div>
             </div>
-            <div class="text_image">
-                <div class="image" style="background-image: url('{{asset('storage/images/home/'.$home->ingredients->image)}}')"></div>
-                <div class="text_link" >
+            <div class="main_content main_content--home">
+                <div class="main_content__image" style="background-image: url('{{asset('storage/images/home/'.$home->ingredients->image)}}')"></div>
+                <div class="main_content__text" >
                     <div class="text"> {{$home->ingredients->content}}</div>
                     <a href="/ingredienti">Impara a capire gli ingredienti</a>
                 </div>
             </div>
-            <div class="text_image ">
-                <div class="image" style="background-image: url('{{asset('storage/images/home/'.$home->about_me->image)}}')"></div>
-                <div class="text_link text">{{$home->about_me->content}}</div>
+            <div class="main_content main_content--home">
+                <div class="main_content__image" style="background-image: url('{{asset('storage/images/home/'.$home->about_me->image)}}')"></div>
+                <div class="main_content__text">
+                    <div class="text"> {{$home->about_me->content}}</div>
+                </div>
             </div>
         </div>
     </div>
