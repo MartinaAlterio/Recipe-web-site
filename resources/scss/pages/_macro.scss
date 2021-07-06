@@ -1,11 +1,56 @@
-.macrocategories {
-    .titleContainer {
+.main_content {
+    &--macro{
         width: 100%;
-        margin: 30px 0;
+        margin: 10px 0 120px 0;
         height: 400px;
-        box-shadow: 0 0 40px #00000060;
+        transition-property: box-shadow, margin;
+        transition-duration: 0.4s;
+        &:nth-child(2n) .list--macro{
+            margin-left: auto;
+        }
+        &:nth-child(2n) .list__element {
+            margin-left: auto;
+        }
+        &:hover {
+            box-shadow: 0 0 20px #00000060;
+            & .list--macro, .list__element {
+                margin: 0 auto;
+            }
+        }
     }
-    .title {
+}
+
+.list {
+    &--macro {
+        padding: 10px;
+        justify-content: space-around;
+        margin: initial;
+    }
+    &__element {
+        display: flex;
+        flex-direction: row;
+        align-self: baseline;
+    }
+    &__title {
+        font-size: 30px;
+        padding: 10px;
+        font-weight: bolder;
+        margin: auto;
+        background-color: unset;
+        a {
+            transition-property: opacity;
+            transition-duration: 0.5s;
+        }
+        &:hover {
+            a {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+.title {
+    &--macro {
         background-color: $black_transparent;
         color: $white;
         position: relative;
@@ -15,38 +60,4 @@
         background-position: center;
         padding: unset;
     }
-    .subject {
-        font-size: 30px;
-        padding: 10px;
-        font-weight: bolder;
-        margin: unset;
-        background-color: unset;
-        a {
-            transition-property: opacity;
-            transition-duration: 0.5s;
-        }
-    }
-    .subject:hover {
-        a {
-            opacity: 0.5;
-        }
-    }
-}
-.macro {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    margin-bottom: 80px;
-}
-.container_list {
-    width: 50%;
-    display: flex;
-}
-.list_macro {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    justify-content: space-evenly;
-    padding: 20px 30px;
 }

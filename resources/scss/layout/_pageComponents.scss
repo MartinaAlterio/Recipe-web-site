@@ -80,6 +80,13 @@
     margin: auto;
     z-index: 1;
 }
+.main_text {
+    text-align: center;
+    margin: 40px auto 100px auto;
+    max-width: 800px;
+    font-size: 28px;
+    line-height: 1.4em;
+}
 .border {
     width: 100%;
     height: 1px;
@@ -87,14 +94,27 @@
     border-top: 1px solid $black;
     position: relative;
     top: -20px;
+    &_reverse {
+        height: unset;
+        width: 20px;
+        background-color: $white;
+        border-left: 1px solid $black;
+        border-top: none;
+        position: relative;
+        top: 0;
+        left: -35px;
+    }
+    &--end {
+        width: 100%;
+        height: 20px;
+        background-color: $white;
+        border-top: 1px solid $black;
+        position: relative;
+    }
 }
 
 .border-end {
-    width: 100%;
-    height: 20px;
-    background-color: $white;
-    border-top: 1px solid $black;
-    position: relative;
+
 }
 .description {
     margin: 10px auto 50px auto;
@@ -121,5 +141,28 @@
     color: $black;
     background-color:$white_transparent;
     max-width: 100%;
+    &_reverse {
+        text-align: center;
+        transform: rotate(270deg);
+        width: 100%;
+        margin-right: -20px;
+        background-color: transparent;
+        font-size: 40px;
+    }
+}
+
+.container_list {
+    width: 40%;
+    display: flex;
+}
+
+
+.list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 20px 30px;
+    margin: auto;
 }
 

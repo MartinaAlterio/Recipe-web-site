@@ -1,59 +1,106 @@
+.main_container {
+    &--detail {
+        padding-top: 100px;
+    }
+}
+
+.main_title {
+    &--detail {
+        font-size: 60px;
+        padding: 0;
+    }
+}
+.element {
+    &--ingredients {
+        margin: 50px auto;
+        width: 50%;
+    }
+}
 .title {
     &--text {
         background-color: $white;
+    }
+    &--ingredients {
+        position: relative;
+        z-index: 1;
+        background-color: white;
+        padding: 0;
+        width: auto;
+        height: max-content;
+        margin: auto;
+    }
+    &--methods {
+        position: relative;
+        z-index: 1;
+        background-color: $white;
+        width: max-content;
+        margin: 30px auto 0 auto;
+        padding: 20px 0 0 0;
     }
 }
 
 .border {
     &--detail {
+        top: -35px;
+    }
+    &--ingredients {
+        left: -70px;
+    }
+    &--methods {
         top: -30px;
     }
 }
 
-.ingredients{
-    width: 100%;
+.element {
     display: flex;
-    height: 100%;
-    padding-top: 50px;
+    flex-direction: row;
+    &--methods {
+        flex-direction: column;
+    }
+
 }
-.subject_reverse {
-    text-align: center;
-    transform: rotate(270deg);
-    width: 100%;
-    margin-right: -20px;
-}
-.border_reverse {
-    height: auto;
-    width: 20px;
-    background-color: $white;
-    border-left: 1px solid $black;
-    border-top: none;
-    position: relative;
-    top: 0;
-    left: -35px;
-}
-.method {
-    margin: 50px auto;
+.main_content{
+    &__text {
+        &--methods {
+            width: 50%;
+            font-size: 25px;
+            line-height: 1.4em;
+            text-align: center;
+            margin: auto;
+            padding: 0 30px;
+        }
+    }
+    &__image {
+        &--methods {
+            height: 450px;
+        }
+    }
 }
 .list {
-    padding: 10px 70px 10px 0;
-    width: 70%;
-    max-width: 700px;
-    margin: 10px;
-    text-align: center;
+    &--ingredients {
+        width: 100%;
+        display: flex;
+        height: 100%;
+        padding: 50px 0;
+    }
+
 }
-.image_method {
-    width: 50%;
-    max-width: 600px;
-    height: 600px;
-    padding: 20px 0;
+.list__image {
+    &--method {
+        width: 50%;
+        max-width: 600px;
+        height: 600px;
+        padding: 20px 0;
+    }
 }
-.text_method {
-    width: 40%;
-    max-width: 600px;
-    height: max-content;
-    padding: 20px 5px;
-    margin: auto;
+.list__text {
+    &--method {
+        width: 40%;
+        max-width: 600px;
+        height: max-content;
+        padding: 20px 5px;
+        margin: auto;
+    }
 }
 .recipeDetail {
     .text_image {
