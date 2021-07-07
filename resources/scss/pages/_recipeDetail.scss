@@ -62,7 +62,7 @@
 .main_content{
     &__text {
         &--methods {
-            width: 50%;
+            flex-basis: 40%;
             font-size: 25px;
             line-height: 1.4em;
             text-align: center;
@@ -72,7 +72,10 @@
     }
     &__image {
         &--methods {
-            height: 450px;
+            margin: unset;
+            flex-basis: 60%;
+            height: unset;
+            width: unset;
         }
     }
 }

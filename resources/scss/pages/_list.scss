@@ -1,3 +1,17 @@
+.main_container {
+    &--ingredients {
+        padding: 100px 0 40px 0;
+    }
+}
+.main_image {
+    &--ingredients {
+        height: 150px;
+        background-size: auto;
+        margin: 20px auto 0 auto;
+    }
+}
+
+
 .listIngredients {
     .text_image {
         height: 300px;

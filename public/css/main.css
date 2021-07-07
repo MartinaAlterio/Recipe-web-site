@@ -425,14 +425,17 @@ body {
     flex-direction: column; }
 
 .main_content__text--methods {
-  width: 50%;
+  flex-basis: 40%;
   font-size: 25px;
   line-height: 1.4em;
   text-align: center;
   margin: auto;
   padding: 0 30px; }
 .main_content__image--methods {
-  height: 450px; }
+  margin: unset;
+  flex-basis: 60%;
+  height: unset;
+  width: unset; }
 
 .list--ingredients {
   width: 100%;
@@ -630,6 +633,14 @@ body {
   margin: 200px 0 150px 0;
   display: flex;
   justify-content: space-around; }
+
+.main_container--ingredients {
+  padding: 100px 0 40px 0; }
+
+.main_image--ingredients {
+  height: 150px;
+  background-size: auto;
+  margin: 20px auto 0 auto; }
 
 .listIngredients .text_image {
   height: 300px;
