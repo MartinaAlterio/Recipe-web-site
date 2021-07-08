@@ -4,24 +4,28 @@ namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
 //use Illuminate\Http\Response;
+
+use App\Http\classes\database\texts\HomeTextRepository;
 use App\Http\classes\database\ingredients\IngredientsRepository;
 use App\Http\classes\database\Recipes\RecipesRepository;
 use Illuminate\Support\Facades\DB;
 
 class IngredientsController extends Controller
 {
-    public function ingredients(IngredientsRepository $ingredientsRepository){
+    public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
         $list = $ingredientsRepository->getActiveIngredients();
-        return view('ingredienti.list', compact('list'));
+        $ingredients = new \stdClass();
+        $ingredients->upTitle = $homeTextRepository->getContent('upTitle','ingredients');
+        $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
+        return view('ingredienti.list', compact('list', 'ingredients'));
     }
 
-    public function detailIngredient(IngredientsRepository $ingredientsRepository, $url) {
+    public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
         $ingredient = $ingredientsRepository->getIngedientFromUrl($url);
         if ($ingredient !== null) {
             $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
             return view('ingredienti.detail', compact('ingredient'));
         } else {die('Ingredient inactive');}
-
     }
 
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {

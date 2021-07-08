@@ -91,14 +91,20 @@
 
 .main_content {
     &--home {
+        & div {
+            border-right: 0;
+            border-left: 0;
+        }
         height: 500px;
         padding: 30px 0;
-        border: unset;
         margin: 80px auto;
         transition-property: box-shadow;
         transition-duration: 1s;
         &:hover {
             box-shadow: 0 0 5px #00000030;
+        }
+        & a {
+            text-decoration-color: darkred;
         }
     }
 }

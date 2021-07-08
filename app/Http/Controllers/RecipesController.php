@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class RecipesController extends Controller
 {
 
-    public function macro(RecipesRepository $recipesRepository) {
+    public function getMacro(RecipesRepository $recipesRepository) {
         $macros = $recipesRepository->getListMacro();
         foreach ($macros as $macro) {
             $macro->image = $recipesRepository->getImageMacro($macro->id);
@@ -23,13 +23,13 @@ class RecipesController extends Controller
         return view('ricette.macro', compact('macros'));
     }
 
-    public function category(RecipesRepository $recipesRepository, $category) {
+    public function getCategory(RecipesRepository $recipesRepository, $category) {
         $category = $recipesRepository->getCategoryFromUrl($category);
         $category->recipes = $recipesRepository->getRecipesCategory($category->id);
         return view('ricette.category', compact('category'));
     }
 
-    public function recipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
+    public function getRecipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
         $recipe = $recipesRepository->getRecipeFromUrl($recipe);
         $recipe->category = $recipesRepository->getcategoryFromUrl($category);
         $recipe->ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
@@ -37,13 +37,15 @@ class RecipesController extends Controller
         return view('ricette.detail', compact('recipe'));
     }
 
+
     //metodi per l'interazione con il database
-    public function getMacro(RecipesRepository $recipesRepository) {
+
+    public function getMacroDatabase(RecipesRepository $recipesRepository) {
         $list = $recipesRepository->getListMacro();
         return view('CRUD.macros', compact('list'));
     }
 
-    public function getCategories(RecipesRepository $recipesRepository) {
+    public function getCategoriesDatabase(RecipesRepository $recipesRepository) {
         if(isset($_GET['id']) && isset($_GET['name'])) {
             $id = $_GET['id'];
             $name= $_GET['name'];
@@ -56,7 +58,7 @@ class RecipesController extends Controller
 
     }
 
-    public function getRecipes(RecipesRepository $recipesRepository) {
+    public function getRecipesDatabase(RecipesRepository $recipesRepository) {
         if(isset($_GET['id']) && isset($_GET['name'])) {
             $id = $_GET['id'];
             $name= $_GET['name'];

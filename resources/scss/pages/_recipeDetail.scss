@@ -86,6 +86,12 @@
         height: 100%;
         padding: 50px 0;
     }
+    & a {
+        color: $black;
+        &:hover {
+            color: $black_transparent;
+        }
+    }
 
 }
 .list__image {

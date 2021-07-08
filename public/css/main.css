@@ -442,6 +442,10 @@ body {
   display: flex;
   height: 100%;
   padding: 50px 0; }
+.list a {
+  color: #212121; }
+  .list a:hover {
+    color: rgba(21, 21, 21, 0.5); }
 
 .list__image--method {
   width: 50%;
@@ -574,12 +578,16 @@ body {
 .main_content--home {
   height: 500px;
   padding: 30px 0;
-  border: unset;
   margin: 80px auto;
   transition-property: box-shadow;
   transition-duration: 1s; }
+  .main_content--home div {
+    border-right: 0;
+    border-left: 0; }
   .main_content--home:hover {
     box-shadow: 0 0 5px #00000030; }
+  .main_content--home a {
+    text-decoration-color: darkred; }
 
 .main_container--category {
   padding-top: 90px;
@@ -638,13 +646,37 @@ body {
   padding: 100px 0 40px 0; }
 
 .main_image--ingredients {
-  height: 150px;
+  height: 270px;
   background-size: auto;
-  margin: 20px auto 0 auto; }
+  margin: 60px auto; }
 
-.listIngredients .text_image {
-  height: 300px;
-  border-left: unset; }
+.main_title--ingredients {
+  display: block;
+  color: #ffffff;
+  background-color: darkred;
+  padding: 5px 20px;
+  font-size: 60px;
+  font-weight: lighter; }
+
+.main_content--ingredients {
+  display: flex;
+  flex-direction: column; }
+  .main_content--ingredients:nth-child(2n) {
+    flex-direction: column; }
+.main_content__image--ingredients {
+  height: 500px;
+  width: 100%;
+  background-size: cover; }
+
+.title--ingredients a {
+  background-color: #212121;
+  display: block;
+  color: white;
+  text-decoration: none;
+  transition-property: background-color;
+  transition-duration: 0.4s; }
+  .title--ingredients a:hover {
+    background-color: rgba(21, 21, 21, 0.5); }
 
 .box {
   height: 600px;

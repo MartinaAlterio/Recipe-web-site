@@ -17,7 +17,6 @@ class RecipesRepository
     }
     public function getImageMacro(int $id) {
         $image = (DB::select('select image from categories where id = :id', ['id'=>$id]));
-
         return $image[0] ?? null;
     }
 

@@ -5,16 +5,50 @@
 }
 .main_image {
     &--ingredients {
-        height: 150px;
+        height: 270px;
         background-size: auto;
-        margin: 20px auto 0 auto;
+        margin: 60px auto;
     }
 }
+.main_title {
+    &--ingredients {
+        display: block;
+        color: $white;
+        background-color: darkred;
+        padding: 5px 20px;
+        font-size: 60px;
+        font-weight: lighter;
+    }
+}
+.main_content {
+    &--ingredients {
+        display: flex;
+        flex-direction: column;
 
-
-.listIngredients {
-    .text_image {
-        height: 300px;
-        border-left: unset;
+        &:nth-child(2n) {
+            flex-direction: column;
+        }
+    }
+    &__image {
+        &--ingredients {
+            height: 500px;
+            width: 100%;
+            background-size: cover;
+        }
+    }
+}
+.title {
+    &--ingredients {
+        & a {
+            background-color: $black;
+            display: block;
+            color: white;
+            text-decoration: none;
+            transition-property: background-color;
+            transition-duration: 0.4s;
+            &:hover {
+                background-color: $black_transparent;
+            }
+        }
     }
 }
