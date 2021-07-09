@@ -17,6 +17,8 @@ class IngredientsController extends Controller
         $ingredients = new \stdClass();
         $ingredients->upTitle = $homeTextRepository->getContent('upTitle','ingredients');
         $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
+        $ingredients->description = $homeTextRepository->getContent('description', 'ingredients');
+        $ingredients->title = $homeTextRepository->getContent('title', 'ingredients');
         return view('ingredienti.list', compact('list', 'ingredients'));
     }
 
@@ -25,7 +27,10 @@ class IngredientsController extends Controller
         if ($ingredient !== null) {
             $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
             return view('ingredienti.detail', compact('ingredient'));
-        } else {die('Ingredient inactive');}
+        } else {
+            $inactive = true;
+            return view('ingredienti.detail', compact ('inactive'));
+        }
     }
 
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {

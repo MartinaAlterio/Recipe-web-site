@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACI,2BAAc;EACV,OAAO,EAAE,cAAc",
+"sources": ["../../resources/scss/pages/detailIngredient.scss"],
+"names": [],
+"file": "detailIngredient.css"
+}

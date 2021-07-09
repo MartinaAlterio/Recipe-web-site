@@ -13,18 +13,28 @@
 .main_title {
     &--ingredients {
         display: block;
-        color: $white;
-        background-color: darkred;
+        color: $black;
+        box-shadow: 0 20px 30px $black;
+        border-radius: 4px;
         padding: 5px 20px;
         font-size: 60px;
         font-weight: lighter;
+    }
+}
+.main_text {
+    &--ingredients {
+        margin-bottom: 150px;
     }
 }
 .main_content {
     &--ingredients {
         display: flex;
         flex-direction: column;
-
+        margin: 10px auto 150px auto;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        &:nth-child(n) {
+            border: 0;
+        }
         &:nth-child(2n) {
             flex-direction: column;
         }
@@ -36,11 +46,19 @@
             background-size: cover;
         }
     }
+    &__text {
+        &--ingredients {
+            width: 80%;
+            text-align: center;
+            line-height: 1.4em;
+            margin: 20px auto;
+        }
+    }
 }
 .title {
     &--ingredients {
         & a {
-            background-color: $black;
+            background-color: darkred;
             display: block;
             color: white;
             text-decoration: none;
