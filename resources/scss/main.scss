@@ -14,27 +14,4 @@
 @import "pages/list";
 @import "pages/detailIngredient";
 
-.box {
-    height: 600px;
-    width: 100%;
-    transition-property: opacity, height;
-    transition-duration: 0.5s;
-    transition-delay: 0.3s, 0s;
-    overflow: hidden;
-    &--blue {
-        background-color: blue;
-    }
-    &--green {
-        background-color: green;
-    }
-    &--hidden {
-        opacity: 0;
-        height: 0;
-        transition-delay: 0s, 0.3s;
-    }
-    &__title {
-        font-size: 50px;
-        background-color: yellow;
-    }
-}
 

@@ -88,15 +88,29 @@ class RecipesRepository
     }
 
     //metodi di inserimento dati nel database
-    public function insertRecipe(string $name, string $url, string $subheading, string $description, string $final_notes, int $important) {
-        DB::insert('insert into recipes (name, url, subheading, description, final_notes, important) values (?, ?, ?, ?, ?, ?)', [$name, $url, $subheading, $description, $final_notes, $important]);
-        $id_recipe = DB::select('select id from recipes where name = :name', ['name'=>$name]);
-        return $id_recipe;
+    public function insertRecipe(string $name, string $url, string $subheading, string $image, string $active) {
+        DB::insert('insert into recipes (name, url, subheading, image, active) values (?, ?, ?, ?, ?)', [$name, $url, $subheading, $image, $active]);
     }
 
     public function insertRecipeIngredient(int $id_recipe, string $name, string $url, int $active, IngredientsRepository $ingredientsRepository){
             $ingredientsRepository->insertIngredient($name, $url, $active);
             /*$id_ingredient = DB::select('select id from ingredients where name = :name', ['name'=>$value]);
             DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient) values (?, ?)', [$id_recipe, $id_ingredient]);*/
+    }
+
+    //metodi per la modifica dei dati nel database
+    public function updateRecipe(string $name, string $url, string $subheading, string $image, string $active, int $id) {
+    DB::update('update recipes set name= :name, url= :url, subheading= :subheading, image= :image, active= :active where id = :id', ['name'=>$name, 'url'=>$url, 'subheading'=>$subheading, 'image'=>$image, 'active'=>$active, 'id'=>$id]);
+    }
+
+    //metodi per la rimozione di dati nel database
+    public function deleteRecipe(int $id) {
+        DB::delete('delete from recipes where id= :id', ['id'=>$id]);
+    }
+
+    public function insertRecipeIngredients(int $id_recipe, array $id_ingredients) {
+        foreach ($id_ingredients as $id_ingredient) {
+            DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient) values(?,?)', [$id_recipe, $id_ingredient]);
+        }
     }
 }

@@ -6,9 +6,8 @@
         <h1 class="main_title main_title--detail">{{$recipe->name}}</h1>
         <div class="border border--detail"> </div>
         <div class="main_text">
-            {{$recipe->description}}
+            {{$recipe->subheading}}
         </div>
-    <!--<h2 class="subtitle">{{$recipe->subheading}}</h2>-->
         <div class="page_container">
             <div class="element element--ingredients">
                 <div class="title title_reverse title--ingredients">Ingredienti</div>
@@ -39,8 +38,6 @@
                 <div class="border border--end"> </div>
 
             </div>
-
-            <div> {{$recipe->final_notes}} </div>
             <div>Collegamenti a ricette e ingredienti.</div>
         </div>
         </div>

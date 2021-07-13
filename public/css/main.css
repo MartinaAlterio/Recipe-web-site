@@ -495,7 +495,8 @@ body {
   background-color: unset; }
   .list__title a {
     transition-property: opacity;
-    transition-duration: 0.5s; }
+    transition-duration: 0.5s;
+    text-decoration-style: unset; }
   .list__title:hover a {
     opacity: 0.5; }
 
@@ -692,10 +693,27 @@ body {
 
 .main_container--ingredient {
   padding: 40px 0; }
+.main_container--error {
+  height: 70vh;
+  width: 800px; }
 
 .main_image--ingredient {
   display: flex;
   flex-direction: column; }
+.main_image--error {
+  height: 350px;
+  background-size: auto; }
+  .main_image--error a {
+    font-size: 60px;
+    color: darkred;
+    text-decoration: none;
+    font-weight: bolder;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 10px 20px; }
+    .main_image--error a:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white; }
 
 .main_title--ingredient {
   font-size: 100px;
@@ -710,28 +728,43 @@ body {
   padding: 20px 0;
   margin: 0; }
 
+.main_content--ingredient {
+  max-width: 1300px;
+  margin: auto;
+  flex-direction: column; }
+  .main_content--ingredient:nth-child(n) {
+    border: 0;
+    flex-direction: column; }
+.main_content__text--ingredient {
+  display: inline-block;
+  width: 70%;
+  text-align: center;
+  margin: 50px auto;
+  font-size: 28px;
+  line-height: 1.4em; }
+.main_content__image--ingredient {
+  height: 400px;
+  border: 5px solid darkred;
+  border-radius: 5px;
+  margin: 50px auto; }
+
 .sfondoProva {
   width: 100%;
   background-color: rgba(21, 21, 21, 0.5);
   height: inherit; }
 
-.box {
-  height: 600px;
+.error_message {
+  color: darkred;
+  font-weight: bolder;
+  font-size: 40px;
+  padding: 20px 0;
+  line-height: 1.8em; }
+
+.redirect {
   width: 100%;
-  transition-property: opacity, height;
-  transition-duration: 0.5s;
-  transition-delay: 0.3s, 0s;
-  overflow: hidden; }
-  .box--blue {
-    background-color: blue; }
-  .box--green {
-    background-color: green; }
-  .box--hidden {
-    opacity: 0;
-    height: 0;
-    transition-delay: 0s, 0.3s; }
-  .box__title {
-    font-size: 50px;
-    background-color: yellow; }
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-around; }
 
 /*# sourceMappingURL=main.css.map */

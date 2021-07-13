@@ -40,6 +40,7 @@
         a {
             transition-property: opacity;
             transition-duration: 0.5s;
+            text-decoration-style: unset;
         }
         &:hover {
             a {

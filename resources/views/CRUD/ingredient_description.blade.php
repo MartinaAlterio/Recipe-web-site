@@ -7,7 +7,8 @@
 <body>
     Aggiungi una descrizione per [{{$url}}] :
     <form method="post">
-        <label>description: <input type="text" name="description" value=""></label>
+        <label>detail: <input type="text" name="description" value=""></label>
+        <label>image: <input type="text" name="image" value=""></label>
         <input type="hidden" name="url" value="{{$url}}">
         <input type="submit" name="action" value="insert">
         <a href="/database/ingredienti">Cancel</a>
@@ -16,7 +17,8 @@
     Descrizioni già salvate:
     @foreach($descriptions as $value)
         <form method="post">
-            <label>description: <input type="text" name="description" value="{{$value->description}}"></label>
+            <label>detail: <input type="text" name="description" value="{{$value->description}}"></label>
+            <label>image: <input type="text" name="image" value="{{$value->image}}"></label>
             <input type="hidden", name="id" value="{{$value->id}}">
             <input type="submit" name="action" value="update">
             <input type="submit" name="action" value="delete">

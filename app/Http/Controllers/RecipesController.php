@@ -58,7 +58,7 @@ class RecipesController extends Controller
 
     }
 
-    public function getRecipesDatabase(RecipesRepository $recipesRepository) {
+   /* public function getRecipesDatabase(RecipesRepository $recipesRepository) {
         if(isset($_GET['id']) && isset($_GET['name'])) {
             $id = $_GET['id'];
             $name= $_GET['name'];
@@ -81,7 +81,45 @@ class RecipesController extends Controller
         }
 
 
+    }*/
+    public function getRecipesDatabase (RecipesRepository $recipesRepository) {
+        $recipes =$recipesRepository->getAllRecipes();
+        return view('CRUD.recipes', compact('recipes'));
     }
 
+    public function CRUDrecipe (RecipesRepository $recipesRepository) {
+        if(isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'insert':
+                    $recipesRepository->insertRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active']);
+                    break;
+                case 'update':
+                    $recipesRepository->updateRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active'], $_POST['id']);
+                    break;
+                case 'delete' :
+                    $recipesRepository->deleteRecipe($_POST['id']);
+                    break;
+            }
+            return redirect()->route('databaseRecipe');
+        }
+    }
+
+    public function getIngredientsRecipeDatabase (RecipesRepository $recipesRepository, IngredientsRepository $ingredientsRepository, $urlRecipe) {
+        $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
+        $ingredients = $ingredientsRepository->getAllIngredients();
+        $recipe_ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
+        $id_ingredients = [];
+        foreach ($recipe_ingredients as $recipe_ingredient) {
+            $id_ingredients[] = $recipe_ingredient->id;
+        }
+        return view('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
+    }
+
+    public function CRUDrecipeIngredients(RecipesRepository $recipesRepository) {
+        if(isset($_POST['action'])) {
+            $recipesRepository->insertRecipeIngredients($_POST['id_recipe'], $_POST['id']);
+        }
+        var_dump('gli ingredienti aggiunnti sono'.$_POST['id']);
+    }
 
 }

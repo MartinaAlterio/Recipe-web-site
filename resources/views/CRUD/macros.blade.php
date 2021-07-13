@@ -16,6 +16,10 @@
             Url:
             <input type="text" name="url" value="">
         </label>
+        <label>
+            Image:
+            <input type="text" name="image" value="">
+        </label>
         <input type="hidden" name="macro" value="1">
         <input type="submit" name="action" value="insert">
         </p>
@@ -31,6 +35,9 @@
             </label>
             <label>
                 Url: <input type="text" name="url" value="{{$macro->url}}">
+            </label>
+            <label>
+                image: <input type="text" name="image" value="{{$macro->image}}">
             </label>
             <input type="hidden" name="id" value="{{$macro->id}}">
             <input type="submit" name="action" value="update">

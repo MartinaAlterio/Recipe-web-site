@@ -53,8 +53,8 @@ class IngredientsRepository
         DB::insert('insert into ingredients (name, url, active) values (?, ?, ?)', [$name, $url, $active]);
     }
 
-    public function insertIngredientDescription(string $url, string $description) {
-        DB::insert('insert into ingredient_description (url_ingredient, description) values (?, ?)', [$url, $description]);
+    public function insertIngredientDescription(string $url, string $description, string $image) {
+        DB::insert('insert into ingredient_description (url_ingredient, description, image) values (?, ?)', [$url, $description, $image]);
     }
 
     //metodi per la modifica dei dati nel database.
@@ -65,9 +65,9 @@ class IngredientsRepository
         DB::update('update ingredients set name = :name,url = :url,active = :active where id = :id', ['name'=>$name, 'url'=>$url, 'active'=>$active, 'id'=>$id]);
     }
 
-    public function updateIngredientDescription(string $description, string $url, int $id) {
+    public function updateIngredientDescription(string $description, string $image , string $url, int $id) {
         $description = htmlentities($description);
-        DB::update('update ingredients_description set description = :description, url_ingredient = :url where id = :id', ['description'=>$description, 'url'=>$url, 'id'=>$id]);
+        DB::update('update ingredients_description set description = :description, image = :image, url_ingredient = :url where id = :id', ['description'=>$description,'image'=>$image, 'url'=>$url, 'id'=>$id]);
     }
 
     //metodi per l'eliminazione dei dati dal databese

@@ -64,10 +64,10 @@ class IngredientsController extends Controller
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
-                    $ingredientsRepository->insertIngredientDescription($url, $_POST['description']);
+                    $ingredientsRepository->insertIngredientDescription($url, $_POST['description'], $_POST['image']);
                     break;
                 case 'update':
-                    $ingredientsRepository->updateIngredientDescription($_POST['description'], $url, $_POST['id']);
+                    $ingredientsRepository->updateIngredientDescription($_POST['description'],$_POST['image'], $url, $_POST['id']);
                     break;
                 case 'delete' :
                     $ingredientsRepository->deleteIngredientDescription($_POST['id']);
