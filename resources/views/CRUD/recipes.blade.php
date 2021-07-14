@@ -61,6 +61,8 @@ Inserisci una nuova Ricetta
             <input type="submit" name="action" value="update">
             <input type="submit" name="action" value="delete">
             <a href="/database/{{$recipe->url}}/ingredienti">Ingredienti</a>
+            <a href="/database/{{$recipe->url}}/procedimenti">Procedimenti</a>
+            <a href="/database/{{$recipe->url}}/collegamenti">Collegamenti</a>
             @csrf
         </form>
     @endforeach

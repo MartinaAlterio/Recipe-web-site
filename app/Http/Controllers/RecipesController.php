@@ -118,8 +118,38 @@ class RecipesController extends Controller
     public function CRUDrecipeIngredients(RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             $recipesRepository->insertRecipeIngredients($_POST['id_recipe'], $_POST['id']);
+            $url = $_POST['url'];
         }
-        var_dump('gli ingredienti aggiunnti sono'.$_POST['id']);
+        return redirect()->route('databaseRecipeIngredients', ['recipe'=>$url]);
     }
 
+
+    public function getMethodsRecipeDatabase (RecipesRepository $recipesRepository, $urlRecipe) {
+        $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
+        $id_recipe = $recipe->id;
+        $methods = $recipesRepository->getRecipeMethods($id_recipe);
+        return view('CRUD.recipe_methods', compact('methods', 'recipe'));
+    }
+
+    public function CRUDrecipeMethods(RecipesRepository $recipesRepository) {
+        if(isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'insert':
+                    $recipesRepository->insertMethod($_POST['method'], $_POST['image'], $_POST['id_recipe']);
+                    break;
+                case 'update':
+                    $recipesRepository->updateMethod($_POST['method'], $_POST['image'], $_POST['id']);
+                    break;
+                case 'delete' :
+                    $recipesRepository->deleteMethod($_POST['id']);
+                    break;
+            }
+            $url = $_POST['url'];
+            return redirect()->route('databaseRecipeMethods', ['recipe'=>$url]);
+        }
+    }
+
+    public function getLinkedRecipesDatabase (RecipesRepository $recipesRepository) {
+
+    }
 }

@@ -19,6 +19,7 @@
             <label>{{$ingredient->name}}</label><br>
         @endforeach
             <input type="hidden" name="id_recipe" value="{{$recipe->id}}">
+            <input type="hidden" name="url" value="{{$recipe->url}}">
             <input type="submit" name="action" value="insert">
             @csrf
     </form>

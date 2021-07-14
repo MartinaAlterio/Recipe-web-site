@@ -15,7 +15,7 @@ Inserimento ingredienti:
         Attivo:
         <input type="text" name="active" value="">
         <input type="submit" name="action" value="insert">
-        <a href="/database">cancel</a>
+        <a href="/database/ingredienti">cancel</a>
         </p>
         @csrf
     </form>
@@ -31,7 +31,7 @@ Inserimento ingredienti:
         <input type="hidden" name="id" value="{{$ingredient->id}}">
         <input type="submit" name="action" value="update">
         <input type="submit" name="action" value="delete">
-            @if($ingredientS->active === 1)
+            @if($ingredient->active === 1)
                 <a href="/database/ingredienti/{{$ingredient->url}}">Detail</a>
             @endif</p>
         @csrf

@@ -109,8 +109,26 @@ class RecipesRepository
     }
 
     public function insertRecipeIngredients(int $id_recipe, array $id_ingredients) {
+        DB::delete('delete from recipe_has_ingredients where id_recipe= :id', [$id_recipe]);
         foreach ($id_ingredients as $id_ingredient) {
             DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient) values(?,?)', [$id_recipe, $id_ingredient]);
         }
+    }
+
+    public function insertMethod (string $method, string $image, int $id_recipe) {
+        DB::insert('insert into methods (method, image, id_recipe) value (?,?,?)', [$method, $image, $id_recipe]);
+    }
+
+    public function updateMethod(string $method, string $image, int $id) {
+        DB::update('update methods set method= :method, image= :image where id= :id', ['method'=>$method, 'image'=>$image, 'id'=>$id]);
+    }
+
+    public function deleteMethod(int $id) {
+        DB::delete('delete from methods where id= :id', ['id'=>$id]);
+    }
+
+    public function getLinkedRecipes (int $id_recipe) {
+        $linked_recipes= DB::select('select * from recipe has recipes where id_recipe= :id', ['id'=>$id_recipe]);
+        return($linked_recipes);
     }
 }
