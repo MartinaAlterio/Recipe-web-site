@@ -149,7 +149,22 @@ class RecipesController extends Controller
         }
     }
 
-    public function getLinkedRecipesDatabase (RecipesRepository $recipesRepository) {
+    public function getLinkedRecipesDatabase (RecipesRepository $recipesRepository, $url_recipe) {
+        $main_recipe = $recipesRepository->getRecipeFromUrl($url_recipe);
+        $linked_recipes= $recipesRepository->getLinkedRecipes($main_recipe->id);
+        $recipes = $recipesRepository->getAllRecipes();
+        $linked_recipes_id = [];
+        foreach ($linked_recipes as $linked_recipe) {
+            $linked_recipes_id[] = $linked_recipe->id_linked_recipe;
+        }
+        return view('CRUD.recipes_linked', compact('main_recipe', 'recipes', 'linked_recipes_id'));
+    }
 
+    public function CRUDlinkedRecipes (RecipesRepository $recipesRepository) {
+        if(isset($_POST['action'])) {
+            $recipesRepository->insertLinkedRecipes($_POST['id_recipe'], $_POST['id']);
+            $url = $_POST['url'];
+        }
+        return redirect()->route('databaseRecipeslinked', ['recipe'=>$url]);
     }
 }

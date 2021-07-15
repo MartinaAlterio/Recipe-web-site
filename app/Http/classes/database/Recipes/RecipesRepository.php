@@ -82,6 +82,11 @@ class RecipesRepository
         return $recipes;
     }
 
+    public function getLinkedRecipes (int $id_recipe) {
+        $linked_recipes= DB::select('select * from recipe_has_recipes where id_recipe= :id', ['id'=>$id_recipe]);
+        return $linked_recipes;
+    }
+
     public function  getRecipeMethods (int $id_recipe) {
         $methods = DB::select('select * from methods where id_recipe = :id', ['id'=>$id_recipe]);
         return $methods;
@@ -127,8 +132,10 @@ class RecipesRepository
         DB::delete('delete from methods where id= :id', ['id'=>$id]);
     }
 
-    public function getLinkedRecipes (int $id_recipe) {
-        $linked_recipes= DB::select('select * from recipe has recipes where id_recipe= :id', ['id'=>$id_recipe]);
-        return($linked_recipes);
+    public function insertLinkedRecipes(int $id_recipe, array $id_linked_recipes) {
+        DB::delete('delete from recipe_has_recipes where id_Recipe= :id', [$id_recipe]);
+        foreach ($id_linked_recipes as $id_linked_recipe) {
+            DB::insert('insert into recipe_has_recipes (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
+        }
     }
 }
