@@ -160,14 +160,29 @@ class RecipesController extends Controller
     }
 
     public function CRUDcategoriesRecipes(RecipesRepository $recipesRepository) {
-
+        if(isset($_POST['action'])) {
+            $recipesRepository->insertCategoryRecipes($_POST['id_category'], $_POST['id']);
+            $url = $_POST['url'];
+        }
+        return redirect()->route('databaseCategoriesRecipes', ['category'=>$url]);
     }
 
-    public function getCategoriesLinkedDatabase(RecipesRepository $recipesRepository, $url) {
-
+    public function getCategoriesLinkedDatabase(RecipesRepository $recipesRepository, $url_category) {
+        $macro = $recipesRepository->getCategoryFromUrl($url_category);
+        $categories = $recipesRepository->getCategories();
+        $categories_macro = $recipesRepository->getCategoriesMacro($macro->id);
+        $id_categories = [];
+        foreach ($categories_macro as $category_macro) {
+            $id_categories[] = $category_macro->id;
+        }
+        return view('CRUD.categories_macro', compact('macro', 'categories', 'id_categories'));
     }
 
     public function CRUDcategoriesLinked(RecipesRepository $recipesRepository) {
-
+        if(isset($_POST['action'])) {
+            $recipesRepository->insertMacroCategories($_POST['id_macro'], $_POST['id']);
+            $url = $_POST['url'];
+        }
+        return redirect()->route('databaseCategoriesLinked', ['category'=>$url]);
     }
 }

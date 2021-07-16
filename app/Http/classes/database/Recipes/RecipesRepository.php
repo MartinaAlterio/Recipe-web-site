@@ -150,4 +150,18 @@ class RecipesRepository
     public function deleteCategory(int $id){
         DB::delete('delete from categories where id= :id', [$id]);
     }
+
+    public function insertCategoryRecipes(int $id_category, array $id_recipes) {
+        DB::delete('delete from recipe_has_categories where id_category= :id_category', [$id_category]);
+        foreach ($id_recipes as $id_recipe) {
+            DB::insert('insert into recipe_has_categories (id_recipe, id_category) value (?,?)', [$id_recipe, $id_category]);
+        }
+    }
+
+    public function insertMacroCategories(int $id_macro, array $id_categories) {
+        DB::select('delete from category_has_categories where id_macrocategory= :id_macro', [$id_macro]);
+        foreach ($id_categories as $id_category) {
+            DB::insert('insert into category_has_categories (id_macrocategory, id_category) value (?,?)', [$id_macro, $id_category]);
+        }
+    }
 }

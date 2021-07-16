@@ -17,7 +17,7 @@
         @endif
         <label>{{$recipe->name}}</label><br>
     @endforeach
-    <input type="hidden" name="id_recipe" value="{{$category->id}}">
+    <input type="hidden" name="id_category" value="{{$category->id}}">
     <input type="hidden" name="url" value="{{$category->url}}">
     <input type="submit" name="action" value="insert">
     @csrf
