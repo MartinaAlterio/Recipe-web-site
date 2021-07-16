@@ -35,7 +35,7 @@ class IngredientsController extends Controller
 
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
         $ingredients = $ingredientsRepository->getAllIngredients();
-        return view('CRUD.crud', compact('ingredients'));
+        return view('CRUD.ingredient', compact('ingredients'));
     }
 
     public function insertIngredient (IngredientsRepository $ingredientsRepository) {

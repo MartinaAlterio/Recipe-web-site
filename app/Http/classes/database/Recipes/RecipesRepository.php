@@ -138,4 +138,16 @@ class RecipesRepository
             DB::insert('insert into recipe_has_recipes (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
         }
     }
+
+    public function insertCategory(string $name, string $url, string $macro, string $image, string $description){
+        DB::insert('insert into categories (name, url, macro, image, description) value (?,?,?,?,?)', [$name, $url, $macro, $image, $description]);
+    }
+
+    public function updateCategory(string $name, string $url, string $macro, string $image, string $description, int $id){
+        DB::update('update categories set name= :name, url= :url, macro= :macro, image= :image, description= :description where id= :id', ['name'=>$name, 'url'=>$url, 'macro'=>$macro, 'image'=>$image, 'description'=>$description, 'id'=>$id]);
+    }
+
+    public function deleteCategory(int $id){
+        DB::delete('delete from categories where id= :id', [$id]);
+    }
 }

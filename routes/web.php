@@ -43,14 +43,6 @@ Route::prefix('database')->group(function () {
 
     Route::post('/ingredienti/{url}', [IngredientsController::class, 'insertIngredientDescription']);
 
-    Route::get('/macro', [RecipesController::class, 'getMacroDatabase'])->name('databaseMacro');
-
-    Route::post('/macro', [RecipesController::class, 'insertMacroDatabase']);
-
-    Route::get('/categorie', [RecipesController::class, 'getCategoriesDatabase'])->name('databaseCategory');
-
-    Route::post('/categorie', [RecipesController::class, 'insertCategoriesDatabase']);
-
     Route::get('/ricette', [RecipesController::class, 'getRecipesDatabase'])->name('databaseRecipe');
 
     Route::post('/ricette', [RecipesController::class, 'CRUDrecipe']);
@@ -66,6 +58,18 @@ Route::prefix('database')->group(function () {
     Route::get('/{recipe}/collegamenti', [RecipesController::class, 'getLinkedRecipesDatabase'])->name('databaseRecipeslinked');
 
     Route::post('/{recipe}/collegamenti', [RecipesController::class, 'CRUDlinkedRecipes']);
+
+    Route::get('/categorie', [RecipesController::class, 'getCategoriesDatabase'])->name('databaseCategories');
+
+    Route::post('/categorie', [RecipesController::class, 'CRUDcategories']);
+
+    Route::get('/categorie/ricette/{category}', [RecipesController::class, 'getCategoriesRecipesDatabase'])->name('databaseCategoriesRecipes');
+
+    Route::post('/categorie/ricette/{category}', [RecipesController::class, 'CRUDcategoriesRecipes']);
+
+    Route::get('/categorie/collegamenti/{category}', [RecipesController::class, 'getCategoriesLinkedDatabase'])->name('databaseCategoriesLinked');
+
+    Route::post('/categorie/collegamenti/{category}', [RecipesController::class, 'CRUDcategoriesLinked']);
 });
 
 

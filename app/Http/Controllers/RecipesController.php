@@ -40,48 +40,6 @@ class RecipesController extends Controller
 
     //metodi per l'interazione con il database
 
-    public function getMacroDatabase(RecipesRepository $recipesRepository) {
-        $list = $recipesRepository->getListMacro();
-        return view('CRUD.macros', compact('list'));
-    }
-
-    public function getCategoriesDatabase(RecipesRepository $recipesRepository) {
-        if(isset($_GET['id']) && isset($_GET['name'])) {
-            $id = $_GET['id'];
-            $name= $_GET['name'];
-            $list = $recipesRepository->getCategoriesMacro($id);
-            return view('CRUD.categorie', compact('list', 'id', 'name'));
-        } else {
-            $list = $recipesRepository->getCategories();
-            return view('CRUD.categorie', compact('list'));
-        }
-
-    }
-
-   /* public function getRecipesDatabase(RecipesRepository $recipesRepository) {
-        if(isset($_GET['id']) && isset($_GET['name'])) {
-            $id = $_GET['id'];
-            $name= $_GET['name'];
-            $list = $recipesRepository->getRecipesCategory($id);
-            return view('CRUD.recipes_category', compact('list', 'id', 'name'));
-        } else {
-            $listCategories = $recipesRepository->getCategories();
-            $list = $recipesRepository->getAllRecipes();
-            $categoriesName = [];
-            foreach ($list as $recipe) {
-                $recipe_categories[] = DB::select('select rc.id_category from recipe_has_categories as rc join categories as c on c.id = rc.id_category where rc.id_recipe = :id', ['id'=>$recipe->id]);
-                foreach ($recipe_categories as $categories) {
-                    $recipe->category = $categories;
-                    foreach ($categories as $category) {
-                        $category->name = $recipesRepository->getCategoryName($category->id_category);
-                    }
-                }
-            }
-            return view('CRUD.recipes_category', compact('list', 'listCategories'));
-        }
-
-
-    }*/
     public function getRecipesDatabase (RecipesRepository $recipesRepository) {
         $recipes =$recipesRepository->getAllRecipes();
         return view('CRUD.recipes', compact('recipes'));
@@ -166,5 +124,50 @@ class RecipesController extends Controller
             $url = $_POST['url'];
         }
         return redirect()->route('databaseRecipeslinked', ['recipe'=>$url]);
+    }
+
+    public function getCategoriesDatabase (RecipesRepository $recipesRepository) {
+        $categories = $recipesRepository->getCategories();
+        return view('CRUD.categories', compact('categories'));
+    }
+
+    public function CRUDcategories (RecipesRepository $recipesRepository) {
+        if(isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'insert':
+                    $recipesRepository->insertCategory($_POST['name'], $_POST['url'], $_POST['macro'], $_POST['image'], $_POST['description']);
+                    break;
+                case 'update':
+                    $recipesRepository->updateCategory($_POST['name'], $_POST['url'], $_POST['macro'], $_POST['image'], $_POST['description'], $_POST['id']);
+                    break;
+                case 'delete' :
+                    $recipesRepository->deleteCategory($_POST['id']);
+                    break;
+            }
+            return redirect()->route('databaseCategories');
+        }
+    }
+
+    public function getCategoriesRecipesDatabase(RecipesRepository $recipesRepository, $url_category) {
+        $category = $recipesRepository->getCategoryFromUrl($url_category);
+        $recipes = $recipesRepository->getAllRecipes();
+        $recipes_category = $recipesRepository->getRecipesCategory($category->id);
+        $id_recipes = [];
+        foreach ($recipes_category as $recipe_category) {
+            $id_recipes[] = $recipe_category->id;
+        }
+        return view('CRUD.categories_recipes', compact('category', 'recipes', 'id_recipes'));
+    }
+
+    public function CRUDcategoriesRecipes(RecipesRepository $recipesRepository) {
+
+    }
+
+    public function getCategoriesLinkedDatabase(RecipesRepository $recipesRepository, $url) {
+
+    }
+
+    public function CRUDcategoriesLinked(RecipesRepository $recipesRepository) {
+
     }
 }
