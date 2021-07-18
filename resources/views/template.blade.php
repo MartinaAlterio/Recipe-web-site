@@ -9,6 +9,7 @@
     <title>Title</title>
 </head>
 <body>
+
     <!--header-->
     <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}">
         <div class="header">

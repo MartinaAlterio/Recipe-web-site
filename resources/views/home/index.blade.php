@@ -1,6 +1,16 @@
 @extends('template')
 
 @section('content')
+    @if(isset($message))
+        @foreach($messages as $message)
+            @if($message->type === 'success')
+                <div class="success">{{$message}}</div>
+            @elseif($message->type === 'error')
+                <div class="error">{{$message}}</div>
+            @endif
+        @endforeach
+    @endif
+    <br>
     <div class="main_container main_container--home" >
         <div class="main_image main_image--home" style="background-image: url('{{asset('storage/images/home/'.$home->title->image)}}')"></div>
         <div class="main_title main_title--home">

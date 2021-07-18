@@ -45,31 +45,31 @@ Route::prefix('database')->group(function () {
 
     Route::get('/ricette', [RecipesController::class, 'getRecipesDatabase'])->name('databaseRecipe');
 
-    Route::post('/ricette', [RecipesController::class, 'CRUDrecipe']);
+    Route::post('/ricette', [RecipesController::class, 'crudRecipes']);
 
     Route::get('/{recipe}/ingredienti', [RecipesController::class, 'getIngredientsRecipeDatabase'])->name('databaseRecipeIngredients');
 
-    Route::post('/{recipe}/ingredienti', [RecipesController::class, 'CRUDrecipeIngredients']);
+    Route::post('/{recipe}/ingredienti', [RecipesController::class, 'crudRecipesIngredients']);
 
     Route::get('/{recipe}/procedimenti', [RecipesController::class, 'getMethodsRecipeDatabase'])->name('databaseRecipeMethods');
 
-    Route::post('/{recipe}/procedimenti', [RecipesController::class, 'CRUDrecipeMethods']);
+    Route::post('/{recipe}/procedimenti', [RecipesController::class, 'crudRecipesMethods']);
 
     Route::get('/{recipe}/collegamenti', [RecipesController::class, 'getLinkedRecipesDatabase'])->name('databaseRecipeslinked');
 
-    Route::post('/{recipe}/collegamenti', [RecipesController::class, 'CRUDlinkedRecipes']);
+    Route::post('/{recipe}/collegamenti', [RecipesController::class, 'crudRecipesLinked']);
 
     Route::get('/categorie', [RecipesController::class, 'getCategoriesDatabase'])->name('databaseCategories');
 
-    Route::post('/categorie', [RecipesController::class, 'CRUDcategories']);
+    Route::post('/categorie', [RecipesController::class, 'crudCategories']);
 
     Route::get('/categorie/ricette/{category}', [RecipesController::class, 'getCategoriesRecipesDatabase'])->name('databaseCategoriesRecipes');
 
-    Route::post('/categorie/ricette/{category}', [RecipesController::class, 'CRUDcategoriesRecipes']);
+    Route::post('/categorie/ricette/{category}', [RecipesController::class, 'crudCategoriesRecipes']);
 
     Route::get('/categorie/collegamenti/{category}', [RecipesController::class, 'getCategoriesLinkedDatabase'])->name('databaseCategoriesLinked');
 
-    Route::post('/categorie/collegamenti/{category}', [RecipesController::class, 'CRUDcategoriesLinked']);
+    Route::post('/categorie/collegamenti/{category}', [RecipesController::class, 'crudCategoriesLinked']);
 });
 
 

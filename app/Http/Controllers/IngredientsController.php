@@ -19,23 +19,23 @@ class IngredientsController extends Controller
         $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
         $ingredients->description = $homeTextRepository->getContent('description', 'ingredients');
         $ingredients->title = $homeTextRepository->getContent('title', 'ingredients');
-        return view('ingredienti.list', compact('list', 'ingredients'));
+        return $this->render('ingredienti.list', compact('list', 'ingredients'));
     }
 
     public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
         $ingredient = $ingredientsRepository->getIngedientFromUrl($url);
         if ($ingredient !== null) {
             $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
-            return view('ingredienti.detail', compact('ingredient'));
+            return $this->render('ingredienti.detail', compact('ingredient'));
         } else {
             $inactive = true;
-            return view('ingredienti.detail', compact ('inactive'));
+            return $this->render('ingredienti.detail', compact ('inactive'));
         }
     }
 
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
         $ingredients = $ingredientsRepository->getAllIngredients();
-        return view('CRUD.ingredient', compact('ingredients'));
+        return $this->render('CRUD.ingredient', compact('ingredients'));
     }
 
     public function insertIngredient (IngredientsRepository $ingredientsRepository) {
@@ -57,7 +57,7 @@ class IngredientsController extends Controller
 
     public function getDescription(IngredientsRepository $ingredientsRepository, $url) {
         $descriptions = $ingredientsRepository->getIngredientDescription($url);
-        return view('CRUD.ingredient_description', compact(['descriptions', 'url']));
+        return $this->render('CRUD.ingredient_description', compact(['descriptions', 'url']));
     }
 
     public function insertIngredientDescription(IngredientsRepository $ingredientsRepository, $url) {

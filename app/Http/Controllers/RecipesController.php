@@ -20,13 +20,13 @@ class RecipesController extends Controller
                 $category->recipes = $recipesRepository->getImportantRecipesCategory($category->id);
             }
         }
-        return view('ricette.macro', compact('macros'));
+        return $this->render('ricette.macro', compact('macros'));
     }
 
     public function getCategory(RecipesRepository $recipesRepository, $category) {
         $category = $recipesRepository->getCategoryFromUrl($category);
         $category->recipes = $recipesRepository->getRecipesCategory($category->id);
-        return view('ricette.category', compact('category'));
+        return $this->render('ricette.category', compact('category'));
     }
 
     public function getRecipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
@@ -34,7 +34,7 @@ class RecipesController extends Controller
         $recipe->category = $recipesRepository->getcategoryFromUrl($category);
         $recipe->ingredients = $ingredientsRepository->getIngredientsRecipe($recipe->id);
         $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
-        return view('ricette.detail', compact('recipe'));
+        return $this->render('ricette.detail', compact('recipe'));
     }
 
 
@@ -42,10 +42,10 @@ class RecipesController extends Controller
 
     public function getRecipesDatabase (RecipesRepository $recipesRepository) {
         $recipes =$recipesRepository->getAllRecipes();
-        return view('CRUD.recipes', compact('recipes'));
+        return $this->render('CRUD.recipes', compact('recipes'));
     }
 
-    public function CRUDrecipe (RecipesRepository $recipesRepository) {
+    public function crudRecipes (RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -70,10 +70,10 @@ class RecipesController extends Controller
         foreach ($recipe_ingredients as $recipe_ingredient) {
             $id_ingredients[] = $recipe_ingredient->id;
         }
-        return view('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
+        return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
     }
 
-    public function CRUDrecipeIngredients(RecipesRepository $recipesRepository) {
+    public function crudRecipesIngredients(RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             $recipesRepository->insertRecipeIngredients($_POST['id_recipe'], $_POST['id']);
             $url = $_POST['url'];
@@ -86,10 +86,10 @@ class RecipesController extends Controller
         $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
         $id_recipe = $recipe->id;
         $methods = $recipesRepository->getRecipeMethods($id_recipe);
-        return view('CRUD.recipe_methods', compact('methods', 'recipe'));
+        return $this->render('CRUD.recipe_methods', compact('methods', 'recipe'));
     }
 
-    public function CRUDrecipeMethods(RecipesRepository $recipesRepository) {
+    public function crudRecipesMethods(RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -115,10 +115,10 @@ class RecipesController extends Controller
         foreach ($linked_recipes as $linked_recipe) {
             $linked_recipes_id[] = $linked_recipe->id_linked_recipe;
         }
-        return view('CRUD.recipes_linked', compact('main_recipe', 'recipes', 'linked_recipes_id'));
+        return $this->render('CRUD.recipes_linked', compact('main_recipe', 'recipes', 'linked_recipes_id'));
     }
 
-    public function CRUDlinkedRecipes (RecipesRepository $recipesRepository) {
+    public function crudRecipesLinked (RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             $recipesRepository->insertLinkedRecipes($_POST['id_recipe'], $_POST['id']);
             $url = $_POST['url'];
@@ -128,10 +128,10 @@ class RecipesController extends Controller
 
     public function getCategoriesDatabase (RecipesRepository $recipesRepository) {
         $categories = $recipesRepository->getCategories();
-        return view('CRUD.categories', compact('categories'));
+        return $this->render('CRUD.categories', compact('categories'));
     }
 
-    public function CRUDcategories (RecipesRepository $recipesRepository) {
+    public function crudCategories (RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -156,10 +156,10 @@ class RecipesController extends Controller
         foreach ($recipes_category as $recipe_category) {
             $id_recipes[] = $recipe_category->id;
         }
-        return view('CRUD.categories_recipes', compact('category', 'recipes', 'id_recipes'));
+        return $this->render('CRUD.categories_recipes', compact('category', 'recipes', 'id_recipes'));
     }
 
-    public function CRUDcategoriesRecipes(RecipesRepository $recipesRepository) {
+    public function crudCategoriesRecipes(RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             $recipesRepository->insertCategoryRecipes($_POST['id_category'], $_POST['id']);
             $url = $_POST['url'];
@@ -175,10 +175,10 @@ class RecipesController extends Controller
         foreach ($categories_macro as $category_macro) {
             $id_categories[] = $category_macro->id;
         }
-        return view('CRUD.categories_macro', compact('macro', 'categories', 'id_categories'));
+        return $this->render('CRUD.categories_macro', compact('macro', 'categories', 'id_categories'));
     }
 
-    public function CRUDcategoriesLinked(RecipesRepository $recipesRepository) {
+    public function crudCategoriesLinked(RecipesRepository $recipesRepository) {
         if(isset($_POST['action'])) {
             $recipesRepository->insertMacroCategories($_POST['id_macro'], $_POST['id']);
             $url = $_POST['url'];
