@@ -11,25 +11,17 @@ use Exception;
 class RecipesRepository
 {
 
-    //metodi per recuperare i dati dal database
+    /**Recupero lista macro categorie e relativi campi */
     public function getListMacro() {
         try {
             $list = (DB::select('Select * from categories where macro = :macro', ['macro'=>true]));
         } catch(Exception $e) {
-        }
 
+        }
         return $list ?? null;
     }
-    public function getImageMacro(int $id) {
-        try {
-            $image = (DB::select('select image from categories where id = :id', ['id'=>$id]));
-        } catch(Exception $e) {
 
-        }
-
-        return $image[0] ?? null;
-    }
-
+    /**  partendo dall'id di un amacrocategoria, recupero la lista degli id delle categorie associate */
     public function getCategoriesMacro(int $id) {
         try {
             $list = (DB::select('select id_category from category_has_categories where id_macrocategory = :id', ['id'=>$id]));
@@ -37,12 +29,18 @@ class RecipesRepository
 
         }
         $category = [];
+        /**partendo dall'id della categorie, recuper tutti i campi relativi alla sudetta */
         foreach ($list as $value) {
-            $category[] = $this->getCategory($value->id_category);
+            try {
+                $category[] = $this->getCategory($value->id_category);
+            } catch (Exception $e) {
+
+            }
         }
         return $category;
     }
 
+    /**  recupero l'elenco completo delle categorie e relativi campi */
     public function getCategories() {
         try {
             $list = DB::select('select * from categories');
@@ -52,6 +50,7 @@ class RecipesRepository
         return $list ?? null;
     }
 
+    /** partendo dall'url di una specifica categoria, recupero tutti i campi relativi */
     public function getCategoryFromUrl(string $url) {
         try {
             $category = DB::select('Select * from categories where url = :url', ['url'=>$url]);
@@ -61,6 +60,7 @@ class RecipesRepository
         return $category[0] ?? null;
     }
 
+    /**  partendo dall'id di una specifica categoria, recupero tutti i campi relativi */
     public function getCategory(int $id) {
         try {
             $category = (DB::select('select * from categories where id = :id', ['id'=>$id]));
@@ -70,15 +70,7 @@ class RecipesRepository
         return $category[0] ?? null;
     }
 
-    public function getCategoryName($id) {
-        try {
-            $nameCategory = DB::select('select name from categories where id = :id', ['id'=>$id]);
-        } catch(Exception $e) {
-
-        }
-        return $nameCategory[0]->name ?? null;
-    }
-
+    /**  partendo dall'url di una specifica ricetta, recupero tutti i campi relativi */
     public function getRecipeFromUrl(string $url) {
         try {
             $recipe = (DB::select('select * from recipes where url = :url', ['url'=>$url]));
@@ -87,7 +79,7 @@ class RecipesRepository
         }
         return $recipe[0] ?? null;
 }
-
+    /** partendo dall'id di una specifica ricetta recupero tutti i campi relativi */
     public function getRecipe(int $id) {
         try {
             $recipe = (DB::select('select * from recipes where id = :id', ['id'=>$id]));
@@ -97,19 +89,21 @@ class RecipesRepository
         return $recipe[0] ?? null;
     }
 
+    /** partendo dall'id di una specifica categoria recupero l'array degli id delle ricette collegate, successivamente ciclo gli id, e per ognuna ricetta recupero i campi relativi */
     public function getRecipesCategory(int $id_category) {
         try {
-            $list = (DB::select('select id_recipe from recipe_has_categories where id_category = :id', ['id'=>$id_category]));
+            $categories = (DB::select('select id_recipe from recipe_has_categories where id_category = :id', ['id'=>$id_category]));
         } catch(Exception $e) {
 
         }
         $recipes = [];
-        foreach ($list as $value) {
-            $recipes[] = $this->getRecipe($value->id_recipe);
+        foreach ($categories as $category) {
+            $recipes[] = $this->getRecipe($category->id_recipe);
         }
         return $recipes;
     }
 
+    /**  */
     public function getAllRecipes() {
         try {
             $list = DB::select('select * from recipes');
@@ -119,18 +113,6 @@ class RecipesRepository
         return $list;
     }
 
-    public function getImportantRecipesCategory(int $id_category) {
-        try {
-            $list = DB::select('select rc.id_recipe from recipe_has_categories as rc join recipes as r on r.id = rc.id_recipe where r.important = :important and rc.id_category = :id', ['important'=>1 ,'id'=>$id_category]);
-        } catch(Exception $e) {
-
-        }
-        $recipes = [];
-        foreach ($list as $value) {
-            $recipes[] = $this->getRecipe($value->id_recipe);
-        }
-        return $recipes;
-    }
 
     public function getLinkedRecipes (int $id_recipe) {
         try {
@@ -140,6 +122,7 @@ class RecipesRepository
         }
         return $linked_recipes;
     }
+
 
     public function  getRecipeMethods (int $id_recipe) {
         try {
