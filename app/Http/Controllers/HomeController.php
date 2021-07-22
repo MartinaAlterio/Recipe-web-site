@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+    /**
+     * azione home page
+     *
+     * @param  HomeTextRepository  $homeTextRepository
+     * @param  Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(HomeTextRepository $homeTextRepository, Request $request) {
         $home = new \stdClass();
         $home->title = $homeTextRepository->getContent('Titolo', 'home');

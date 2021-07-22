@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class HomeTextRepository
 {
+    /**
+     * recupero contenuti pagine
+     *
+     * @param  string  $section
+     * @param  string  $page
+     * @return mixed|null
+     */
     public function getContent(string $section, string $page) {
         $content = DB::select('select content, image from page_contents where section = :section and page =:page', ['section'=>$section, 'page'=>$page]);
         return $content[0] ?? null;

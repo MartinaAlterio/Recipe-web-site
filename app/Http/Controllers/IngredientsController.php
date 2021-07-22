@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\DB;
 
 class IngredientsController extends Controller
 {
+
+    /**
+     *azioni pagina ingredienti
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @param  HomeTextRepository  $homeTextRepository
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
         $list = $ingredientsRepository->getActiveIngredients();
         $ingredients = new \stdClass();
@@ -22,8 +30,15 @@ class IngredientsController extends Controller
         return $this->render('ingredienti.list', compact('list', 'ingredients'));
     }
 
+    /**
+     * azioni pagina dettaglio ingrediente
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @param $url
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
-        $ingredient = $ingredientsRepository->getIngedientFromUrl($url);
+        $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
         if ($ingredient !== null) {
             $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
             return $this->render('ingredienti.detail', compact('ingredient'));
@@ -33,11 +48,23 @@ class IngredientsController extends Controller
         }
     }
 
+    /**
+     * azione  recupero ingredienti
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
         $ingredients = $ingredientsRepository->getAllIngredients();
         return $this->render('CRUD.ingredient', compact('ingredients'));
     }
 
+    /**
+     *azione inserimento ingredienti
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function insertIngredient (IngredientsRepository $ingredientsRepository) {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
@@ -55,16 +82,30 @@ class IngredientsController extends Controller
         }
     }
 
+    /**
+     * azione recupero descrizione ingredienti attivi
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @param $url
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function getDescription(IngredientsRepository $ingredientsRepository, $url) {
         $descriptions = $ingredientsRepository->getIngredientDescription($url);
         return $this->render('CRUD.ingredient_description', compact(['descriptions', 'url']));
     }
 
-    public function insertIngredientDescription(IngredientsRepository $ingredientsRepository, $url) {
+    /**
+     * azione inserimento/modifica/cancellazione descrizione ingredeiente attivo
+     *
+     * @param  IngredientsRepository  $ingredientsRepository
+     * @param $url
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function cudIngredeintDescription(IngredientsRepository $ingredientsRepository, $url) {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
-                    $ingredientsRepository->insertIngredientDescription($url, $_POST['description'], $_POST['image']);
+                    $ingredientsRepository->cudIngredeintDescription($url, $_POST['description'], $_POST['image']);
                     break;
                 case 'update':
                     $ingredientsRepository->updateIngredientDescription($_POST['description'],$_POST['image'], $url, $_POST['id']);
