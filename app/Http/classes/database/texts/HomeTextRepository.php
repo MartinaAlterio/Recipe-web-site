@@ -16,7 +16,11 @@ class HomeTextRepository
      * @return mixed|null
      */
     public function getContent(string $section, string $page) {
-        $content = DB::select('select content, image from page_contents where section = :section and page =:page', ['section'=>$section, 'page'=>$page]);
+        try {
+            $content = DB::select('select content, image from page_contents where section = :section and page =:page', ['section'=>$section, 'page'=>$page]);
+        } catch(Exception $e) {
+
+        }
         return $content[0] ?? null;
     }
 }

@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-//use Illuminate\Http\Response;
-
 use App\Http\classes\database\texts\HomeTextRepository;
 use App\Http\classes\database\ingredients\IngredientsRepository;
-use App\Http\classes\database\Recipes\RecipesRepository;
-use Illuminate\Support\Facades\DB;
+use Exception;
 
 class IngredientsController extends Controller
 {
@@ -53,6 +49,7 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws Exception
      */
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
         $ingredients = $ingredientsRepository->getAllIngredients();
