@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-//use Illuminate\Http\Response;
-
-
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use App\Http\classes\database\texts\HomeTextRepository;
-//use http\Env\Request;
-use Illuminate\Support\Facades\DB;
 use Exception;
 
 class HomeController extends Controller
@@ -18,7 +15,7 @@ class HomeController extends Controller
      * azione home page
      *
      * @param  HomeTextRepository  $homeTextRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index(HomeTextRepository $homeTextRepository) {
         try {
@@ -29,12 +26,9 @@ class HomeController extends Controller
             $home->ingredients = $homeTextRepository->getContent('Ingredienti', 'home');
             $home->about_me = $homeTextRepository->getContent('Teresa', 'home');
             $header_transparent = true;
-            $this->addFlashMessage('prova andata a buon fine', 'successo');
-            return $this->render('home.index', compact('home', 'header_transparent'));
         } catch (Exception $e) {
 
         }
+        return $this->render('home.index', compact('home', 'header_transparent'));
     }
-
-
 }

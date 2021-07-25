@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\classes\database\texts\HomeTextRepository;
 use App\Http\classes\database\ingredients\IngredientsRepository;
 use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class IngredientsController extends Controller
 {
@@ -14,16 +18,23 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param  HomeTextRepository  $homeTextRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
-        $list = $ingredientsRepository->getActiveIngredients();
-        $ingredients = new \stdClass();
-        $ingredients->upTitle = $homeTextRepository->getContent('upTitle','ingredients');
-        $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
-        $ingredients->description = $homeTextRepository->getContent('description', 'ingredients');
-        $ingredients->title = $homeTextRepository->getContent('title', 'ingredients');
-        return $this->render('ingredienti.list', compact('list', 'ingredients'));
+        try {
+            $list = $ingredientsRepository->getActiveIngredients();
+            $ingredients = new \stdClass();
+            $ingredients->upTitle = $homeTextRepository->getContent('upTitle','ingredients');
+            $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
+            $ingredients->description = $homeTextRepository->getContent('description', 'ingredients');
+            $ingredients->title = $homeTextRepository->getContent('title', 'ingredients');
+            return $this->render('ingredienti.list', compact('list', 'ingredients'));
+        } catch(Exception $e) {
+            $this->addFlashMessage('Impossibile recuperare la lista degli ingredienti', 'error');
+            return $this->render('ingredienti.list', compact('list', 'ingredients'));
+        }
+
     }
 
     /**
@@ -31,7 +42,8 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $url
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
         $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
@@ -48,7 +60,7 @@ class IngredientsController extends Controller
      * azione  recupero ingredienti
      *
      * @param  IngredientsRepository  $ingredientsRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      * @throws Exception
      */
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
@@ -60,9 +72,11 @@ class IngredientsController extends Controller
      *azione inserimento ingredienti
      *
      * @param  IngredientsRepository  $ingredientsRepository
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function insertIngredient (IngredientsRepository $ingredientsRepository) {
+    public function insertIngredient (IngredientsRepository $ingredientsRepository): RedirectResponse
+    {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -84,7 +98,8 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $url
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getDescription(IngredientsRepository $ingredientsRepository, $url) {
         $descriptions = $ingredientsRepository->getIngredientDescription($url);
@@ -96,13 +111,15 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $url
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function cudIngredeintDescription(IngredientsRepository $ingredientsRepository, $url) {
+    public function cudIngredientDescription(IngredientsRepository $ingredientsRepository, $url): RedirectResponse
+    {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
-                    $ingredientsRepository->cudIngredeintDescription($url, $_POST['description'], $_POST['image']);
+                    $ingredientsRepository->insertIngredientDescription($url, $_POST['description'], $_POST['image']);
                     break;
                 case 'update':
                     $ingredientsRepository->updateIngredientDescription($_POST['description'],$_POST['image'], $url, $_POST['id']);

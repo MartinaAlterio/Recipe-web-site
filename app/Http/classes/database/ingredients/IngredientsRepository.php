@@ -62,7 +62,7 @@ class IngredientsRepository {
     /**
      *recupero un determinato ingrediente tramite url
      *
-     * @param  string  $url_ingredeint
+     * @param  string  $url_ingredient
      * @return mixed|null
      * @throws Exception
      */
@@ -104,7 +104,7 @@ class IngredientsRepository {
         try {
             $description = DB::select('select * from ingredient_description where url_ingredient = :name', ['name'=>$url_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
         return $description ?? null;
     }
@@ -121,7 +121,7 @@ class IngredientsRepository {
         try {
             DB::insert('insert into ingredients (name, url, active) values (?, ?, ?)', [$name_ingredient, $url_ingredient, $active]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
     }
 
@@ -133,11 +133,11 @@ class IngredientsRepository {
      * @param  string  $image_ingredient
      * @throws Exception
      */
-    public function cudIngredeintDescription(string $url_ingredient, string $description_ingredient, string $image_ingredient) {
+    public function InsertIngredientDescription(string $url_ingredient, string $description_ingredient, string $image_ingredient) {
         try {
             DB::insert('insert into ingrediet_descripti,on (url_ingredient, description, image) values (?, ?)', [$url_ingredient, $description_ingredient, $image_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
         }
 
@@ -154,7 +154,7 @@ class IngredientsRepository {
         try {
             DB::update('update ingredients set name = :name,url = :url,active = :active where id = :id', ['name'=>$name_ingredient, 'url'=>$url_ingredient, 'active'=>$active, 'id'=>$id_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nella modifica dell'ingrediente.");
         }
     }
 
@@ -171,7 +171,7 @@ class IngredientsRepository {
         try {
             DB::update('update ingredients_description set description = :description, image = :image, url_ingredient = :url where id = :id', ['description'=>$description_ingredient,'image'=>$image_ingredient, 'url'=>$url_ingredient, 'id'=>$id_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nella modifica della descrizione dell'ingredeinte.");
         }
     }
 
@@ -185,21 +185,21 @@ class IngredientsRepository {
         try {
             DB::delete('delete from ingredients where id = :id', ['id'=>$id_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nella cancellazione dell'ingrediente.");
         }
     }
 
     /**
      * cancellazione descrizione ingrediente attivo
      *
-     * @param  int  $id_ingrediente
+     * @param  int  $id_ingredient
      * @throws Exception
      */
-    public function deleteIngredientDescription(int $id_ingrediente) {
+    public function deleteIngredientDescription(int $id_ingredient) {
         try {
-            DB::delete('delete from ingredient_description where id = :id', ['id'=>$id_ingrediente]);
+            DB::delete('delete from ingredient_description where id = :id', ['id'=>$id_ingredient]);
         } catch(Exception $e) {
-
+            throw new Exception("Si è veririficato un errore nella rimozione della descrizione dell'ingrediente.");
         }
     }
 }

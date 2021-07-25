@@ -1,0 +1,45 @@
+@keyframes flash_message-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.flash_messages {
+  position: fixed;
+  z-index: 2;
+  top: 100px;
+  width: 100%;
+  max-width: 1300px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: max-content;
+  font-size: 20px;
+  font-weight: 600;
+  color: $white;
+}
+
+.flash_message {
+    margin: auto 0 auto auto;
+    max-width: 1280px;
+    width: max-content;
+    padding: 5px 30px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation-name: flash_message-enter;
+    animation-duration: 1s;
+  &--success {
+    background-color: rgb(61, 153, 4);
+  }
+  &--error {
+    background-color: rgb(252, 202, 202);
+    color: #cd0303;
+  }
+}
+
+
+

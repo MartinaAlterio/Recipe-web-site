@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" >
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Playfair+Display&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700&family=Playfair+Display&display=swap" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
-
     <!--header-->
     <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}">
         <div class="header">
@@ -20,9 +18,18 @@
             </div>
         </div>
     </div>
-
+    @if(!empty($messages))
+        <div class="flash_messages">
+            @foreach($messages as $message)
+                @if($message['type'] === 'error')
+                    <div class=" flash_message flash_message--error">{{$message['text']}}</div>
+                @elseif($message['type'] === 'success')
+                    <div class="flash_message flash_message--success">{{$message['text']}}</div>
+                @endif
+            @endforeach
+        </div>
+    @endif
     @yield('content')
-
     <!--footer-->
     <div class="container_footer">
         <div class="footer">
