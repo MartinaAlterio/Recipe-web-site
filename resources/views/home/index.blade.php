@@ -10,7 +10,7 @@
             @endif
         @endforeach
     @endif
-    <br>
+
     <div class="main_container main_container--home" >
         <div class="main_image main_image--home" style="background-image: url('{{asset('storage/images/home/'.$home->title->image)}}')"></div>
         <div class="main_title main_title--home">

@@ -57,8 +57,6 @@
     &--home {
         max-width: 100%;
         padding-top: unset;
-        position: relative;
-        top: -20px;
     }
 }
 
@@ -73,7 +71,7 @@
     &--home {
         font-family: $serif_font;
         font-size: 60px;
-        font-weight: bold;
+        font-weight: 400;
         padding-top: 30px;
     }
 }
