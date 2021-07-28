@@ -23,23 +23,36 @@
 }
 
 .flash_message {
-    margin: auto 0 auto auto;
+    position: relative;
+    margin: auto 0 20px auto;
     max-width: 1280px;
     width: max-content;
-    padding: 5px 30px;
+    padding: 10px 40px 10px 30px;
     border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
     letter-spacing: 1px;
     text-transform: uppercase;
     animation-name: flash_message-enter;
     animation-duration: 1s;
   &--success {
-    background-color: rgb(61, 153, 4);
+    background-color: #96d66e;
+    color: #186c01;
   }
   &--error {
     background-color: rgb(252, 202, 202);
     color: #cd0303;
   }
 }
-
+.closure {
+  position: absolute;
+  font-size: 14px;
+  top: 1px;
+  right: 1px;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.closed {
+  display: none;
+}
 
 

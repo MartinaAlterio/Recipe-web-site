@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Http\classes\database\Recipes;
+namespace App\Http\Classes\Database\Recipes;
 
-use App\Http\classes\database\ingredients\IngredientsRepository;
+use App\Http\Classes\Database\Ingredients\IngredientsRepository;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
@@ -160,7 +160,7 @@ class RecipesRepository
     public function getAllRecipes(): array
     {
         try {
-            $list = DB::select('select * from recipes');
+            $list = (DB::select('select * from recipes'));
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette.");
         }

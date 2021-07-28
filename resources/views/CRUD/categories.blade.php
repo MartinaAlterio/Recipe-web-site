@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
     <div>Inserisci una nuova categoria</div>
     <br>
     <form method="post">
@@ -59,5 +55,4 @@
         @endforeach
         @csrf
     </form>
-</body>
-</html>
+@endsection

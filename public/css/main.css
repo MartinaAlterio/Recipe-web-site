@@ -187,20 +187,34 @@ select[multiple] {
   color: #ffffff; }
 
 .flash_message {
-  margin: auto 0 auto auto;
+  position: relative;
+  margin: auto 0 20px auto;
   max-width: 1280px;
   width: max-content;
-  padding: 5px 30px;
+  padding: 10px 40px 10px 30px;
   border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px black;
   letter-spacing: 1px;
   text-transform: uppercase;
   animation-name: flash_message-enter;
   animation-duration: 1s; }
   .flash_message--success {
-    background-color: #3d9904; }
+    background-color: #96d66e;
+    color: #186c01; }
   .flash_message--error {
     background-color: #fccaca;
     color: #cd0303; }
+
+.closure {
+  position: absolute;
+  font-size: 14px;
+  top: 1px;
+  right: 1px;
+  padding: 2px 7px;
+  border-radius: 5px; }
+
+.closed {
+  display: none; }
 
 body {
   background-color: white;
@@ -804,5 +818,6 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-around; }
+
 
 /*# sourceMappingURL=main.css.map */

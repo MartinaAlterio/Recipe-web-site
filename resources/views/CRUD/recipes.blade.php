@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
 Inserisci una nuova Ricetta
     <form method="post">
         <p>
@@ -66,5 +63,5 @@ Inserisci una nuova Ricetta
             @csrf
         </form>
     @endforeach
-</body>
-</html>
+
+@endsection

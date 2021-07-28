@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
-//use Illuminate\Http\Response;
-use App\Http\classes\database\ingredients\IngredientsRepository;
-use App\Http\classes\database\Recipes\RecipesRepository;
-use Illuminate\Support\Facades\DB;
+use App\Exceptions\MyExceptions;
+use App\Http\Classes\Database\Ingredients\IngredientsRepository;
+use App\Http\Classes\Database\Recipes\RecipesRepository;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class RecipesController extends Controller
 {
@@ -15,15 +18,21 @@ class RecipesController extends Controller
      * azione pagina macro
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getMacro(RecipesRepository $recipesRepository) {
-        $macros = $recipesRepository->getListMacro();
-        foreach ($macros as $macro) {
-            $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
+        try {
+            $macros = $recipesRepository->getListMacro();
+            foreach ($macros as $macro) {
+                $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
+            }
+            return $this->render('ricette.macro', compact('macros'));
+        } catch (Exception $e) {
+            $this->addFlashMessage("Impossibile recuperare la lista delle macrocategorie", "error");
+            return $this->render('ricette.macro', compact('macros'));
         }
 
-        return $this->render('ricette.macro', compact('macros'));
     }
 
     /**
@@ -31,12 +40,18 @@ class RecipesController extends Controller
      *
      * @param  RecipesRepository  $recipesRepository
      * @param $category
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getCategory(RecipesRepository $recipesRepository, $category) {
-        $category = $recipesRepository->getCategoryFromUrl($category);
-        $category->recipes = $recipesRepository->getCategoryRecipes($category->id);
-        return $this->render('ricette.category', compact('category'));
+        try {
+            $category = $recipesRepository->getCategoryFromUrl($category);
+            $category->recipes = $recipesRepository->getCategoryRecipes($category->id);
+            return $this->render('ricette.category', compact('category'));
+        } catch (Exception $e) {
+            $this->addFlashMessage("Impossibile recuperare la lista delle categorie", "error");
+            return $this->render('ricette.category', compact('category'));
+        }
     }
 
     /**
@@ -46,49 +61,71 @@ class RecipesController extends Controller
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $category
      * @param $recipe
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getRecipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
-        $recipe = $recipesRepository->getRecipeFromUrl($recipe);
-        $recipe->category = $recipesRepository->getcategoryFromUrl($category);
-        $recipe->ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
-        $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
-        return $this->render('ricette.detail', compact('recipe'));
+        try {
+            $recipe = $recipesRepository->getRecipeFromUrl($recipe);
+            $recipe->category = $recipesRepository->getcategoryFromUrl($category);
+            $recipe->ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
+            $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
+            return $this->render('ricette.detail', compact('recipe'));
+        } catch (Exception $e) {
+            $this->addFlashMessage("Impossibile recuperare la lista delle ricette", "error");
+            return $this->render('ricette.detail', compact('recipe'));
+        }
     }
 
     /**
      * azione recupero ricette database
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getRecipesDatabase (RecipesRepository $recipesRepository) {
-        $recipes =$recipesRepository->getAllRecipes();
-        return $this->render('CRUD.recipes', compact('recipes'));
+        try {
+            $recipes =$recipesRepository->getAllRecipes();
+            return $this->render('CRUD.recipes', compact('recipes'));
+        } catch (Exception $e) {
+            $this->addFlashMessage("Impossibile recuperare la lista ricetta", "error");
+            return $this->render('CRUD.recipes', compact('recipes'));
+        }
+
     }
 
     /**
      * azione inserimento/modifica/cancellazione ricetta
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse|null
+     * @return RedirectResponse|null
+     * @throws Exception
      */
-    public function cudIRecipe (RecipesRepository $recipesRepository) {
-        if(isset($_POST['action'])) {
-            switch ($_POST['action']) {
-                case 'insert':
-                    $recipesRepository->insertRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active']);
-                    break;
-                case 'update':
-                    $recipesRepository->updateRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active'], $_POST['id']);
-                    break;
-                case 'delete' :
-                    $recipesRepository->deleteRecipe($_POST['id']);
-                    break;
+    public function cudIRecipe (RecipesRepository $recipesRepository): ?RedirectResponse {
+        try {
+            if(isset($_POST['action'])) {
+                switch ($_POST['action']) {
+                    case 'insert':
+                        $recipesRepository->insertRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active']);
+                        throw new MyExceptions("Ricetta inserita correttamente");
+                    case 'update':
+                        $recipesRepository->updateRecipe($_POST['name'], $_POST['url'], $_POST['subheading'], $_POST['image'], $_POST['active'], $_POST['id']);
+                        throw new MyExceptions("Ricetta modificata correttamente");
+                    case 'delete' :
+                        $recipesRepository->deleteRecipe($_POST['id']);
+                        throw new MyExceptions("Ricetta cancellata correttamente");
+                }
             }
+            return null;
+        } catch (MyExceptions $e) {
+            $this->addFlashMessage($e->getMessage(), "success");
+            return redirect()->route('databaseRecipe');
+        } catch (Exception $e) {
+            $this->addFlashMessage($e->getMessage(), "error");
             return redirect()->route('databaseRecipe');
         }
-        return null;
+
     }
 
     /**
@@ -97,26 +134,33 @@ class RecipesController extends Controller
      * @param  RecipesRepository  $recipesRepository
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $urlRecipe
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getRecipeIngredientsDatabase (RecipesRepository $recipesRepository, IngredientsRepository $ingredientsRepository, $urlRecipe) {
-        $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
-        $ingredients = $ingredientsRepository->getAllIngredients();
-        $recipe_ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
-        $id_ingredients = [];
-        foreach ($recipe_ingredients as $recipe_ingredient) {
-            $id_ingredients[] = $recipe_ingredient->id;
+        try {
+            $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
+            $ingredients = $ingredientsRepository->getAllIngredients();
+            $recipe_ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
+            $id_ingredients = [];
+            foreach ($recipe_ingredients as $recipe_ingredient) {
+                $id_ingredients[] = $recipe_ingredient->id;
+            }
+            return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
+        } catch (Exception $e) {
+            $this->addFlashMessage($e->getMessage(), "error");
+            return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
         }
-        return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
     }
 
     /**
      * azione inserimento/modifica ingredienti ricetta
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function cuRecipeIngredients(RecipesRepository $recipesRepository) {
+    public function cuRecipeIngredients(RecipesRepository $recipesRepository): RedirectResponse {
         if(isset($_POST['action'])) {
             $recipesRepository->insertRecipeIngredients($_POST['id_recipe'], $_POST['id']);
             $url = $_POST['url'];
@@ -129,7 +173,8 @@ class RecipesController extends Controller
      *
      * @param  RecipesRepository  $recipesRepository
      * @param $urlRecipe
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getMethodsRecipeDatabase (RecipesRepository $recipesRepository, $urlRecipe) {
         $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
@@ -144,9 +189,11 @@ class RecipesController extends Controller
      * azione inserimento/modifica/cancellazione metodo ricetta
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse|null
+     * @return RedirectResponse|null
+     * @throws Exception
      */
-    public function cudRecipeMethod(RecipesRepository $recipesRepository) {
+    public function cudRecipeMethod(RecipesRepository $recipesRepository): ?RedirectResponse
+    {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -170,7 +217,8 @@ class RecipesController extends Controller
      *
      * @param  RecipesRepository  $recipesRepository
      * @param $url_recipe
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getLinkedRecipesDatabase (RecipesRepository $recipesRepository, $url_recipe) {
         $main_recipe = $recipesRepository->getRecipeFromUrl($url_recipe);
@@ -187,9 +235,11 @@ class RecipesController extends Controller
      * azione inserimento e modifica ricetta associata
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function cuRecipeLinked (RecipesRepository $recipesRepository) {
+    public function cuRecipeLinked (RecipesRepository $recipesRepository): RedirectResponse
+    {
         if(isset($_POST['action'])) {
             $recipesRepository->insertLinkedRecipes($_POST['id_recipe'], $_POST['id']);
             $url = $_POST['url'];
@@ -201,7 +251,8 @@ class RecipesController extends Controller
      * azione recupero categorie
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getCategoriesDatabase (RecipesRepository $recipesRepository) {
         $categories = $recipesRepository->getCategories();
@@ -212,9 +263,11 @@ class RecipesController extends Controller
      * a<ionw
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse|null
+     * @return RedirectResponse|null
+     * @throws Exception
      */
-    public function cudCategories (RecipesRepository $recipesRepository) {
+    public function cudCategories (RecipesRepository $recipesRepository): ?RedirectResponse
+    {
         if(isset($_POST['action'])) {
             switch ($_POST['action']) {
                 case 'insert':
@@ -237,7 +290,8 @@ class RecipesController extends Controller
      *
      * @param  RecipesRepository  $recipesRepository
      * @param $url_category
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getCategoryRecipesDatabase(RecipesRepository $recipesRepository, $url_category) {
         $category = $recipesRepository->getCategoryFromUrl($url_category);
@@ -254,9 +308,11 @@ class RecipesController extends Controller
      * azione inserimento/modifica ricette associate a categorie
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function cuCategoryRecipes(RecipesRepository $recipesRepository) {
+    public function cuCategoryRecipes(RecipesRepository $recipesRepository): RedirectResponse
+    {
         if(isset($_POST['action'])) {
             $recipesRepository->insertCategoryRecipes($_POST['id_category'], $_POST['id']);
             $url = $_POST['url'];
@@ -269,7 +325,8 @@ class RecipesController extends Controller
      *
      * @param  RecipesRepository  $recipesRepository
      * @param $url_category
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
+     * @throws Exception
      */
     public function getCategoriesLinkedDatabase(RecipesRepository $recipesRepository, $url_category) {
         $macro = $recipesRepository->getCategoryFromUrl($url_category);
@@ -286,9 +343,11 @@ class RecipesController extends Controller
      * azione inserimento/modifica categorie associate a macro
      *
      * @param  RecipesRepository  $recipesRepository
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function cuCategoriesLinked(RecipesRepository $recipesRepository) {
+    public function cuCategoriesLinked(RecipesRepository $recipesRepository): RedirectResponse
+    {
         if(isset($_POST['action'])) {
             $recipesRepository->insertMacroCategories($_POST['id_macro'], $_POST['id']);
             $url = $_POST['url'];

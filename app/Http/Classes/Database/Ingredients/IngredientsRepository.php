@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\classes\database\ingredients;
+namespace App\Http\Classes\Database\Ingredients;
 
 use Illuminate\Support\Facades\DB;
 use Exception;
+use App\Exceptions\MyExceptions;
 
 class IngredientsRepository {
 
@@ -121,7 +122,7 @@ class IngredientsRepository {
         try {
             DB::insert('insert into ingredients (name, url, active) values (?, ?, ?)', [$name_ingredient, $url_ingredient, $active]);
         } catch(Exception $e) {
-            throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
+            throw new Exception("Si è veririficato un errore nell'inserimento dell'ingrediente.");
         }
     }
 
@@ -135,9 +136,9 @@ class IngredientsRepository {
      */
     public function InsertIngredientDescription(string $url_ingredient, string $description_ingredient, string $image_ingredient) {
         try {
-            DB::insert('insert into ingrediet_descripti,on (url_ingredient, description, image) values (?, ?)', [$url_ingredient, $description_ingredient, $image_ingredient]);
+            DB::insert('insert into ingredient_description (url_ingredient, description, image) values (?, ?,?)', [$url_ingredient, $description_ingredient, $image_ingredient]);
         } catch(Exception $e) {
-            throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
+            throw new Exception("Si è veririficato un errore nell'inserimento del dettaglio dell'ingrediente.");
         }
         }
 

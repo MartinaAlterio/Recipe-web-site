@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
     <div>Seleziona le ricette collegate a [{{$main_recipe->name}}]</div>
     <br>
     <div>
@@ -26,5 +23,5 @@
             @csrf
         </form>
     </div>
-</body>
-</html>
+
+@endsection

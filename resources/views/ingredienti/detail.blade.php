@@ -3,10 +3,6 @@
 @section('content')
     @if(isset($inactive))
         <div class="main_container main_container--error">
-            <div class="error_message">
-                L'ingrediente cercato al momento non è attivo.
-                Torna alla sezione "Ingredienti".
-            </div>
             <div class="main_image main_image--error" style="background-image: url('{{asset('storage/images/ingredients/farine.jpg')}}')">
                 <div class="redirect"> <a href="/ingredienti">INGREDIENTI</a> </div>
             </div>
@@ -30,6 +26,7 @@
     </div>
 
     @endif
+
 
 
 @endsection

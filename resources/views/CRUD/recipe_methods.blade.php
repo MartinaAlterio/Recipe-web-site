@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
     <div> Aggiungi procedimento e immagine per [{{$recipe->name}}]</div>
     <br>
     <form method="post">
@@ -40,5 +37,4 @@
         <br>
     @endforeach
 
-</body>
-</html>
+@endsection

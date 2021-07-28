@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
 
     <div>Seleziona gli ingredienti per la ricetta [{{$recipe->name}}]</div>
 
@@ -23,5 +19,5 @@
             <input type="submit" name="action" value="insert">
             @csrf
     </form>
-</body>
-</html>
+
+@endsection

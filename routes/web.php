@@ -37,7 +37,7 @@ Route::prefix('database')->group(function () {
 
     Route::get('/ingredienti', [IngredientsController::class, 'getListIngredient'])->name('databaseIngredients');
 
-    Route::post('/ingredienti', [IngredientsController::class, 'insertIngredient']);
+    Route::post('/ingredienti', [IngredientsController::class, 'cudIngredient']);
 
     Route::get('/ingredienti/{url}', [IngredientsController::class, 'getDescription'])->name('databaseDescription');
 

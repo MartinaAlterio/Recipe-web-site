@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
     <div>Seleziona le ricette per la categoria [{{$category->name}}]</div>
 
     <form method="post">
@@ -22,5 +19,5 @@
     <input type="submit" name="action" value="insert">
     @csrf
     </form>
-</body>
-</html>
+
+@endsection

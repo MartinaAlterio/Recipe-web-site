@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HomeContent;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use App\Http\classes\database\texts\HomeTextRepository;
+use App\Http\Classes\Database\Texts\HomeTextRepository;
 use Exception;
 
 class HomeController extends Controller
@@ -18,16 +19,16 @@ class HomeController extends Controller
      * @return Application|Factory|View
      */
     public function index(HomeTextRepository $homeTextRepository) {
+        $header_transparent = true;
+        $home = new HomeContent();
         try {
-            $home = new \stdClass();
-            $home->title = $homeTextRepository->getContent('Titolo', 'home');
-            $home->subtitle = $homeTextRepository->getContent('Sottotitolo', 'home');
-            $home->recipes = $homeTextRepository->getContent('Ricette', 'home');
-            $home->ingredients = $homeTextRepository->getContent('Ingredienti', 'home');
-            $home->about_me = $homeTextRepository->getContent('Teresa', 'home');
-            $header_transparent = true;
+            $home->setTitle($homeTextRepository->getContent('Titolo', 'home'));
+            $home->setSubtitle($homeTextRepository->getContent('Sottotitolo', 'home'));
+            $home->setRecipes($homeTextRepository->getContent('Ricette', 'home'));
+            $home->setIngredients($homeTextRepository->getContent('Ingredienti', 'home'));
+            $home->setAboutMe($homeTextRepository->getContent('Teresa', 'home'));
         } catch (Exception $e) {
-
+            $this->addFlashMessage("Non è stato possibile recuperare i contenuti della home", "error");
         }
         return $this->render('home.index', compact('home', 'header_transparent'));
     }

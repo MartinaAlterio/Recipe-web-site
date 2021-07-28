@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
     Aggiungi una descrizione per [{{$url}}] :
     <form method="post">
         <label>detail: <input type="text" name="description" value=""></label>
@@ -19,12 +16,12 @@
         <form method="post">
             <label>detail: <input type="text" name="description" value="{{$value->description}}"></label>
             <label>image: <input type="text" name="image" value="{{$value->image}}"></label>
-            <input type="hidden", name="id" value="{{$value->id}}">
+            <input type="hidden" name="id" value="{{$value->id}}">
             <input type="submit" name="action" value="update">
             <input type="submit" name="action" value="delete">
              @csrf
         </form>
 
     @endforeach
-</body>
-</html>
+
+@endsection

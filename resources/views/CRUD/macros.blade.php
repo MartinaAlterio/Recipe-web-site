@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
+
     <form>
         Inserisci una nuova Macrocategoria
         <p>
@@ -47,5 +44,5 @@
         </form>
 
     @endforeach
-</body>
-</html>
+
+@endsection

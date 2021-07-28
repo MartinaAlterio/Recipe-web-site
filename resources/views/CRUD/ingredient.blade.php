@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+@extends('templateDatabase')
+
+@section('content')
 
 Inserimento ingredienti:
     <form method="post">
@@ -38,5 +34,4 @@ Inserimento ingredienti:
     </form>
     @endforeach
 
-</body>
-</html>
+@endsection
