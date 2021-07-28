@@ -16,8 +16,7 @@ class IngredientsRepository {
      */
     public function getAllIngredients(): array {
         try {
-            $ingredients = DB::select('select * from ingredients');
-            return $ingredients;
+            return DB::select('select * from ingredients');
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero degli ingredienti.");
         }

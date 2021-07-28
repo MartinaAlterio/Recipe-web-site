@@ -3,7 +3,6 @@
 
 namespace App\Http\Classes\Database\Recipes;
 
-use App\Http\Classes\Database\Ingredients\IngredientsRepository;
 use Illuminate\Support\Facades\DB;
 use Exception;
 

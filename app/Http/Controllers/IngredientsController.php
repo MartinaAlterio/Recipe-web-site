@@ -73,13 +73,13 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
+        $ingredients = [];
         try {
             $ingredients = $ingredientsRepository->getAllIngredients();
-            return $this->render('CRUD.ingredient', compact('ingredients'));
         } catch (Exception $e) {
             $this->addFlashMessage("Non è possibile recuperare l'elenco degli ingredienti", 'error');
-            return $this->render('CRUD.ingredient', compact('ingredients'));
         }
+        return $this->render('CRUD.ingredient', compact('ingredients'));
     }
 
     /**
