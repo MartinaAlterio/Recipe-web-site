@@ -5,25 +5,20 @@
 Inserisci una nuova Ricetta
     <form method="post">
         <p>
-            <label>
-                Nome:
-                <input type="text" name="name" value="">
+            <label for="name">Nome:
+                <input id="name" type="text" name="name" value="">
             </label>
-            <label>
-                Url:
-                <input type="text" name="url" value="">
+            <label for="url">Url:
+                <input id="url" type="text" name="url" value="">
             </label>
-            <label>
-                Subheading:
-                <input type="text" name="subheading" value="">
+            <label for="subheading">Subheading:
+                <input id="subheading" type="text" name="subheading" value="">
             </label>
-            <label>
-                Image:
-                <input type="text" name="image" value="">
+            <label for="image">Image:
+                <input id="image" type="text" name="image" value="">
             </label>
-            <label>
-                Active:
-                <input type="text" name="active" value="">
+            <label for="active">Active:
+                <input id="active" type="text" name="active" value="">
             </label>
             <input type="submit" name="action" value="insert">
             <a href="/database/ricette">cancel</a>
@@ -34,25 +29,20 @@ Inserisci una nuova Ricetta
     Ricette Inserite:
     @foreach($recipes as $recipe)
         <form method="post">
-            <label>
-                Nome:
-                <input type="text" name="name" value="{{$recipe->name}}">
+            <label for="name-{{$recipe->id}}">Nome:
+                <input id="name-{{$recipe->id}}" type="text" name="name" value="{{$recipe->name}}">
             </label>
-            <label>
-                Url:
-                <input type="text" name="url" value="{{$recipe->url}}">
+            <label for="url-{{$recipe->id}}">Url:
+                <input id="url-{{$recipe->id}}" type="text" name="url" value="{{$recipe->url}}">
             </label>
-            <label>
-                Subheading:
-                <input type="text" name="subheading" value="{{$recipe->subheading}}">
+            <label for="subheading-{{$recipe->id}}">Subheading:
+                <input id="subheading-{{$recipe->id}}" type="text" name="subheading" value="{{$recipe->subheading}}">
             </label>
-            <label>
-                Image:
-                <input type="text" name="image" value="{{$recipe->image}}">
+            <label for="image-{{$recipe->id}}">Image:
+                <input id="image-{{$recipe->id}}" type="text" name="image" value="{{$recipe->image}}">
             </label>
-            <label>
-                Active:
-                <input type="text" name="active" value="{{$recipe->active}}">
+            <label for="active-{{$recipe->id}}">Active:
+                <input id="active-{{$recipe->id}}" type="text" name="active" value="{{$recipe->active}}">
             </label>
             <input type="hidden" name="id" value="{{$recipe->id}}">
             <input type="submit" name="action" value="update">

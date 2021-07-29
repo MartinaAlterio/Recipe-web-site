@@ -13,7 +13,7 @@
                 @else
                     <input type="checkbox" name="id[]" value="{{$category->id}}">
                 @endif
-                <label>{{$category->name}}</label><br>
+                <p>{{$category->name}}</p><br>
             @endif
         @endforeach
         <input type="hidden" name="id_macro" value="{{$macro->id}}">

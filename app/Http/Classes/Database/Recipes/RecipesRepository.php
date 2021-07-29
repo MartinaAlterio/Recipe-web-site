@@ -159,11 +159,10 @@ class RecipesRepository
     public function getAllRecipes(): array
     {
         try {
-            $list = (DB::select('select * from recipes'));
+            return (DB::select('select * from recipes'));
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette.");
         }
-        return $list;
     }
 
     /**
@@ -176,11 +175,10 @@ class RecipesRepository
     public function getLinkedRecipes (int $id_recipe): array
     {
         try {
-            $linked_recipes= DB::select('select * from recipe_has_recipes where id_recipe= :id', ['id'=>$id_recipe]);
+            return DB::select('select * from recipe_has_recipes where id_recipe= :id', ['id'=>$id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette collegare alla ricetta.");
         }
-        return $linked_recipes;
     }
 
     /**
@@ -193,11 +191,10 @@ class RecipesRepository
     public function  getRecipeMethods (int $id_recipe): array
     {
         try {
-            $methods = DB::select('select * from methods where id_recipe = :id', ['id'=>$id_recipe]);
+            return DB::select('select * from methods where id_recipe = :id', ['id'=>$id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dei procedimenti della ricetta.");
         }
-        return $methods;
     }
 
     /**
@@ -275,6 +272,7 @@ class RecipesRepository
      * @param  string  $method
      * @param  string  $image
      * @param  int  $id_recipe
+     * @throws Exception
      */
     public function insertMethod (string $method, string $image, int $id_recipe) {
         try {

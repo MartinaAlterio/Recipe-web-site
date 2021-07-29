@@ -103,10 +103,10 @@ class IngredientsRepository {
     {
         try {
             $description = DB::select('select * from ingredient_description where url_ingredient = :name', ['name'=>$url_ingredient]);
+            return $description ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
-        return $description ?? null;
     }
 
     /**
@@ -139,7 +139,7 @@ class IngredientsRepository {
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nell'inserimento del dettaglio dell'ingrediente.");
         }
-        }
+    }
 
     /**
      * modifica ingrediente

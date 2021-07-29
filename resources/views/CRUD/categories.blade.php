@@ -4,20 +4,20 @@
     <div>Inserisci una nuova categoria</div>
     <br>
     <form method="post">
-        <label>
-            Nome:<input type="text" name="name" value="">
+        <label for="name">Nome:
+            <input id="name" type="text" name="name" value="">
         </label>
-        <label>
-            Url:<input type="text" name="url" value="">
+        <label for="url">Url:
+            <input id="url" type="text" name="url" value="">
         </label>
-        <label>
-            Macro:<input type="text" name="macro" value="">
+        <label for="macro">Macro:
+            <input id="macro" type="text" name="macro" value="">
         </label>
-        <label>
-            Immagine:<input type="text" name="image" value="">
+        <label for="image">Immagine:
+            <input id="image" type="text" name="image" value="">
         </label>
-        <label>
-            Descrizione:<input type="text" name="description" value="">
+        <label for="description">Descrizione:
+            <input id="description" type="text" name="description" value="">
         </label>
         <input type="submit" name="action" value="insert">
         <a href="/database/categorie">Cancel</a>
@@ -28,20 +28,20 @@
     <br>
     <form method="post">
         @foreach($categories as $category)
-            <label>
-                Name: <input type="text" name="name" value="{{$category->name}}">
+            <label for="name-{{$category->id}}">Name:
+                <input id="name-{{$category->id}}" type="text" name="name" value="{{$category->name}}">
             </label>
-            <label>
-                Url: <input type="text" name="url" value="{{$category->url}}">
+            <label for="url-{{$category->id}}">Url:
+                <input id="url-{{$category->id}}" type="text" name="url" value="{{$category->url}}">
             </label>
-            <label>
-                Macro: <input type="text" name="macro" value="{{$category->macro}}">
+            <label for="macro--{{$category->id}}">Macro:
+                <input id="macro--{{$category->id}}" type="text" name="macro" value="{{$category->macro}}">
             </label>
-            <label>
-                Immagine: <input type="text" name="image" value="{{$category->image}}">
+            <label for="image-{{$category->id}}">Immagine:
+                <input id="image-{{$category->id}}" type="text" name="image" value="{{$category->image}}">
             </label>
-            <label>
-                Descrizione: <input type="text" name="description" value="{{$category->description}}">
+            <label for="description-{{$category->id}}">Descrizione:
+                <input id="description-{{$category->id}}" type="text" name="description" value="{{$category->description}}">
             </label>
             <input type="hidden" name="id" value="{{$category->id}}">
             <input type="submit" name="action" value="update">

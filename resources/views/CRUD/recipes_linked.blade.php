@@ -13,7 +13,7 @@
                     @else
                         <input type="checkbox" name="id[]" value="{{$recipe->id}}">
                     @endif
-                    <label>{{$recipe->name}}</label><br>
+                    <p>{{$recipe->name}}</p><br>
                 @endif
             @endforeach
             <br>

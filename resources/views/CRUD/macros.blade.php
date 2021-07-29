@@ -5,17 +5,14 @@
     <form>
         Inserisci una nuova Macrocategoria
         <p>
-        <label>
-            Nome:
-            <input type="text" name="name" value="">
+        <label for="name">Nome:
+            <input id="name" type="text" name="name" value="">
         </label>
-        <label>
-            Url:
-            <input type="text" name="url" value="">
+        <label for="url">Url:
+            <input id="url" type="text" name="url" value="">
         </label>
-        <label>
-            Image:
-            <input type="text" name="image" value="">
+        <label for="image">Image:
+            <input id="image" type="text" name="image" value="">
         </label>
         <input type="hidden" name="macro" value="1">
         <input type="submit" name="action" value="insert">
@@ -27,14 +24,14 @@
         <form>
             <p>
             <p>-{{$macro->name}}</p>
-            <label>
-                Nome: <input type="text" name="name" value="{{$macro->name}}">
+            <label for="name-{{$macro->id}}">Nome:
+                <input id="name-{{$macro->id}}" type="text" name="name" value="{{$macro->name}}">
             </label>
-            <label>
-                Url: <input type="text" name="url" value="{{$macro->url}}">
+            <label for="url-{{$macro->id}}">Url:
+                <input id="url-{{$macro->id}}" type="text" name="url" value="{{$macro->url}}">
             </label>
-            <label>
-                image: <input type="text" name="image" value="{{$macro->image}}">
+            <label for="image-{{$macro->id}}">image:
+                <input id="image-{{$macro->id}}" type="text" name="image" value="{{$macro->image}}">
             </label>
             <input type="hidden" name="id" value="{{$macro->id}}">
             <input type="submit" name="action" value="update">

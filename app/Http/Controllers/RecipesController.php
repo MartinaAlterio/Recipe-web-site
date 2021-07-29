@@ -22,17 +22,16 @@ class RecipesController extends Controller
      * @throws Exception
      */
     public function getMacro(RecipesRepository $recipesRepository) {
+        $macros = [];
         try {
             $macros = $recipesRepository->getListMacro();
             foreach ($macros as $macro) {
                 $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
             }
-            return $this->render('ricette.macro', compact('macros'));
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare la lista delle macrocategorie", "error");
-            return $this->render('ricette.macro', compact('macros'));
         }
-
+        return $this->render('ricette.macro', compact('macros'));
     }
 
     /**
@@ -43,15 +42,15 @@ class RecipesController extends Controller
      * @return Application|Factory|View
      * @throws Exception
      */
-    public function getCategory(RecipesRepository $recipesRepository, $category) {
+    public function getCategory(RecipesRepository $recipesRepository, $url_category) {
+        $category = [];
         try {
-            $category = $recipesRepository->getCategoryFromUrl($category);
+            $category = $recipesRepository->getCategoryFromUrl($url_category);
             $category->recipes = $recipesRepository->getCategoryRecipes($category->id);
-            return $this->render('ricette.category', compact('category'));
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare la lista delle categorie", "error");
-            return $this->render('ricette.category', compact('category'));
         }
+        return $this->render('ricette.category', compact('category'));
     }
 
     /**
@@ -64,17 +63,18 @@ class RecipesController extends Controller
      * @return Application|Factory|View
      * @throws Exception
      */
-    public function getRecipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$category, $recipe) {
+    public function getRecipe(RecipesRepository $recipesRepository,IngredientsRepository $ingredientsRepository,$url_category, $url_recipe) {
+        $recipe = [];
         try {
-            $recipe = $recipesRepository->getRecipeFromUrl($recipe);
-            $recipe->category = $recipesRepository->getcategoryFromUrl($category);
+            //devo valutare se questa soluzione mi piace.
+            $recipe = $recipesRepository->getRecipeFromUrl($url_recipe);
+            $recipe->category = $recipesRepository->getcategoryFromUrl($url_category);//non credo serva
             $recipe->ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
             $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
-            return $this->render('ricette.detail', compact('recipe'));
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare la lista delle ricette", "error");
-            return $this->render('ricette.detail', compact('recipe'));
         }
+        return $this->render('ricette.detail', compact('recipe'));
     }
 
     /**
@@ -85,14 +85,13 @@ class RecipesController extends Controller
      * @throws Exception
      */
     public function getRecipesDatabase (RecipesRepository $recipesRepository) {
+        $recipes = [];
         try {
             $recipes =$recipesRepository->getAllRecipes();
-            return $this->render('CRUD.recipes', compact('recipes'));
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare la lista ricetta", "error");
-            return $this->render('CRUD.recipes', compact('recipes'));
         }
-
+        return $this->render('CRUD.recipes', compact('recipes'));
     }
 
     /**
@@ -117,14 +116,12 @@ class RecipesController extends Controller
                         throw new MyExceptions("Ricetta cancellata correttamente");
                 }
             }
-            return null;
         } catch (MyExceptions $e) {
             $this->addFlashMessage($e->getMessage(), "success");
-            return redirect()->route('databaseRecipe');
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), "error");
-            return redirect()->route('databaseRecipe');
         }
+        return redirect()->route('databaseRecipe');
 
     }
 
@@ -138,19 +135,20 @@ class RecipesController extends Controller
      * @throws Exception
      */
     public function getRecipeIngredientsDatabase (RecipesRepository $recipesRepository, IngredientsRepository $ingredientsRepository, $urlRecipe) {
+        $recipe = [];
+        $ingredients = [];
+        $id_ingredients = [];
         try {
             $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
             $ingredients = $ingredientsRepository->getAllIngredients();
             $recipe_ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
-            $id_ingredients = [];
             foreach ($recipe_ingredients as $recipe_ingredient) {
                 $id_ingredients[] = $recipe_ingredient->id;
             }
-            return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), "error");
-            return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
         }
+        return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
     }
 
     /**
@@ -161,6 +159,7 @@ class RecipesController extends Controller
      * @throws Exception
      */
     public function cuRecipeIngredients(RecipesRepository $recipesRepository): RedirectResponse {
+        $url = null;
         if(isset($_POST['action'])) {
             $recipesRepository->insertRecipeIngredients($_POST['id_recipe'], $_POST['id']);
             $url = $_POST['url'];

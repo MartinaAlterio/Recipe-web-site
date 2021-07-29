@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="main_container main_container--ingredients">
-        <div class="main_image main_image--ingredients" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredients->upTitle->image)}}')"></div>
-        <div class="main_title main_title--ingredients">{{$ingredients->title->content}}</div>
-        <div class="main_image main_image--ingredients" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredients->underTitle->image)}}')"></div>
-        <div class="main_text main_text--ingredients"> {{$ingredients->description->content}}</div>
+        <div class="main_image main_image--ingredients" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredients->getUpTitle()['image'])}}')"></div>
+        <div class="main_title main_title--ingredients">{{$ingredients->getTitle()['content']}}</div>
+        <div class="main_image main_image--ingredients" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredients->getUnderTitle()['image'])}}')"></div>
+        <div class="main_text main_text--ingredients"> {{$ingredients->getDescription()['content']}}</div>
     <div class="page_container">
         @foreach($list as $ingredient)
             <div class="main_content main_content--ingredients">

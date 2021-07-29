@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Classes\Database\Texts\HomeTextRepository;
 use App\Http\Classes\Database\Ingredients\IngredientsRepository;
+use App\Models\IngredientsContent;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,19 +24,18 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
+        $list = [];
+        $ingredients = new IngredientsContent();
         try {
             $list = $ingredientsRepository->getActiveIngredients();
-            $ingredients = new \stdClass();
-            $ingredients->upTitle = $homeTextRepository->getContent('upTitle','ingredients');
-            $ingredients->underTitle = $homeTextRepository->getContent('underTitle','ingredients');
-            $ingredients->description = $homeTextRepository->getContent('description', 'ingredients');
-            $ingredients->title = $homeTextRepository->getContent('title', 'ingredients');
-            return $this->render('ingredienti.list', compact('list', 'ingredients'));
+            $ingredients->setUpTitle($homeTextRepository->getContent('upTitle','ingredients'));
+            $ingredients->setUnderTitle($homeTextRepository->getContent('underTitle','ingredients'));
+            $ingredients->setDescription($homeTextRepository->getContent('description', 'ingredients'));
+            $ingredients->setTitle($homeTextRepository->getContent('title', 'ingredients'));
         } catch(Exception $e) {
             $this->addFlashMessage('Impossibile recuperare la lista degli ingredienti', 'error');
-            return $this->render('ingredienti.list', compact('list', 'ingredients'));
         }
-
+        return $this->render('ingredienti.list', compact('list', 'ingredients'));
     }
 
     /**
@@ -47,6 +47,8 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
+        $ingredient = [];
+        $inactive = false;
         try {
             $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
             if ($ingredient !== null) {
@@ -61,8 +63,8 @@ class IngredientsController extends Controller
             return $this->render('ingredienti.detail', compact('inactive'));
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare l'ingrediente selezionato", 'error');
-            return $this->render('ingredienti.detail', compact('ingredient'));
         }
+        return $this->render('ingredienti.detail', compact('ingredient'));
     }
 
     /**
@@ -103,15 +105,13 @@ class IngredientsController extends Controller
                         $ingredientsRepository->deleteIngredient($_POST['id']);
                         throw new MyExceptions("Ingrediente cancellato con successo");
                 }
-                return redirect()->route('databaseIngredients');
             }
         } catch (MyExceptions $e) {
             $this->addFlashMessage($e->getMessage(), 'success');
-            return redirect()->route('databaseIngredients');
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), 'error');
-            return redirect()->route('databaseIngredients');
         }
+        return redirect()->route('databaseIngredients');
     }
 
     /**
@@ -123,13 +123,13 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getDescription(IngredientsRepository $ingredientsRepository, $url) {
+        $descriptions = [];
         try {
             $descriptions = $ingredientsRepository->getIngredientDescription($url);
-            return $this->render('CRUD.ingredient_description', compact(['descriptions', 'url']));
         } catch (Exception $e) {
             $this->addFlashMessage("Non è possibile recuperale l'eleneco delle descrizioni", "error");
-            return $this->render('CRUD.ingredient_description', compact(['descriptions', 'url']));
         }
+        return $this->render('CRUD.ingredient_description', compact(['descriptions', 'url']));
     }
 
     /**
@@ -154,14 +154,12 @@ class IngredientsController extends Controller
                         $ingredientsRepository->deleteIngredientDescription($_POST['id']);
                         Throw new MyExceptions("Descrizione ingrediente modificato con successo");
                 }
-                return redirect()->route('databaseDescription', ['url' => $url]);
             }
         } catch (MyExceptions $e) {
             $this->addFlashMessage($e->getMessage(), 'success');
-            return redirect()->route('databaseDescription', ['url' => $url]);
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), 'error');
-            return redirect()->route('databaseDescription', ['url' => $url]);
         }
+        return redirect()->route('databaseDescription', ['url' => $url]);
     }
 }
