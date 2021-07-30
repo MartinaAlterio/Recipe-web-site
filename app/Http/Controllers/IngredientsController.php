@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Exceptions\MyExceptions;
+use Illuminate\Http\Request;
 
 class IngredientsController extends Controller
 {
@@ -47,22 +48,18 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
-        $ingredient = [];
-        $inactive = false;
+        $ingredient = null;
         try {
             $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
-            if ($ingredient !== null) {
+            if (!empty($ingredient)) {
                 $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
-                return $this->render('ingredienti.detail', compact('ingredient'));
             } else {
                 $inactive = true;
-                throw new MyExceptions("Ingrediente non attivo");
+                $this->addFlashMessage("Ingrediente non attivo.", "error");
+                return $this->render('ingredienti.detail', compact('inactive'));
             }
-        } catch (MyExceptions $e) {
-            $this->addFlashMessage("L'ingrediente cercato non è al momento attivo", 'error');
-            return $this->render('ingredienti.detail', compact('inactive'));
         } catch (Exception $e) {
-            $this->addFlashMessage("Impossibile recuperare l'ingrediente selezionato", 'error');
+            $this->addFlashMessage("Impossibile recuperare l'ingrediente selezionato.", 'error');
         }
         return $this->render('ingredienti.detail', compact('ingredient'));
     }
@@ -75,11 +72,11 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getListIngredient (IngredientsRepository $ingredientsRepository) {
-        $ingredients = [];
+        $ingredients = null;
         try {
             $ingredients = $ingredientsRepository->getAllIngredients();
         } catch (Exception $e) {
-            $this->addFlashMessage("Non è possibile recuperare l'elenco degli ingredienti", 'error');
+            $this->addFlashMessage("Non è possibile recuperare l'elenco degli ingredienti.", 'error');
         }
         return $this->render('CRUD.ingredient', compact('ingredients'));
     }
@@ -88,26 +85,27 @@ class IngredientsController extends Controller
      *azione inserimento ingredienti
      *
      * @param  IngredientsRepository  $ingredientsRepository
+     * @param  Request  $request
      * @return RedirectResponse
-     * @throws Exception
      */
-    public function cudIngredient (IngredientsRepository $ingredientsRepository): RedirectResponse {
+    public function cudIngredient (IngredientsRepository $ingredientsRepository, Request $request): RedirectResponse {
         try {
-            if(isset($_POST['action'])) {
-                switch ($_POST['action']) {
-                    case 'insert':
-                        $ingredientsRepository->insertIngredient($_POST['name'], $_POST['url'], $_POST['active']);
-                        throw new MyExceptions("Ingrediente inserito con successo");
-                    case 'update':
-                        $ingredientsRepository->updateIngredient($_POST['name'], $_POST['url'], $_POST['active'], $_POST['id']);
-                        throw new MyExceptions("Ingrediente modificato con successo");
-                    case 'delete' :
-                        $ingredientsRepository->deleteIngredient($_POST['id']);
-                        throw new MyExceptions("Ingrediente cancellato con successo");
-                }
+            switch ($request->request->get('action')) {
+                case 'insert':
+                    $ingredientsRepository->insertIngredient($request->request->get('name'), $request->request->get('url'), $request->request->get('active'));
+                    $this->addFlashMessage("Ingrediente inserito con successo.", "successo");
+                    break;
+                case 'update':
+                    $ingredientsRepository->updateIngredient($request->request->get('name'), $request->request->get('url'), $request->request->get('active'), $request->request->get('id'));
+                    $this->addFlashMessage("Ingrediente modificato con successo.", "successo");
+                    break;
+                case 'delete' :
+                    $ingredientsRepository->deleteIngredient($request->request->get('id'));
+                    $this->addFlashMessage("Ingrediente cancellato con successo.", "successo");
+                    break;
+                default :
+                    $this->addFlashMessage("Azione non valida.", "error");
             }
-        } catch (MyExceptions $e) {
-            $this->addFlashMessage($e->getMessage(), 'success');
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), 'error');
         }
@@ -123,7 +121,7 @@ class IngredientsController extends Controller
      * @throws Exception
      */
     public function getDescription(IngredientsRepository $ingredientsRepository, $url) {
-        $descriptions = [];
+        $descriptions = null;
         try {
             $descriptions = $ingredientsRepository->getIngredientDescription($url);
         } catch (Exception $e) {
@@ -136,27 +134,28 @@ class IngredientsController extends Controller
      * azione inserimento/modifica/cancellazione descrizione ingredeiente attivo
      *
      * @param  IngredientsRepository  $ingredientsRepository
+     * @param  Request  $request
      * @param $url
      * @return RedirectResponse
-     * @throws Exception
      */
-    public function cudIngredientDescription(IngredientsRepository $ingredientsRepository, $url): RedirectResponse {
+    public function cudIngredientDescription(IngredientsRepository $ingredientsRepository, Request $request, $url): RedirectResponse {
         try {
-            if(isset($_POST['action'])) {
-                switch ($_POST['action']) {
-                    case 'insert':
-                        $ingredientsRepository->insertIngredientDescription($url, $_POST['description'], $_POST['image']);
-                        throw new MyExceptions("Descrizione ingrediente inserito con successo");
-                    case 'update':
-                        $ingredientsRepository->updateIngredientDescription($_POST['description'], $_POST['image'], $url, $_POST['id']);
-                        Throw new MyExceptions("Descrizione ingrediente modificato con successo");
-                    case 'delete' :
-                        $ingredientsRepository->deleteIngredientDescription($_POST['id']);
-                        Throw new MyExceptions("Descrizione ingrediente modificato con successo");
-                }
+            switch ($request->request->get('action')) {
+                case 'insert':
+                    $ingredientsRepository->insertIngredientDescription($url, $request->request->get('description'), $request->request->get('image'));
+                    $this->addFlashMessage("Descrizione ingrediente inserita con successo.", "successo");
+                    break;
+                case 'update':
+                    $ingredientsRepository->updateIngredientDescription($request->request->get('description'), $request->request->get('image'), $url, $request->request->get('id'));
+                    $this->addFlashMessage("Descrizione ingrediente modificata con successo.", "successo");
+                    break;
+                case 'delete' :
+                    $ingredientsRepository->deleteIngredientDescription($request->request->get('id'));
+                    $this->addFlashMessage("Descrizione ingrediente cancellata con successo.", "successo");
+                    break;
+                default :
+                    $this->addFlashMessage("Azione non valida.", "error");
             }
-        } catch (MyExceptions $e) {
-            $this->addFlashMessage($e->getMessage(), 'success');
         } catch (Exception $e) {
             $this->addFlashMessage($e->getMessage(), 'error');
         }

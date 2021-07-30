@@ -8,7 +8,6 @@
         @foreach($ingredients as $ingredient)
             @if(in_array($ingredient->id, $id_ingredients))
                 <input type="checkbox" name="id[]" value="{{$ingredient->id}}" checked>
-
             @else
                 <input type="checkbox" name="id[]" value="{{$ingredient->id}}">
             @endif
