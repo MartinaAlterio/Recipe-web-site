@@ -29,7 +29,10 @@ class RecipesController extends Controller
                 $macro->categories = $recipesRepository->getCategoriesMacro($macro->id);
             }
         } catch (Exception $e) {
-            $this->addFlashMessage("Impossibile recuperare la lista delle macrocategorie", "error");
+            $error = true;
+            $this->addFlashMessage("Impossibile recuperare la lista delle categorie", "error");
+
+            return $this->render('ricette.macro', compact('macros', 'error'));
         }
         return $this->render('ricette.macro', compact('macros'));
     }
@@ -47,7 +50,8 @@ class RecipesController extends Controller
             $category = $recipesRepository->getCategoryFromUrl($url_category);
             $category->recipes = $recipesRepository->getCategoryRecipes($category->id);
         } catch (Exception $e) {
-            $this->addFlashMessage("Impossibile recuperare la lista delle categorie", "error");
+            $this->addFlashMessage("Impossibile recuperare le infromazioni sulla seguente categoria ($url_category)", "error");
+            return $this->render('ricette.category', compact('category', 'url_category'));
         }
         return $this->render('ricette.category', compact('category'));
     }
@@ -99,7 +103,7 @@ class RecipesController extends Controller
      * @param  Request  $request
      * @return RedirectResponse|null
      */
-    public function cudRecipe (RecipesRepository $recipesRepository, Request $request): ?RedirectResponse {
+     public function cudRecipe (RecipesRepository $recipesRepository, Request $request): ?RedirectResponse {
         try {
             switch ($request->request->get('action')) {
                 case 'insert':

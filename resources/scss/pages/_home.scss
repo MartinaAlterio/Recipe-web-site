@@ -62,8 +62,9 @@
 
 .main_image {
     &--home {
+        height: 85vh;
+        width: 100vw;
         margin: unset;
-        height: 850px;
     }
 }
 

@@ -612,8 +612,9 @@ body {
   padding-top: unset; }
 
 .main_image--home {
-  margin: unset;
-  height: 850px; }
+  height: 85vh;
+  width: 100vw;
+  margin: unset; }
 
 .main_title--home {
   font-family: "Playfair Display", serif;
@@ -818,6 +819,5 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-around; }
-
 
 /*# sourceMappingURL=main.css.map */

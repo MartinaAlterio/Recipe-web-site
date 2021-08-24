@@ -2,7 +2,7 @@
 
 @section('content')
 
-Inserisci una nuova Ricetta
+    <div>Inserisci una nuova Ricetta</div>
     <form method="post">
         <p>
             <label for="name">Nome:
@@ -26,7 +26,7 @@ Inserisci una nuova Ricetta
         @csrf
     </form>
 
-    Ricette Inserite:
+    <div>Ricette Inserite:</div>
     @foreach($recipes as $recipe)
         <form method="post">
             <label for="name-{{$recipe->id}}">Nome:
