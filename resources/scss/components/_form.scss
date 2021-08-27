@@ -1,6 +1,12 @@
 body {
+  .element {
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    height: max-content;
+  }
   form {
-    padding: 10px;
+    padding: 5px;
   }
   input {
     padding: 3px 6px;

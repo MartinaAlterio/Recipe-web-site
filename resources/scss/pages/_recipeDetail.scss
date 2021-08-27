@@ -78,6 +78,14 @@
             width: unset;
         }
     }
+    &--detail {
+        &:nth-child(2n) {
+            border-right: 1px solid $black;
+        }
+        &:nth-child(2n+1) {
+            border-left: 1px solid $black;
+        }
+    }
 }
 .list {
     &--ingredients {

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    Aggiungi una descrizione per [{{$url}}] :
+    <div>Aggiungi una descrizione per [{{$url}}] :</div>
     <form method="post">
         <label for="description">detail:
             <input id="description" type="text" name="description" value="">
@@ -15,7 +15,7 @@
         <a href="/database/ingredienti">Cancel</a>
         @csrf
     </form>
-    Descrizioni già salvate:
+    <div>Descrizioni già salvate:</div>
     @foreach($descriptions as $description)
         <form method="post">
             <label for="description-{{$description->id}}">detail:

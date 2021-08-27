@@ -61,10 +61,6 @@
     &:nth-child(2n) {
         flex-direction: row-reverse;
         border-top: none;
-        border-right: 1px solid $black;
-    }
-    &:nth-child(2n+1) {
-        border-left: 1px solid $black;
     }
 }
 .main_title {
@@ -165,3 +161,4 @@
     padding: 20px 30px;
     margin: auto;
 }
+

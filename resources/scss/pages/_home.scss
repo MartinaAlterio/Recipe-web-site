@@ -95,7 +95,7 @@
         &:nth-child(n) {
             border: 0;
         }
-        height: 500px;
+        height: max-content;
         padding: 30px 0;
         margin: 80px auto;
         transition-property: box-shadow;
@@ -105,7 +105,15 @@
         }
         & a {
             text-decoration-color: darkred;
+            text-align: center;
         }
     }
+    &__image--home{
+        height: 500px;
+    }
+    &__text--home {
+        margin: auto;
+    }
+
 }
 

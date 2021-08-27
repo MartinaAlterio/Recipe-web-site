@@ -6,13 +6,15 @@
 
     <form method="post">
     @foreach($recipes as $recipe)
-        @if(in_array($recipe->id, $id_recipes))
-            <input type="checkbox" name="id[]" value="{{$recipe->id}}" checked>
+        <div class="element">
+            @if(in_array($recipe->id, $id_recipes))
+                <input type="checkbox" name="id[]" value="{{$recipe->id}}" checked>
 
-        @else
-            <input type="checkbox" name="id[]" value="{{$recipe->id}}">
-        @endif
-        <p>{{$recipe->name}}</p><br>
+            @else
+                <input type="checkbox" name="id[]" value="{{$recipe->id}}">
+            @endif
+            <p>{{$recipe->name}}</p><br>
+        </div>
     @endforeach
     <input type="hidden" name="id_category" value="{{$category->id}}">
     <input type="hidden" name="url" value="{{$category->url}}">
