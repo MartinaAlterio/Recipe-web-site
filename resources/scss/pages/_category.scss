@@ -42,6 +42,19 @@
         height: 450px;
         margin: auto;
         box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        & a {
+            text-decoration: none;
+            &:hover {
+                .list {
+                    &__title {
+                        &--category {
+                            color: $black_transparent;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
 .list__image {
@@ -55,13 +68,11 @@
 .list__title{
     &--category {
         text-align: center;
-        & a{
-            color: $black;
-            text-decoration: unset;
-            font-size: 30px;
-            letter-spacing: 3px;
-            font-weight: lighter;
-        }
+        color: $black;
+        text-decoration: unset;
+        font-size: 30px;
+        letter-spacing: 3px;
+        font-weight: lighter;
     }
 }
 .container_list {

@@ -13,8 +13,10 @@
                 <ul class="container_list container_list--category">
                     @foreach($category->recipes as $recipe)
                         <div class="list_element list_element--category">
-                            <div class="list__image list__image--category" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')"></div>
-                            <div class="list__title list__title--category"><a href="/ricette/{{$category->url}}/{{$recipe->url}}">{{strtoupper($recipe->name)}}</a></div>
+                            <a href="/ricette/{{$category->url}}/{{$recipe->url}}">
+                                <div class="list__image list__image--category" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')"></div>
+                                <div class="list__title list__title--category">{{strtoupper($recipe->name)}}</div>
+                            </a>
                         </div>
                     @endforeach
                 </ul>

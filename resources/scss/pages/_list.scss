@@ -32,12 +32,23 @@
         flex-direction: column;
         margin: 10px auto 150px auto;
         box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        & a {
+            text-decoration: none;
+            &:hover {
+                .title {
+                    &--ingredients {
+                        background-color: $black_transparent;
+                    }
+                }
+            }
+        }
         &:nth-child(n) {
             border: 0;
         }
         &:nth-child(2n) {
             flex-direction: column;
         }
+
     }
     &__image {
         &--ingredients {
@@ -57,16 +68,11 @@
 }
 .title {
     &--ingredients {
-        & a {
-            background-color: darkred;
-            display: block;
-            color: white;
-            text-decoration: none;
-            transition-property: background-color;
-            transition-duration: 0.4s;
-            &:hover {
-                background-color: $black_transparent;
-            }
-        }
+        background-color: darkred;
+        display: block;
+        color: white;
+        text-decoration: none;
+        transition-property: background-color;
+        transition-duration: 0.4s;
     }
 }
