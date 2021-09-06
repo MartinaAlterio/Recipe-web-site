@@ -225,15 +225,17 @@
         padding: 10px;
         &.header_home {
             box-shadow: none;
+            background-color: black;
         }
     }
     .header_home {
         padding: 10px 0;
         & .header {
-            padding: 0;
+            padding: 0 10px;
             margin: auto;
             height: auto;
             max-width: none;
+            justify-content: space-between;
         }
         & .logo {
             font-size: 35px;
@@ -241,36 +243,47 @@
         & .button {
             font-size: 20px;
         }
-    }
-
-    .buttonContainer {
-        justify-content: center;
+        .buttonContainer {
+            justify-content: center;
+            padding: 0;
+        }
+        &.over_header {
+            .logo {
+                font-size: 35px;
+            }
+        }
     }
 
     .main_image {
         &--home {
-            height: 400px;
+            height: 360px;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
     }
 
     .main_title {
         &--home {
-            font-size: 40px;
+            padding: 0;
+            font-size: 35px;
         }
     }
 
     .border {
         &--home {
-            top: -25px;
+            top: -20px;
         }
     }
 
     .main_content {
         &--home {
             flex-direction: column;
+            padding: inherit;
+            margin: 20px 10px 50px 10px ;
         }
         &__text {
             &--home {
+                padding: 10px 0;
                 width: 100%;
                 max-width: none;
                 .text {
@@ -285,11 +298,136 @@
             &--home {
                 width: 100%;
                 max-width: none;
-                height: 300px;
+                height: 270px;
             }
         }
         &:nth-child(2n) {
             flex-direction: column;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .container_header {
+        height: 76px;
+        margin: 0;
+        padding: 10px;
+        &.header_home {
+            box-shadow: none;
+            background-color: black;
+        }
+    }
+    .header_home {
+        padding: 10px 0;
+        & .header {
+            padding: 0 10px;
+            margin: auto;
+            height: auto;
+            max-width: none;
+            justify-content: space-between;
+        }
+        & .logo {
+            font-size: 30px;
+        }
+        & .button {
+            font-size: 18px;
+        }
+        .buttonContainer {
+            justify-content: center;
+            padding: 0;
+        }
+        &.over_header {
+            .logo {
+                font-size: 30px;
+            }
+        }
+    }
+
+    .main_image {
+        &--home {
+            height: 360px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .main_title {
+        &--home {
+            padding: 0;
+            font-size: 30px;
+            margin: -50px auto 0 auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .container_header {
+        height: 95px;
+        margin: 0;
+        padding: 10px;
+        &.header_home {
+            box-shadow: none;
+            background-color: black;
+        }
+    }
+    .header_home {
+        padding: 10px 0;
+        & .header {
+            padding: 0 10px;
+            margin: auto;
+            height: auto;
+            max-width: none;
+            justify-content: space-between;
+        }
+        & .logo {
+            font-size: 20px;
+        }
+        & .button {
+            font-size: 13px;
+            text-decoration: none;
+        }
+        .buttonContainer {
+            justify-content: center;
+            padding: 0;
+        }
+        &.over_header {
+            .logo {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .main_image {
+        &--home {
+            height: 340px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .main_title {
+        &--home {
+            padding: 0;
+            font-size: 25px;
+            margin: -70px auto 0 auto;
+        }
+    }
+
+    .main_content {
+        &__text {
+            &--home {
+                .text {
+                    font-size: 15px;
+                }
+                a {
+                    font-size: 20px;
+                }
+            }
+        }
+        &__image {
+            &--home {
+                height: 210px;
+            }
         }
     }
 }
