@@ -22,6 +22,7 @@ class RecipesController extends Controller
      * @throws Exception
      */
     public function getMacro(RecipesRepository $recipesRepository) {
+        $macroPage = true;
         $macros = null;
         try {
             $macros = $recipesRepository->getListMacro();
@@ -34,7 +35,7 @@ class RecipesController extends Controller
 
             return $this->render('ricette.macro', compact('macros', 'error'));
         }
-        return $this->render('ricette.macro', compact('macros'));
+        return $this->render('ricette.macro', compact('macros', 'macroPage'));
     }
 
     /**

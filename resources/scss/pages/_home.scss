@@ -26,6 +26,7 @@
         background-color: $black;
     }
     .header {
+        padding: 0;
         transition-property: height;
         transition-duration: 0.5s;
         background-color: transparent;
@@ -134,9 +135,10 @@
 }
 
 @media only screen and (max-width: 1250px) {
+
     .header_home {
         & .header {
-            height: auto;
+            padding: 0 0 10px 0;
         }
         & .logo {
             font-size: 40px;
@@ -174,14 +176,12 @@
 
 @media only screen and (max-width: 1000px) {
     .header_home {
-        & .header {
-            height: auto;
-        }
         & .logo {
             font-size: 35px;
         }
-        & .button {
-            font-size: 20px;
+        .buttonContainer {
+            justify-content: center;
+            padding: 0;
         }
     }
 
@@ -221,9 +221,8 @@
 
 @media only screen and (max-width: 750px) {
     .container_header {
-        margin: 0;
-        padding: 10px;
         &.header_home {
+            margin: 0;
             box-shadow: none;
             background-color: black;
         }
@@ -237,19 +236,15 @@
             max-width: none;
             justify-content: space-between;
         }
-        & .logo {
-            font-size: 35px;
-        }
         & .button {
             font-size: 20px;
-        }
-        .buttonContainer {
-            justify-content: center;
-            padding: 0;
         }
         &.over_header {
             .logo {
                 font-size: 35px;
+            }
+            .buttonContainer {
+                padding: 0;
             }
         }
     }
@@ -280,6 +275,10 @@
             flex-direction: column;
             padding: inherit;
             margin: 20px 10px 50px 10px ;
+
+            &:nth-child(2n) {
+                flex-direction: column;
+            }
         }
         &__text {
             &--home {
@@ -300,9 +299,6 @@
                 max-width: none;
                 height: 270px;
             }
-        }
-        &:nth-child(2n) {
-            flex-direction: column;
         }
     }
 }
@@ -332,10 +328,6 @@
         & .button {
             font-size: 18px;
         }
-        .buttonContainer {
-            justify-content: center;
-            padding: 0;
-        }
         &.over_header {
             .logo {
                 font-size: 30px;
@@ -343,17 +335,8 @@
         }
     }
 
-    .main_image {
-        &--home {
-            height: 360px;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-    }
-
     .main_title {
         &--home {
-            padding: 0;
             font-size: 30px;
             margin: -50px auto 0 auto;
         }
@@ -386,13 +369,9 @@
             font-size: 13px;
             text-decoration: none;
         }
-        .buttonContainer {
-            justify-content: center;
-            padding: 0;
-        }
         &.over_header {
             .logo {
-                font-size: 25px;
+                font-size: 20px;
             }
         }
     }
@@ -400,8 +379,6 @@
     .main_image {
         &--home {
             height: 340px;
-            background-repeat: no-repeat;
-            background-size: contain;
         }
     }
 
@@ -413,6 +390,11 @@
         }
     }
 
+    .border {
+        &--home {
+            top: -15px;
+        }
+    }
     .main_content {
         &__text {
             &--home {

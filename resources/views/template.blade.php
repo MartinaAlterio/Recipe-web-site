@@ -9,7 +9,7 @@
 </head>
 <body>
     <!--header-->
-    <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}">
+    <div class="container_header {{!empty($header_transparent) ? 'header_home': ''}}{{!empty($macroPage) ? 'header_macro': ''}}">
         <div class="header">
             <div> <a href="/" class="logo">Pan&Pomodoro</a> </div>
             <div class="buttonContainer">
