@@ -5,8 +5,10 @@
 }
 .main_image {
     &--ingredients {
-        height: 270px;
-        background-size: auto;
+        height: 290px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        max-width: 900px;
         margin: 60px auto;
     }
 }
@@ -74,5 +76,129 @@
         text-decoration: none;
         transition-property: background-color;
         transition-duration: 0.4s;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .header {
+        max-width: 1000px;
+    }
+    .main_container {
+        &--ingredients {
+            max-width: 900px;
+            width: 95%;
+            margin: auto;
+        }
+    }
+    .main_title {
+        &--ingredients {
+            font-size: 45px;
+        }
+    }
+
+    .main_text {
+        &--ingredients {
+            font-size: 25px;
+            max-width: 900px;
+            margin: 40px auto 100px auto;
+        }
+    }
+
+    .page_container {
+        &--ingredients {
+            max-width: 900px;
+        }
+    }
+    .main_content {
+        &__image {
+            &--ingredients {
+                height: 400px;
+            }
+        }
+        &__text {
+            &--ingredients {
+                font-size: 25px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 900px) {
+    .main_image {
+        &--ingredients {
+            margin:40px auto 60px auto ;
+            background-size: cover;
+            height: 200px;
+            max-width: 600px;
+        }
+    }
+
+    .main_title {
+        &--ingredients {
+            font-size: 40px;
+        }
+    }
+
+    .main_text {
+        &--ingredients {
+            font-size: 22px;
+            margin: 40px auto 100px auto;
+            max-width: 600px;
+        }
+    }
+
+    .page_container {
+        &--ingredients {
+            max-width: 600px;
+        }
+    }
+    .main_content {
+        &__image {
+            &--ingredients {
+                height: 300px;
+                background-position: center;
+            }
+        }
+        &__text {
+            &--ingredients {
+                font-size: 22px;
+            }
+        }
+    }
+    .title {
+        &--ingredients {
+            font-size: 40px;
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .main_image {
+        &--ingredients {
+            margin:20px auto 60px auto ;
+        }
+    }
+    .main_text {
+        &--ingredients {
+            font-size: 18px;
+            padding: 0 20px;
+        }
+    }
+    .main_content {
+        &__image {
+            &--ingredients {
+                height: 250px;
+                background-position: center;
+            }
+        }
+        &__text {
+            &--ingredients {
+                font-size: 18px;
+            }
+        }
+    }
+    .title {
+        &--ingredients {
+            font-size: 35px;
+        }
     }
 }

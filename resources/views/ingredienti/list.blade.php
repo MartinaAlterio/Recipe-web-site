@@ -6,7 +6,7 @@
         <div class="main_title main_title--ingredients">{{$ingredients->getTitle()['content']}}</div>
         <div class="main_image main_image--ingredients" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredients->getUnderTitle()['image'])}}')"></div>
         <div class="main_text main_text--ingredients"> {{$ingredients->getDescription()['content']}}</div>
-        <div class="page_container">
+        <div class="page_container page_container--ingredients">
             @foreach($list as $ingredient)
                 <div class="main_content main_content--ingredients">
                     <a href="/ingredienti/{{$ingredient->url}}">
