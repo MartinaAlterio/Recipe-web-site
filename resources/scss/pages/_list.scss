@@ -32,7 +32,7 @@
     &--ingredients {
         display: flex;
         flex-direction: column;
-        margin: 10px auto 150px auto;
+        margin: 10px auto 120px auto;
         box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         & a {
             text-decoration: none;
@@ -76,6 +76,7 @@
         text-decoration: none;
         transition-property: background-color;
         transition-duration: 0.4s;
+        padding: 0;
     }
 }
 
@@ -110,6 +111,9 @@
         }
     }
     .main_content {
+        &--ingredients {
+            margin: 10px auto 100px auto;
+        }
         &__image {
             &--ingredients {
                 height: 400px;
@@ -125,7 +129,7 @@
 @media only screen and (max-width: 900px) {
     .main_image {
         &--ingredients {
-            margin:40px auto 60px auto ;
+            margin:40px auto 40px auto ;
             background-size: cover;
             height: 200px;
             max-width: 600px;
@@ -152,6 +156,9 @@
         }
     }
     .main_content {
+        &--ingredients {
+            margin: 10px auto 80px auto;
+        }
         &__image {
             &--ingredients {
                 height: 300px;
@@ -167,6 +174,7 @@
     .title {
         &--ingredients {
             font-size: 40px;
+            padding: 2px;
         }
     }
 }
@@ -174,7 +182,7 @@
 @media only screen and (max-width: 500px) {
     .main_image {
         &--ingredients {
-            margin:20px auto 60px auto ;
+            margin:20px auto 20px auto ;
         }
     }
     .main_text {
@@ -184,6 +192,9 @@
         }
     }
     .main_content {
+        &--ingredients {
+            margin: 10px auto 50px auto;
+        }
         &__image {
             &--ingredients {
                 height: 250px;
@@ -199,6 +210,7 @@
     .title {
         &--ingredients {
             font-size: 35px;
+            padding: 0;
         }
     }
 }
