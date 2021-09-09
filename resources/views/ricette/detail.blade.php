@@ -2,17 +2,17 @@
 
 @section('content')
     <div class="main_container main_container--detail">
-        <div class="main_image" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')"></div>
+        <div class="main_image main_image--detail" style="background-image: url('{{asset('storage/images/recipes/detail/'.$recipe->image)}}')"></div>
         <h1 class="main_title main_title--detail">{{$recipe->name}}</h1>
         <div class="border border--detail"> </div>
-        <div class="main_text">
+        <div class="main_text main_text--detail">
             {{$recipe->subheading}}
         </div>
-        <div class="page_container">
-            <div class="element element--ingredients">
-                <div class="title title_reverse title--ingredients">Ingredienti</div>
-                <div class="border border_reverse border--ingredients"> </div>
-                <ul class="list list--ingredients">
+        <div class="page_container page_container--Detailingredients">
+            <div class="element element--Detailingredients">
+                <div class="title title_reverse title--Detailingredients">Ingredienti</div>
+                <div class="border border_reverse border--Detailingredients"> </div>
+                <ul class="list list--Detailingredients">
                     @foreach($recipe->ingredients as $ingredient)
                         @if($ingredient->active === 1)
                             <li> <a href="/ingredienti/{{$ingredient->url}}">{{$ingredient->name}}</a> </li>

@@ -8,7 +8,7 @@
             @else
                 @foreach($macros as $macro)
                     <div class="main_content main_content--macro">
-                        <div class="main_content__image" style="background-image: url('{{asset('storage/images/recipes/macro/'.$macro->image)}}')">
+                        <div class="main_content__image main_content__image--macro" style="background-image: url('{{asset('storage/images/recipes/macro/'.$macro->image)}}')">
                             <div class="title title--macro">{{$macro->name}}</div>
                         </div>
                         <div class="container_list container_list--macro">

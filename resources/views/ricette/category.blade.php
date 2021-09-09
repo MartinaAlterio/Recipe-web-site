@@ -11,7 +11,7 @@
                     <div class="main_title main_title--category">{{$category->name}}</div>
                 </div>
             </div>
-            <div class="main_text"> {{$category->description}}</div>
+            <div class="main_text main_text--category"> {{$category->description}}</div>
             <div class="page_container page_container--category">
                 <ul class="container_list container_list--category">
                     @foreach($category->recipes as $recipe)

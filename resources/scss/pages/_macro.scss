@@ -118,8 +118,10 @@
             }
         }
         &__image {
-            height: 300px;
-            width: 100%;
+            &--macro {
+                height: 300px;
+                width: 100%;
+            }
         }
     }
     .container_list {

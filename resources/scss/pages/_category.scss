@@ -22,7 +22,7 @@
         font-size: 90px;
         margin: auto;
         text-shadow: 0 1px black;
-        color: darkred;
+        color: #613b3b;
         font-weight: inherit;
         background-color: #c6c1c1ad;
         width: 100%;
@@ -123,8 +123,10 @@
         }
     }
     .main_text {
-        font-size: 25px;
-        margin: auto 50px;
+        &--category {
+            font-size: 25px;
+            margin: auto 50px;
+        }
     }
     .container_list {
         &--category {
@@ -144,7 +146,9 @@
         }
     }
     .main_text {
-        font-size: 20px;
+        &--category {
+            font-size: 20px;
+        }
     }
     .container_list {
         &--category {
@@ -181,7 +185,9 @@
         }
     }
     .main_text {
-        font-size: 18px;
+        &--category {
+            font-size: 18px;
+        }
     }
     .list_element {
         &--category {
