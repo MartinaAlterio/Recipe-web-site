@@ -12,9 +12,9 @@
     @else
     <div class="main_container main_container--ingredient">
         <div class="main_image main_image--ingredient" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredient->image)}}')">
-            <div class="sfondoProva"></div>
+            <div class="cover_image cover_image--ingredient"></div>
             <div class="main_title main_title--ingredient">{{$ingredient->name}}</div>
-            <div class="sfondoProva"></div>
+            <div class="cover_image cover_image--ingredient"></div>
         </div>
     </div>
 

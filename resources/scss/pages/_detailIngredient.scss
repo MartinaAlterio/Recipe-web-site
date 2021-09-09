@@ -10,8 +10,11 @@
 
 .main_image {
     &--ingredient {
+        background-position-y: inherit;
         display: flex;
         flex-direction: column;
+        max-width: 92%;
+        margin-top: 100px;
     }
     &--error {
         height: 350px;
@@ -42,7 +45,7 @@
         position: relative;
         z-index: 1;
         background-color: rgba(0, 0, 0, 0.1);
-        padding: 20px 0;
+        padding: 5px 0;
         margin: 0;
     }
 }
@@ -73,14 +76,17 @@
             border:5px solid darkred;
             border-radius: 5px;
             margin: 50px auto;
+            width: 80%;
         }
     }
 }
 
-.sfondoProva {
-    width: 100%;
-    background-color: $black_transparent;
-    height: inherit;
+.cover_image {
+    &--ingredient {
+        width: 100%;
+        background-color: $black_transparent;
+        height: inherit;
+    }
 }
 .error_message {
     color: darkred;
@@ -96,3 +102,115 @@
     display: flex;
     justify-content: space-around;
 }
+@media only screen and (max-width: 1300px) {
+    .main_container {
+        &--ingredient {
+            max-width: 900px;
+        }
+    }
+    .main_image {
+        &--ingredient {
+            height: 500px;
+        }
+    }
+    .main_title {
+        &--ingredient {
+            padding: 0;
+            font-size: 80px;
+        }
+    }
+    .main_content{
+        &__text {
+            &--ingredient {
+                font-size: 26px;
+                margin: 10px auto;
+            }
+        }
+        &__image {
+            &--ingredient {
+                height: 350px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .main_image {
+        &--ingredient {
+            height: 400px;
+            margin-bottom: 10px;
+        }
+    }
+    .main_title {
+        &--ingredient {
+            font-size: 60px;
+        }
+    }
+    .main_content{
+        &__text {
+            &--ingredient {
+                font-size: 24px;
+            }
+        }
+        &__image {
+            &--ingredient {
+                height: 300px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .main_image {
+        &--ingredient {
+            height: 350px;
+            background-position: right;
+            margin-bottom: 0;
+        }
+    }
+    .main_title {
+        &--ingredient {
+            font-size: 55px;
+        }
+    }
+    .main_content{
+        &__text {
+            &--ingredient {
+                font-size: 22px;
+            }
+        }
+        &__image {
+            &--ingredient {
+                height: 250px;
+                margin: 25px auto;
+
+            }
+        }
+    }
+}
+@media only screen and (max-width: 500px) {
+    .main_image {
+        &--ingredient {
+            height: 250px;
+        }
+    }
+    .main_title {
+        &--ingredient {
+            font-size: 50px;
+        }
+    }
+    .main_content{
+        &__text {
+            &--ingredient {
+                font-size: 18px;
+            }
+        }
+        &__image {
+            &--ingredient {
+                height: 200px;
+            }
+        }
+    }
+}
+
