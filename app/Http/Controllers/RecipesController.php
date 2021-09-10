@@ -308,6 +308,7 @@ class RecipesController extends Controller
      * @param  RecipesRepository  $recipesRepository
      * @param  Request  $request
      * @return RedirectResponse|null
+     * @throws Exception
      */
     public function cudCategories (RecipesRepository $recipesRepository, Request $request): ?RedirectResponse {
         try {
@@ -320,7 +321,7 @@ class RecipesController extends Controller
                     $recipesRepository->updateCategory($request->request->get('name'), $request->request->get('url'), $request->request->get('macro'), $request->request->get('image'), $request->request->get('description'), $request->request->get('id'));
                     $this->addFlashMessage("Categoria modificata con successo.", "success");
                     break;
-                case 'delete' :
+                case 'delete':
                     $recipesRepository->deleteCategory($request->request->get('id'));
                     $this->addFlashMessage("Categoria cancellata con successo.", "success");
                     break;

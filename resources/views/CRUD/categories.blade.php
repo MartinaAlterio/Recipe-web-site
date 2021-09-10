@@ -26,8 +26,8 @@
     <br>
     <div>Categorie esistenti</div>
     <br>
-    <form method="post">
-        @foreach($categories as $category)
+    @foreach($categories as $category)
+        <form method="post">
             <label for="name-{{$category->id}}">Name:
                 <input id="name-{{$category->id}}" type="text" name="name" value="{{$category->name}}">
             </label>
@@ -46,13 +46,13 @@
             <input type="hidden" name="id" value="{{$category->id}}">
             <input type="submit" name="action" value="update">
             <input type="submit" name="action" value="delete">
-            <a href="/database/categorie/ricette/{{$category->url}}">Ricette</a>
             @if($category->macro === 1)
                 <a href="/database/categorie/collegamenti/{{$category->url}}">Collegamenti</a>
+            @else
+                <a href="/database/categorie/ricette/{{$category->url}}">Ricette</a>
             @endif
-            <br>
-            <br>
-        @endforeach
-        @csrf
-    </form>
+            @csrf
+        </form>
+        <br>
+    @endforeach
 @endsection

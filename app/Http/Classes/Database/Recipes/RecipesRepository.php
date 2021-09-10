@@ -218,11 +218,11 @@ class RecipesRepository
     /**
      * modifaca ricetta
      *
-     * @param  string  $name_recipe
-     * @param  string  $url_recipe
-     * @param  string  $subheading_recipe
-     * @param  string  $image_recipe
-     * @param  int  $active_recipe
+     * @param  string|null  $name_recipe
+     * @param  string|null  $url_recipe
+     * @param  string|null  $subheading_recipe
+     * @param  string|null  $image_recipe
+     * @param  int|null  $active_recipe
      * @param  int  $id_recipe
      * @throws Exception
      */
@@ -352,14 +352,14 @@ class RecipesRepository
      * modifica categoria
      *
      * @param  string  $name_category
-     * @param  string  $url_category
-     * @param  int  $macro_category
-     * @param  string  $image_category
-     * @param  string  $description_category
+     * @param  string|null  $url_category
+     * @param  int|null  $macro_category
+     * @param  string|null  $image_category
+     * @param  string|null  $description_category
      * @param  int  $id_category
      * @throws Exception
      */
-    public function updateCategory(string $name_category, string $url_category, int $macro_category, string $image_category, string $description_category, int $id_category){
+    public function updateCategory(string $name_category, ?string $url_category, ?int $macro_category, ?string $image_category, ?string $description_category, int $id_category){
         try {
             DB::update('update categories set name= :name, url= :url, macro= :macro, image= :image, description= :description where id= :id', ['name'=>$name_category, 'url'=>$url_category, 'macro'=>$macro_category, 'image'=>$image_category, 'description'=>$description_category, 'id'=>$id_category]);
         } catch(Exception $e) {
