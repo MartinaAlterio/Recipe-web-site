@@ -225,6 +225,17 @@
             }
         }
     }
+    .title {
+        &--Detailingredients {
+            font-size: 35px;
+            padding: 0 5px;
+        }
+    }
+    .border {
+        &--Detailingredients {
+            left: -65px;
+        }
+    }
     .element {
         &--methods {
             width: 90%;
@@ -253,7 +264,7 @@
             top: -23px;
         }
         &--Detailingredients{
-            left: -76px;
+            left: -56px;
         }
         &--methods {
             top: -24px;
@@ -271,10 +282,14 @@
         &--methods {
             font-size: 38px;
         }
+        &--Detailingredients {
+            font-size: 30px;
+        }
     }
     .list {
         &--Detailingredients {
             font-size: 22px;
+            padding-right: 20px;
         }
     }
     .main_content {

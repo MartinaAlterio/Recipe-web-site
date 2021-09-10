@@ -578,6 +578,13 @@ body {
     flex-basis: unset;
     padding: 30px; }
 
+  .title--Detailingredients {
+    font-size: 35px;
+    padding: 0 5px; }
+
+  .border--Detailingredients {
+    left: -65px; }
+
   .element--methods {
     width: 90%;
     margin: auto; } }
@@ -594,7 +601,7 @@ body {
   .border--detail {
     top: -23px; }
   .border--Detailingredients {
-    left: -76px; }
+    left: -56px; }
   .border--methods {
     top: -24px; }
 
@@ -605,9 +612,12 @@ body {
 
   .title--methods {
     font-size: 38px; }
+  .title--Detailingredients {
+    font-size: 30px; }
 
   .list--Detailingredients {
-    font-size: 22px; }
+    font-size: 22px;
+    padding-right: 20px; }
 
   .main_content--detail {
     margin: 40px 0; }
