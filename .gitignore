@@ -1,6 +1,7 @@
 /node_modules
 /public_html/hot
 /public_html/storage
+/resources/scss/.sass-cache
 /storage/*.key
 /vendor
 .env

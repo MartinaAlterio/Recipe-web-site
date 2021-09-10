@@ -7,18 +7,17 @@
     <form method="post">
         @foreach($ingredients as $ingredient)
             <div class="element">
-                @if(in_array($ingredient->id, $id_ingredients))
-                    <input type="checkbox" name="id[]" value="{{$ingredient->id}}" checked>
-                @else
-                    <input type="checkbox" name="id[]" value="{{$ingredient->id}}">
-                @endif
-                <p>{{$ingredient->name}}</p><br>
+                <input type="checkbox" name="ingredients[{{$ingredient->id}}][checked]" value="{{$ingredient->id}}" {{isset($recipe_ingredients[$ingredient->id]) ? "checked" : ""}}>
+                <p>{{$ingredient->name}}</p>
+                <label for="quantity" class="element">Quantità:
+                    <input type="text" name="ingredients[{{$ingredient->id}}][quantity]" value="{{$recipe_ingredients[$ingredient->id]['quantity'] ?? ""}}">
+                </label><br>
             </div>
         @endforeach
-            <input type="hidden" name="id_recipe" value="{{$recipe->id}}">
-            <input type="hidden" name="url" value="{{$recipe->url}}">
-            <input type="submit" name="action" value="insert">
-            @csrf
+        <input type="hidden" name="id_recipe" value="{{$recipe->id}}">
+        <input type="hidden" name="url" value="{{$recipe->url}}">
+        <input type="submit" name="action" value="insert">
+        @csrf
     </form>
 
 @endsection

@@ -31,10 +31,12 @@ class IngredientsRepository {
      */
     public function getRecipeIngredients(int $id_recipe): array {
         try {
-            $list = DB::select('select id_ingredient from recipe_has_ingredients where id_recipe = :id', ['id'=>$id_recipe]);
+            $list = DB::select('select * from recipe_has_ingredients where id_recipe = :id', ['id'=>$id_recipe]);
             $ingredients = [];
             foreach ($list as $value) {
-                $ingredients[] = $this->getIngredient($value->id_ingredient);
+                $ingredient = $this->getIngredient($value->id_ingredient);
+                $ingredient->quantity = $value->quantity;
+                $ingredients[] = $ingredient;
             }
             return $ingredients;
         } catch(Exception $e) {

@@ -1,8 +1,8 @@
 @extends('template')
 
 @section('content')
-    <div class="main_container">
-        <div class="page_container">
+    <div class="main_container main_container--macro">
+        <div class="page_container page_container--macro">
             @if($macros === null)
                 <div>Al momento non vi sono categorie da mostrare.</div>
             @else

@@ -141,18 +141,20 @@ class RecipesController extends Controller
     public function getRecipeIngredientsDatabase (RecipesRepository $recipesRepository, IngredientsRepository $ingredientsRepository, $urlRecipe) {
         $recipe = null;
         $ingredients = null;
-        $id_ingredients = [];
+        $recipe_ingredients = [];
         try {
             $recipe = $recipesRepository->getRecipeFromUrl($urlRecipe);
             $ingredients = $ingredientsRepository->getAllIngredients();
-            $recipe_ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
-            foreach ($recipe_ingredients as $recipe_ingredient) {
-                $id_ingredients[] = $recipe_ingredient->id;
+            $recipe_ingredients_list = $ingredientsRepository->getRecipeIngredients($recipe->id);
+            foreach ($recipe_ingredients_list as $recipe_ingredient) {
+                $recipe_ingredients[$recipe_ingredient->id] = [
+                    "quantity"=> $recipe_ingredient->quantity
+                ];
             }
         } catch (Exception $e) {
             $this->addFlashMessage("Non è possibile recuperare gli ingredienti associati alla ricetta ({{$urlRecipe}})", "error");
         }
-        return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'id_ingredients'));
+        return $this->render('CRUD.recipe_ingredients', compact('recipe', 'ingredients', 'recipe_ingredients'));
     }
 
     /**
@@ -165,7 +167,16 @@ class RecipesController extends Controller
     public function cuRecipeIngredients(RecipesRepository $recipesRepository, Request $request): RedirectResponse {
         $url = null;
         try {
-            $recipesRepository->insertRecipeIngredients($request->request->get('id_recipe'), $request->request->get('id'));
+            $recipe_ingredients = [];
+            foreach ($request->request->get('ingredients', []) as  $ingredient) {
+                if(isset($ingredient['checked']) && !empty($ingredient['quantity'])) {
+                    $recipe_ingredients[] = [
+                        "id_ingredient" => $ingredient['checked'],
+                        "quantity" => $ingredient['quantity']
+                    ];
+                }
+            }
+            $recipesRepository->insertRecipeIngredients($request->request->get('id_recipe'), $recipe_ingredients);
             $url = $request->request->get('url');
             $this->addFlashMessage("Ingredienti inseriti con successo", "success");
         } catch (Exception $e) {

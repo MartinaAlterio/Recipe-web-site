@@ -1,6 +1,12 @@
 .header_macro {
+    background-color: white;
     .header {
-        max-width: 1020px;
+        max-width: 1300px;
+    }
+}
+.main_container {
+    &--macro {
+        padding: 100px 0 40px 0;
     }
 }
 .main_content {
@@ -21,6 +27,11 @@
                 margin: 0 auto;
             }
         }
+    }
+}
+.page_container {
+    &--macro {
+        max-width: 95%;
     }
 }
 

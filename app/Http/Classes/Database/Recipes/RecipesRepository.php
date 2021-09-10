@@ -255,11 +255,11 @@ class RecipesRepository
      * @param  array  $id_ingredients
      * @throws Exception
      */
-    public function insertRecipeIngredients(int $id_recipe, array $id_ingredients) {
+    public function insertRecipeIngredients(int $id_recipe, array $ingredients) {
         try {
             DB::delete('delete from recipe_has_ingredients where id_recipe= :id', [$id_recipe]);
-            foreach ($id_ingredients as $id_ingredient) {
-                DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient) values(?,?)', [$id_recipe, $id_ingredient]);
+            foreach ($ingredients as $ingredient) {
+                DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient, quantity) values(?,?,?)', [$id_recipe, $ingredient['id_ingredient'], $ingredient['quantity']]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento degli ingredienti della ricetta.");

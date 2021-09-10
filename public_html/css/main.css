@@ -661,8 +661,13 @@ body {
   .main_content__text--methods {
     width: 90%;
     margin: 20px auto; } }
-.header_macro .header {
-  max-width: 1020px; }
+.header_macro {
+  background-color: white; }
+  .header_macro .header {
+    max-width: 1300px; }
+
+.main_container--macro {
+  padding: 100px 0 40px 0; }
 
 .main_content--macro {
   margin: 10px 0 120px 0;
@@ -677,6 +682,9 @@ body {
     box-shadow: 0 0 20px #00000060; }
     .main_content--macro:hover .list--macro, .main_content--macro:hover .list__element {
       margin: 0 auto; }
+
+.page_container--macro {
+  max-width: 95%; }
 
 .list--macro {
   padding: 10px;
