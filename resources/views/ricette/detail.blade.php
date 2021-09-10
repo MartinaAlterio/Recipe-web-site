@@ -35,10 +35,10 @@
                         </div>
                     @endforeach
                 </ul>
-                <div class="border border--end"> </div>
+{{--                <div class="border border--end"> </div>--}}
 
             </div>
-            <div>Collegamenti a ricette e ingredienti.</div>
+{{--            <div>Collegamenti a ricette e ingredienti.</div>--}}
         </div>
         </div>
 

@@ -85,6 +85,7 @@
         }
     }
     &--detail {
+        margin: 60px 0 120px 0;
         &:nth-child(2n) {
             border-right: 1px solid $black;
         }
@@ -190,7 +191,7 @@
     }
     .main_content {
         &--detail {
-            margin: 40px 0;
+            margin: 40px 0 80px 0;
         }
         &__text {
             &--methods {

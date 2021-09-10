@@ -226,7 +226,7 @@ class RecipesRepository
      * @param  int  $id_recipe
      * @throws Exception
      */
-    public function updateRecipe(string $name_recipe, string $url_recipe, string $subheading_recipe, string $image_recipe, int $active_recipe, int $id_recipe) {
+    public function updateRecipe(?string $name_recipe, ?string $url_recipe, ?string $subheading_recipe, ?string $image_recipe, ?int $active_recipe, int $id_recipe) {
         try {
             DB::update('update recipes set name= :name, url= :url, subheading= :subheading, image= :image, active= :active where id = :id', ['name'=>$name_recipe, 'url'=>$url_recipe, 'subheading'=>$subheading_recipe, 'image'=>$image_recipe, 'active'=>$active_recipe, 'id'=>$id_recipe]);
         } catch(Exception $e) {
