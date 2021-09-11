@@ -74,6 +74,7 @@
             text-align: center;
             margin: auto;
             padding: 0 30px;
+
         }
     }
     &__image {
@@ -82,6 +83,7 @@
             flex-basis: 60%;
             height: unset;
             width: unset;
+            min-height: 300px;
         }
     }
     &--detail {

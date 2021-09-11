@@ -30,7 +30,7 @@
                         <div class="main_content main_content--detail">
                             <div class="main_content__text main_content__text--methods">{{$method->method}}</div>
                             @if(isset($method->image))
-                            <div class="main_content__image main_content__image--methods" style="background-image: url('{{asset('storage/images/recipes/detail/'.$method->image)}}')"></div>
+                            <div class="main_content__image main_content__image--methods" style="background-image: url('{{asset('storage/images/recipes/detail/methods/'.$method->image)}}')"></div>
                             @endif
                         </div>
                     @endforeach
