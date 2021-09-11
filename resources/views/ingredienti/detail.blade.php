@@ -21,7 +21,9 @@
     <div class="main_content main_content--ingredient">
         @foreach($ingredient->description as $description)
             <div class="main_content__text main_content__text--ingredient">{{$description->description}}</div>
-            <div class="main_content__image main_content__image--ingredient" style="background-image: url('{{asset('storage/image/ingredients/ingredient'.$description->image)}}')"></div>
+            @if(isset($description->image))
+                <div class="main_content__image main_content__image--ingredient" style="background-image: url('{{asset('storage/images/ingredients/ingredient/'.$description->image)}}')"></div>
+            @endif
         @endforeach
     </div>
 

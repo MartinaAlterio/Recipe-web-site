@@ -119,7 +119,7 @@ class IngredientsRepository {
      * @param  int  $active
      * @throws Exception
      */
-    public function insertIngredient(string $name_ingredient, string $url_ingredient, int $active) {
+    public function insertIngredient(string $name_ingredient, ?string $url_ingredient, int $active) {
         try {
             DB::insert('insert into ingredients (name, url, active) values (?, ?, ?)', [$name_ingredient, $url_ingredient, $active]);
         } catch(Exception $e) {
@@ -135,7 +135,7 @@ class IngredientsRepository {
      * @param  string  $image_ingredient
      * @throws Exception
      */
-    public function InsertIngredientDescription(string $url_ingredient, string $description_ingredient, string $image_ingredient) {
+    public function InsertIngredientDescription(string $url_ingredient, ?string $description_ingredient, ?string $image_ingredient) {
         try {
             DB::insert('insert into ingredient_description (url_ingredient, description, image) values (?, ?,?)', [$url_ingredient, $description_ingredient, $image_ingredient]);
         } catch(Exception $e) {
@@ -152,7 +152,7 @@ class IngredientsRepository {
      * @param  int  $id_ingredient
      * @throws Exception
      */
-    public function updateIngredient(string $name_ingredient, string $url_ingredient, int $active, int $id_ingredient) {
+    public function updateIngredient(string $name_ingredient, ?string $url_ingredient, ?int $active, int $id_ingredient) {
         try {
             DB::update('update ingredients set name = :name,url = :url,active = :active where id = :id', ['name'=>$name_ingredient, 'url'=>$url_ingredient, 'active'=>$active, 'id'=>$id_ingredient]);
         } catch(Exception $e) {
@@ -169,9 +169,9 @@ class IngredientsRepository {
      * @param  int  $id_ingredient
      * @throws Exception
      */
-    public function updateIngredientDescription(string $description_ingredient, string $image_ingredient , string $url_ingredient, int $id_ingredient) {
+    public function updateIngredientDescription(string $description_ingredient, ?string $image_ingredient , ?string $url_ingredient, int $id_ingredient) {
         try {
-            DB::update('update ingredients_description set description = :description, image = :image, url_ingredient = :url where id = :id', ['description'=>$description_ingredient,'image'=>$image_ingredient, 'url'=>$url_ingredient, 'id'=>$id_ingredient]);
+            DB::update('update ingredient_description set description = :description, image = :image, url_ingredient = :url where id = :id', ['description'=>$description_ingredient,'image'=>$image_ingredient, 'url'=>$url_ingredient, 'id'=>$id_ingredient]);
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nella modifica della descrizione dell'ingredeinte.");
         }

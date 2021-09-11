@@ -27,7 +27,6 @@
             <input type="submit" name="action" value="delete">
              @csrf
         </form>
-
     @endforeach
 
 @endsection

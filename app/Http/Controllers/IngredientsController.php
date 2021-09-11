@@ -88,7 +88,7 @@ class IngredientsController extends Controller
      * @param  Request  $request
      * @return RedirectResponse
      */
-    public function cudIngredient (IngredientsRepository $ingredientsRepository, Request $request): RedirectResponse {
+    public function cudIngredient (IngredientsRepository $ingredientsRepository, Request $request): ?RedirectResponse {
         try {
             switch ($request->request->get('action')) {
                 case 'insert':
