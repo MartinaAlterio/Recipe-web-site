@@ -1,0 +1,202 @@
+.header_macro {
+    background-color: white;
+    .header {
+        max-width: 1300px;
+    }
+}
+.main_container {
+    &--macro {
+        padding: 100px 0 40px 0;
+    }
+}
+.main_content {
+    &--macro{
+        margin: 10px 0 120px 0;
+        height: 400px;
+        transition-property: box-shadow;
+        transition-duration: 0.4s;
+        &:nth-child(2n){
+            &:hover {
+                .list{
+                    &__title {
+                        right: 50%;
+                        transform: translate(50%, 0);
+                        left: unset;
+                    }
+                }
+            }
+            .list {
+                &--macro {
+                    margin-left: auto;
+                }
+                &__element {
+                    justify-content: right;
+                }
+                &__title {
+                    transition-property: right, transform;
+                    left: unset;
+                    right: 20px;
+                }
+            }
+        }
+        &:hover {
+            box-shadow: 0 0 20px #00000060;
+            & .list {
+                &__title {
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+        }
+    }
+}
+.page_container {
+    &--macro {
+        max-width: 95%;
+    }
+}
+
+.list {
+    &--macro {
+        padding: 10px;
+        justify-content: space-around;
+        margin: initial;
+    }
+    &__element {
+        display: flex;
+        flex-direction: row;
+        align-self: baseline;
+        width: 100%;
+    }
+    &__title {
+        position: relative;
+        left: 20px;
+        font-size: 30px;
+        padding: 10px;
+        font-weight: 400;
+        background-color: unset;
+        transition-property: left, transform;
+        transition-duration: 0.3s;
+        a {
+            transition-property: opacity;
+            transition-duration: 0.5s;
+            text-decoration-style: unset;
+        }
+        &:hover {
+            a {
+                opacity: 0.5;
+            }
+        }
+    }
+}
+
+.title {
+    &--macro {
+        background-color: $black_transparent;
+        color: $white;
+        position: relative;
+        z-index: 1;
+        top: 250px;
+        font-size: 70px;
+        background-position: center;
+        padding: unset;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .main_content {
+        &--macro {
+            margin: 10px 20px 120px 20px;
+        }
+
+        &:hover {
+
+        }
+    }
+    .container_header {
+        padding: 0;
+    }
+    .header {
+        padding: 10px
+    }
+    .container_header {
+        padding: 0;
+
+        &.header_macro {
+            padding: 0;
+        }
+    }
+
+    .header {
+        .div {
+            margin: auto;
+        }
+    }
+    .logo {
+        font-size: 30px;
+        margin: auto 0;
+    }
+    .buttonContainer {
+        align-items: center;
+        margin: auto 0;
+    }
+    .button {
+        font-size: 17px;
+        text-decoration: none;
+        margin: auto;
+    }
+    .main_content {
+        &--macro {
+            flex-direction: column;
+            height: unset;
+            margin: 10px 20px 80px 20px;
+
+            &:nth-child(2n) {
+                flex-direction: column;
+                height: unset;
+            }
+        }
+
+        &__image {
+            &--macro {
+                height: 400px;
+                width: 100%;
+            }
+        }
+    }
+    .container_list {
+        &--macro {
+            width: unset;
+        }
+    }
+    .list {
+        &__title {
+            font-size: 25px;
+        }
+    }
+    .title {
+        &--macro {
+            font-size: 45px;
+            top: 200px;
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .main_content {
+        &__image {
+            &--macro {
+                height: 300px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .main_content {
+        &__image {
+            &--macro {
+                height: 250px;
+            }
+        }
+    }
+}

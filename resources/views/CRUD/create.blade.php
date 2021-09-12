@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ingredienti nelle ricette</title>
-</head>
-<body>
-    <p>Modifica qui gli ingredienti del tuo sito: <a href="/database/ingredienti">Ingredienti</a></p>
-</body>
-</html>
+@extends('templateDatabase')
+
+@section('content')
+
+    <p>CRUD data <br>
+        <a href="/database/ingredienti">Ingredienti</a> <br>
+        <a href="/database/ricette">Ricette</a> <br>
+        <a href="/database/categorie">Categorie</a> <br>
+    </p>
+
+@endsection

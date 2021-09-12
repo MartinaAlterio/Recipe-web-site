@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,aAAS;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,OAAO,EAAE,GAAG;EACZ,MAAM,EAAE,WAAW;AAErB,SAAK;EACH,OAAO,EAAE,GAAG;AAEd,UAAM;EACJ,OAAO,EAAE,OAAO;EAChB,aAAa,EAAE,GAAG;EAClB,SAAS,EAAE,IAAI;AAEjB,QAAI;EACF,OAAO,EAAE,MAAM;EACf,SAAS,EAAE,IAAI;AAEjB,cAAU;EACR,MAAM,EAAE,SAAS",
+"sources": ["../../resources/scss/components/_form.scss"],
+"names": [],
+"file": "mainData.css"
+}

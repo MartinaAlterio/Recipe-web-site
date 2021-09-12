@@ -1,0 +1,23 @@
+body {
+  .element {
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    height: max-content;
+  }
+  form {
+    padding: 5px;
+  }
+  input {
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  div {
+    padding: 20px 0;
+    font-size: 20px;
+  }
+  .quantity {
+    margin: auto 20px;
+  }
+}

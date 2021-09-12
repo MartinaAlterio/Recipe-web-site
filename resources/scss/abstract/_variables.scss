@@ -1,35 +1,10 @@
 //colori
-$driftwood: #805a3b;
-$driftwood1: #6a5541;
-$driftwood-trasparenza: rgba(128, 90, 59, 0.62);
-$driftwood_tenue: #c1a28c;
-$mushroom: #FEF2E4;
-$onion: #f8a267;
-$onion_tenue: #feddc6;
-$redpepper: #c60000;
-$redpepper_tenue: #d45454;
+$black: #212121;
+$white: #ffffff;
+$white_transparent: rgba(255, 255, 255, 0.57);
+$black_transparent: rgba(21, 21, 21, 0.50);
 
-$background_body: $onion_tenue;
-$background_button: $onion;
-$background_description: $driftwood1;
-$background_header: $onion_tenue;
-$background_ingredients: $mushroom;
-$background_logo: $redpepper_tenue;
-$background_text: $onion_tenue;
-$background_title: $driftwood-trasparenza;
-
-$border_button: $driftwood1;
-$border_logo: $driftwood1;
-$border_ingredients: $driftwood1;
-
-$color_button: $driftwood1;
-$color_description: $mushroom;
-$color_logo: $driftwood1;
-$color_title: $mushroom;
-
-$textdecoration_link_textcontainer: $driftwood1;
-
-
-
-
+//font
+$main_font:'Dosis', sans-serif;
+$serif_font:'Playfair Display', serif;
 

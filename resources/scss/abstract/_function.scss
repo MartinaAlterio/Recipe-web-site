@@ -1,0 +1,11 @@
+@function z-index($value) {
+    @if index($z-index, $value) {
+        @return index($z-index, $value);
+    }
+    @warn '#{$value} non è un valore valido';
+}
+
+$z-index: (
+    'body',
+    'header'
+);
