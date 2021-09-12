@@ -12,5 +12,7 @@ body input {
 body div {
   padding: 20px 0;
   font-size: 20px; }
+body .quantity {
+  margin: auto 20px; }
 
 /*# sourceMappingURL=mainData.css.map */

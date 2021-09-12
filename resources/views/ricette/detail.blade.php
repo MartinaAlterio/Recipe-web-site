@@ -15,9 +15,9 @@
                 <ul class="list list--Detailingredients">
                     @foreach($recipe->ingredients as $ingredient)
                         @if($ingredient->active === 1)
-                            <li> <a href="/ingredienti/{{$ingredient->url}}">{{$ingredient->name}}</a>:{{$ingredient->quantity}} </li>
+                            <li> <a href="/ingredienti/{{$ingredient->url}}">{{$ingredient->name}} </a> : {{$ingredient->quantity}} </li>
                         @else
-                            <li>{{$ingredient->name}}:{{$ingredient->quantity}}</li>
+                            <li>{{$ingredient->name}} : {{$ingredient->quantity}}</li>
                         @endif
                     @endforeach
                 </ul>

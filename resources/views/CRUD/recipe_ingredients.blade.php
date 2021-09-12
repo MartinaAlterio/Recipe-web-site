@@ -9,7 +9,7 @@
             <div class="element">
                 <input type="checkbox" name="ingredients[{{$ingredient->id}}][checked]" value="{{$ingredient->id}}" {{isset($recipe_ingredients[$ingredient->id]) ? "checked" : ""}}>
                 <p>{{$ingredient->name}}</p>
-                <label for="quantity" class="element">Quantità:
+                <label for="quantity" class="quantity">Quantità:
                     <input type="text" name="ingredients[{{$ingredient->id}}][quantity]" value="{{$recipe_ingredients[$ingredient->id]['quantity'] ?? ""}}">
                 </label><br>
             </div>

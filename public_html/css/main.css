@@ -487,7 +487,8 @@ body {
   margin: unset;
   flex-basis: 60%;
   height: unset;
-  width: unset; }
+  width: unset;
+  min-height: 300px; }
 .main_content--detail {
   margin: 60px 0 120px 0; }
   .main_content--detail:nth-child(2n) {
@@ -695,16 +696,25 @@ body {
 .main_content--macro {
   margin: 10px 0 120px 0;
   height: 400px;
-  transition-property: box-shadow, margin;
+  transition-property: box-shadow;
   transition-duration: 0.4s; }
+  .main_content--macro:nth-child(2n):hover .list__title {
+    right: 50%;
+    transform: translate(50%, 0);
+    left: unset; }
   .main_content--macro:nth-child(2n) .list--macro {
     margin-left: auto; }
   .main_content--macro:nth-child(2n) .list__element {
-    margin-left: auto; }
+    justify-content: right; }
+  .main_content--macro:nth-child(2n) .list__title {
+    transition-property: right, transform;
+    left: unset;
+    right: 20px; }
   .main_content--macro:hover {
     box-shadow: 0 0 20px #00000060; }
-    .main_content--macro:hover .list--macro, .main_content--macro:hover .list__element {
-      margin: 0 auto; }
+    .main_content--macro:hover .list__title {
+      left: 50%;
+      transform: translate(-50%, 0); }
 
 .page_container--macro {
   max-width: 95%; }
@@ -716,13 +726,17 @@ body {
 .list__element {
   display: flex;
   flex-direction: row;
-  align-self: baseline; }
+  align-self: baseline;
+  width: 100%; }
 .list__title {
+  position: relative;
+  left: 20px;
   font-size: 30px;
   padding: 10px;
   font-weight: 400;
-  margin: auto;
-  background-color: unset; }
+  background-color: unset;
+  transition-property: left, transform;
+  transition-duration: 0.3s; }
   .list__title a {
     transition-property: opacity;
     transition-duration: 0.5s;
@@ -748,8 +762,8 @@ body {
     padding: 0; }
 
   .header {
-    padding: 10px; } }
-@media only screen and (max-width: 700px) {
+    padding: 10px; }
+
   .container_header {
     padding: 0; }
     .container_header.header_macro {
@@ -779,7 +793,7 @@ body {
       flex-direction: column;
       height: unset; }
   .main_content__image--macro {
-    height: 300px;
+    height: 400px;
     width: 100%; }
 
   .container_list--macro {
@@ -791,6 +805,12 @@ body {
   .title--macro {
     font-size: 45px;
     top: 200px; } }
+@media only screen and (max-width: 600px) {
+  .main_content__image--macro {
+    height: 300px; } }
+@media only screen and (max-width: 500px) {
+  .main_content__image--macro {
+    height: 250px; } }
 .header_home {
   transition-property: background-color;
   transition-duration: 0.5s; }

@@ -1,15 +1,15 @@
 @extends('template')
 
 @section('content')
+
     @if(isset($inactive))
         <div class="main_container main_container--error">
             <div class="main_image main_image--error" style="background-image: url('{{asset('storage/images/ingredients/farine.jpg')}}')">
                 <div class="redirect"> <a href="/ingredienti">INGREDIENTI</a> </div>
             </div>
         </div>
-
-
     @else
+
     <div class="main_container main_container--ingredient">
         <div class="main_image main_image--ingredient" style="background-image: url('{{asset('storage/images/ingredients/'.$ingredient->image)}}')">
             <div class="cover_image cover_image--ingredient"></div>
@@ -28,7 +28,4 @@
     </div>
 
     @endif
-
-
-
 @endsection
