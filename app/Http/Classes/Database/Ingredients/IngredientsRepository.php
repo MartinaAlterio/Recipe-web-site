@@ -4,7 +4,7 @@ namespace App\Http\Classes\Database\Ingredients;
 
 use Illuminate\Support\Facades\DB;
 use Exception;
-use App\Exceptions\MyExceptions;
+use stdClass;
 
 class IngredientsRepository {
 
@@ -51,7 +51,7 @@ class IngredientsRepository {
      * @return mixed|null
      * @throws Exception
      */
-    public function getIngredient(int $id_ingredient): mixed
+    public function getIngredient(int $id_ingredient): ?stdClass
     {
         try {
             $ingredient = (DB::select('select * from ingredients where id = :id', ['id'=>$id_ingredient]));
@@ -68,7 +68,7 @@ class IngredientsRepository {
      * @return mixed|null
      * @throws Exception
      */
-    public function getIngredientFromUrl(string $url_ingredient): mixed
+    public function getIngredientFromUrl(string $url_ingredient): ?stdClass
     {
         try {
             $ingredient = (DB::select('select * from ingredients where url = :url and active = :active', ['url'=>$url_ingredient, 'active'=>1]));
