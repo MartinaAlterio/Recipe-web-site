@@ -98,6 +98,18 @@ class RecipesRepository
     }
 
     /**
+     * @throws Exception
+     */
+    public function getCategoryFromRecipe(int $id_recipe) {
+        try {
+            $id_category = DB::select('select * from recipe_has_categories where id = :id', ['id'=>$id_recipe]);
+            return $this->getCategory($id_category[0]->id_category);
+        } catch (Exception $e) {
+            throw new Exception('SI è verificato un errore nel recupero della categoria associata alla ricetta');
+        }
+    }
+
+    /**
      * recupero tutti i dati di una ricetta
      *
      * @param  string  $url_recipe
@@ -111,7 +123,8 @@ class RecipesRepository
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero della ricetta tramite l'url.");
         }
-}
+    }
+
 
     /**
      * recupero tutti i dati di una ricetta
@@ -197,6 +210,22 @@ class RecipesRepository
         }
     }
 
+    /**
+     * @throws Exception
+     */
+    public function getRecipesLinkedToRecipe(int $id_recipe) : array
+    {
+        try{
+            $recipes = [];
+            $linked_recipes = DB::select('select * from recipe_has_recipes where id_recipe = :id', ['id'=>$id_recipe]);
+            foreach($linked_recipes as $linked_recipe) {
+                $recipes[] = $this->getRecipe($linked_recipe->id_linked_recipe);
+            }
+            return $recipes;
+        } catch (Exception $e) {
+            throw new Exception("Si è verificato un errore nel recupero delle ricette collegate alla ricetta");
+        }
+    }
     /**
      * inserimento ricetta
      *

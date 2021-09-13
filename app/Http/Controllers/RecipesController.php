@@ -74,6 +74,10 @@ class RecipesController extends Controller
             $recipe->category = $recipesRepository->getcategoryFromUrl($url_category);
             $recipe->ingredients = $ingredientsRepository->getRecipeIngredients($recipe->id);
             $recipe->methods = $recipesRepository->getRecipeMethods($recipe->id);
+            $recipe->linked_recipes = $recipesRepository->getRecipesLinkedToRecipe($recipe->id);
+            foreach ($recipe->linked_recipes as $linked_recipe) {
+                $linked_recipe->linked_category_url = $recipesRepository->getCategoryFromRecipe($recipe->id)->url;
+            }
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare la lista delle ricette", "error");
         }

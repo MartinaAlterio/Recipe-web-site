@@ -1,3 +1,4 @@
+
 @extends('template')
 
 @section('content')
@@ -35,15 +36,20 @@
                         </div>
                     @endforeach
                 </ul>
-{{--                <div class="border border--end"> </div>--}}
+                <div class="border border--end"> </div>
 
             </div>
-{{--            <div>Collegamenti a ricette e ingredienti.</div>--}}
+            <div class="linked_recipes">
+                @foreach($recipe->linked_recipes as $linked_recipe)
+                    <a class="linked_recipe" href="/ricette/{{$linked_recipe->linked_category_url}}/{{$linked_recipe->url}}">
+                        <div class="image image--linked_recipe" style="background-image: url('{{asset('storage/images/recipes/detail/'.$linked_recipe->image)}}')"></div>
+                        <div class="title title--linked_recipe">{{$linked_recipe->name}}</div>
+                    </a>
+                @endforeach
+            </div>
         </div>
         </div>
 
-
-
-@endsection
+@endsection*
 
 
