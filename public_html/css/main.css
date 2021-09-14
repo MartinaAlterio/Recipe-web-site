@@ -459,6 +459,8 @@ body {
   width: max-content;
   margin: 30px auto 0 auto;
   padding: 20px 0 0 0; }
+.title--linked_recipe {
+  margin-top: 30px; }
 
 .border--detail {
   top: -35px; }
@@ -505,6 +507,9 @@ body {
   color: #212121; }
   .list a:hover {
     color: rgba(21, 21, 21, 0.5); }
+
+.container_list--linked_recipe {
+  margin: 80px auto; }
 
 .list__image--method {
   width: 50%;
@@ -553,6 +558,8 @@ body {
   .title--Detailingredients {
     font-size: 35px; }
   .title--methods {
+    font-size: 48px; }
+  .title--linked_recipe {
     font-size: 48px; }
 
   .list--Detailingredients {
@@ -617,6 +624,9 @@ body {
     font-size: 38px; }
   .title--Detailingredients {
     font-size: 30px; }
+  .title--linked_recipe {
+    margin-top: 20px;
+    font-size: 30px; }
 
   .list--Detailingredients {
     font-size: 22px;
@@ -660,6 +670,8 @@ body {
     font-weight: normal; }
   .title--Detailingredients {
     font-size: 30px; }
+  .title--linked_recipe {
+    margin-top: unset; }
 
   .list--Detailingredients {
     font-size: 18px; }
@@ -1101,9 +1113,8 @@ body {
 .page_container--category {
   width: 100%;
   max-width: 1300px;
-  position: relative;
-  top: -50px;
-  font-size: 40px; }
+  font-size: 40px;
+  margin: 150px auto; }
 
 .title--category {
   text-decoration: unset;
@@ -1123,7 +1134,9 @@ body {
   width: 100%;
   height: 200px;
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  transition-property: opacity;
+  transition-duration: 0.3s; }
 
 .list__title--category {
   text-align: center;
@@ -1132,11 +1145,13 @@ body {
   font-size: 30px;
   letter-spacing: 3px;
   font-weight: lighter;
-  margin: auto; }
+  margin: auto;
+  transition-property: opacity;
+  transition-duration: 0.3s; }
 
 .container_list--category {
   width: 100%;
-  margin: 200px 0 150px 0;
+  margin: 80px 0 150px 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; }
@@ -1146,8 +1161,10 @@ body {
     margin: auto;
     padding: 0 40px 80px 40px;
     width: 25%; }
+    .container_list--category a:hover .list__image--category {
+      opacity: 0.7; }
     .container_list--category a:hover .list__title--category {
-      color: rgba(21, 21, 21, 0.5); }
+      opacity: 0.7; }
 
 @media only screen and (max-width: 1300px) {
   .main_container--category {
@@ -1164,7 +1181,7 @@ body {
     margin: auto 50px; }
 
   .container_list--category {
-    margin: 150px auto; } }
+    margin: 60px 0; } }
 @media only screen and (max-width: 700px) {
   .main_image--category {
     height: 370px; }
@@ -1176,7 +1193,10 @@ body {
     font-size: 20px; }
 
   .container_list--category {
-    margin: 150px auto; }
+    margin: 40px auto; }
+
+  .page_container--category {
+    margin: 110px auto; }
 
   .list_element--category {
     height: 250px; }
