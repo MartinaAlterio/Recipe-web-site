@@ -98,6 +98,8 @@ class RecipesRepository
     }
 
     /**
+     * @param  int  $id_recipe
+     * @return mixed|null
      * @throws Exception
      */
     public function getCategoryFromRecipe(int $id_recipe) {
@@ -211,6 +213,8 @@ class RecipesRepository
     }
 
     /**
+     * @param  int  $id_recipe
+     * @return array
      * @throws Exception
      */
     public function getRecipesLinkedToRecipe(int $id_recipe) : array
