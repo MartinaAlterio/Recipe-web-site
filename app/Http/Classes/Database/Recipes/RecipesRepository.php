@@ -102,8 +102,8 @@ class RecipesRepository
      */
     public function getCategoryFromRecipe(int $id_recipe) {
         try {
-            $id_category = DB::select('select * from recipe_has_categories where id = :id', ['id'=>$id_recipe]);
-            return $this->getCategory($id_category[0]->id_category);
+            $category = DB::select('select * from recipe_has_categories where id_recipe = :id', ['id'=>$id_recipe]);
+            return $this->getCategory($category[0]->id_category);
         } catch (Exception $e) {
             throw new Exception('SI è verificato un errore nel recupero della categoria associata alla ricetta');
         }
