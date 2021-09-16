@@ -1255,7 +1255,11 @@ body {
   .list__image--category {
     height: 130px; }
   .list__title--category {
-    font-size: 23px; } }
+    font-size: 23px; }
+
+  .container_list--category a {
+    margin: 20px auto 40px auto;
+    padding: 0; } }
 .main_container--ingredients {
   padding: 100px 0 40px 0; }
 

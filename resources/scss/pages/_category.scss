@@ -221,5 +221,13 @@
             }
         }
     }
+    .container_list {
+        &--category {
+            & a {
+                margin: 20px auto 40px auto;
+                padding: 0;
+            }
+        }
+    }
 }
 
