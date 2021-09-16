@@ -112,10 +112,6 @@
         &--macro {
             margin: 10px 20px 120px 20px;
         }
-
-        &:hover {
-
-        }
     }
     .container_header {
         padding: 0;
@@ -181,7 +177,35 @@
     .title {
         &--macro {
             font-size: 45px;
-            top: 200px;
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .main_content {
+        &--macro {
+            pointer-events: none;
+            &:nth-child(2n) {
+                pointer-events: none;
+                .list{
+                    &__title{
+                        &--macro{
+                            right:unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .list{
+        &__title {
+            &--macro {
+                margin: auto;
+                left:unset;
+                & a {
+                    pointer-events: auto;
+                }
+            }
         }
     }
 }
@@ -191,6 +215,11 @@
             &--macro {
                 height: 300px;
             }
+        }
+    }
+    .title {
+        &--macro {
+            top: 170px;
         }
     }
 }

@@ -335,12 +335,19 @@
             font-size: 18px;
         }
         &.over_header {
+            height: 76px;
             .logo {
                 font-size: 30px;
             }
         }
     }
-
+    .main_content {
+        &__image{
+            &--home{
+                height: 200px;
+            }
+        }
+    }
     .main_title {
         &--home {
             font-size: 30px;

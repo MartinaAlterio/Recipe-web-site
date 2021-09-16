@@ -204,6 +204,7 @@
         &__text {
             &--ingredient {
                 font-size: 18px;
+                width: 85%;
             }
         }
         &__image {
@@ -211,6 +212,18 @@
                 height: 200px;
             }
         }
+    }
+    .header {
+        padding: 20px 10px 10px 10px;
+        box-shadow: 1px 1px 1px rgba(21, 21, 21, 0.11);
+    }
+    .buttonContainer {
+        margin: 5px 0 22px 10px;
+    }
+}
+@media only screen and(max-width: 420px) {
+    .buttonContainer {
+        margin: auto 0 auto 10px;
     }
 }
 
