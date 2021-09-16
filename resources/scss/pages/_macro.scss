@@ -184,14 +184,25 @@
 @media only screen and (max-width: 750px) {
     .main_content {
         &--macro {
-            pointer-events: none;
-            &:nth-child(2n) {
-                pointer-events: none;
-                .list{
-                    &__title{
-                        &--macro{
-                            right:unset;
+            &:nth-child(2n){
+                .list {
+                    &__title {
+                        &--macro {
+                            right: 50%;
+                            transform: translate(50%, 0);
+                            left: unset;
+                            margin: inherit;
                         }
+                    }
+                }
+            }
+            box-shadow: 0 0 20px #00000060;
+            & .list {
+                &__title {
+                    &--macro {
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                        margin: inherit;
                     }
                 }
             }
