@@ -16,15 +16,6 @@
         transition-property: box-shadow;
         transition-duration: 0.4s;
         &:nth-child(2n){
-            &:hover {
-                .list{
-                    &__title {
-                        right: 50%;
-                        transform: translate(50%, 0);
-                        left: unset;
-                    }
-                }
-            }
             .list {
                 &--macro {
                     margin-left: auto;
@@ -38,15 +29,6 @@
                         left: unset;
                         right: 20px;
                     }
-                }
-            }
-        }
-        &:hover {
-            box-shadow: 0 0 20px #00000060;
-            & .list {
-                &__title {
-                    left: 50%;
-                    transform: translate(-50%, 0);
                 }
             }
         }
@@ -181,45 +163,57 @@
     }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (min-width: 750px) {
     .main_content {
         &--macro {
-            &:nth-child(2n){
-                .list {
+            &:hover {
+                box-shadow: 0 0 20px #00000060;
+                & .list {
                     &__title {
-                        &--macro {
+                        left: 50%;
+                        transform: translate(-50%, 0);
+                    }
+                }
+            }
+            &:nth-child(2n){
+                &:hover {
+                    .list{
+                        &__title {
                             right: 50%;
                             transform: translate(50%, 0);
                             left: unset;
-                            margin: inherit;
                         }
                     }
-                }
-            }
-            box-shadow: 0 0 20px #00000060;
-            & .list {
-                &__title {
-                    &--macro {
-                        left: 50%;
-                        transform: translate(-50%, 0);
-                        margin: inherit;
-                    }
-                }
-            }
-        }
-    }
-    .list{
-        &__title {
-            &--macro {
-                margin: auto;
-                left:unset;
-                & a {
-                    pointer-events: auto;
                 }
             }
         }
     }
 }
+
+@media only screen and (max-width: 750px){
+    .main_content {
+        &--macro {
+            &:nth-child(2n) {
+                .list {
+                    &__title {
+                        &--macro {
+                            right: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .list {
+        &__title {
+            &--macro {
+                margin: auto;
+                left: unset;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .main_content {
         &__image {

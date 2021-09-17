@@ -207,6 +207,8 @@
     .list_element {
         &--category {
             height: 200px ;
+            max-width: 250px;
+            min-width: 250px;
         }
     }
     .list {
@@ -226,6 +228,7 @@
             & a {
                 margin: 20px auto 40px auto;
                 padding: 0;
+                width: 20%;
             }
         }
     }
