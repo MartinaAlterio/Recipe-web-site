@@ -24,7 +24,7 @@
             @endforeach
         </div>
     @endif
-@yield('content')
+    @yield('content')
 
 <script>
     let flash_messages = document.querySelectorAll('.flash_message');

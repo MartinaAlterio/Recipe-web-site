@@ -1,3 +1,4 @@
+
 @extends('template')
 
 @section('content')
@@ -35,14 +36,23 @@
                         </div>
                     @endforeach
                 </ul>
-{{--                <div class="border border--end"> </div>--}}
-
+                @if(!empty($recipe->linked_recipes))
+                    <div class="border border--end"> </div>
+                    <p class="title title--linked_recipe">Scopri altre ricette simili...</p>
+                    <ul class="container_list container_list--category">
+                        @foreach($recipe->linked_recipes as $linked_recipe)
+                            <a href="/ricette/{{$linked_recipe->linked_category_url}}/{{$linked_recipe->url}}">
+                                <div class="list_element list_element--category">
+                                    <div class="list__image list__image--category" style="background-image: url('{{asset('storage/images/recipes/detail/'.$linked_recipe->image)}}')"></div>
+                                    <div class="list__title list__title--category">{{strtoupper($linked_recipe->name)}}</div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
-{{--            <div>Collegamenti a ricette e ingredienti.</div>--}}
         </div>
-        </div>
-
-
+    </div>
 
 @endsection
 

@@ -189,6 +189,7 @@
         &--ingredients {
             font-size: 18px;
             padding: 0 20px;
+            margin: 40px auto 60px auto;
         }
     }
     .main_content {
@@ -204,6 +205,8 @@
         &__text {
             &--ingredients {
                 font-size: 18px;
+                width: 90%;
+                margin: auto;
             }
         }
     }

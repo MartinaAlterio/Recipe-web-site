@@ -459,6 +459,8 @@ body {
   width: max-content;
   margin: 30px auto 0 auto;
   padding: 20px 0 0 0; }
+.title--linked_recipe {
+  margin-top: 30px; }
 
 .border--detail {
   top: -35px; }
@@ -505,6 +507,9 @@ body {
   color: #212121; }
   .list a:hover {
     color: rgba(21, 21, 21, 0.5); }
+
+.container_list--linked_recipe {
+  margin: 80px auto; }
 
 .list__image--method {
   width: 50%;
@@ -554,6 +559,8 @@ body {
     font-size: 35px; }
   .title--methods {
     font-size: 48px; }
+  .title--linked_recipe {
+    font-size: 48px; }
 
   .list--Detailingredients {
     font-size: 24px; }
@@ -590,7 +597,10 @@ body {
 
   .element--methods {
     width: 90%;
-    margin: auto; } }
+    margin: auto; }
+
+  .container_footer {
+    max-height: 80px; } }
 @media only screen and (max-width: 750px) {
   .main_container--detail {
     max-width: 550px; }
@@ -617,6 +627,9 @@ body {
     font-size: 38px; }
   .title--Detailingredients {
     font-size: 30px; }
+  .title--linked_recipe {
+    margin-top: 20px;
+    font-size: 30px; }
 
   .list--Detailingredients {
     font-size: 22px;
@@ -628,7 +641,10 @@ body {
     font-size: 20px; }
 
   .element--Detailingredients {
-    margin: 0 auto 0 0; } }
+    margin: 0 auto 0 0; }
+
+  .container_footer {
+    max-height: 60px; } }
 @media only screen and (max-width: 600px) {
   .main_container--detail {
     max-width: 95%; }
@@ -660,6 +676,8 @@ body {
     font-weight: normal; }
   .title--Detailingredients {
     font-size: 30px; }
+  .title--linked_recipe {
+    margin-top: unset; }
 
   .list--Detailingredients {
     font-size: 18px; }
@@ -674,17 +692,25 @@ body {
     margin-top: 0; }
 
   .main_content__image--methods {
-    height: 200px; }
+    height: 200px;
+    min-height: 200px;
+    margin-bottom: 30px; }
   .main_content__text--methods {
-    width: 90%;
-    margin: 20px auto; }
+    margin: 0;
+    padding: 0; }
 
   .element--Detailingredients {
     max-width: 90%;
     min-height: 250px; }
 
   .list--Detailingredients {
-    padding: 0; } }
+    padding: 0; }
+
+  .border--end {
+    margin-top: 30px; }
+
+  .container_footer {
+    max-height: 50px; } }
 .header_macro {
   background-color: white; }
   .header_macro .header {
@@ -698,23 +724,14 @@ body {
   height: 400px;
   transition-property: box-shadow;
   transition-duration: 0.4s; }
-  .main_content--macro:nth-child(2n):hover .list__title {
-    right: 50%;
-    transform: translate(50%, 0);
-    left: unset; }
   .main_content--macro:nth-child(2n) .list--macro {
     margin-left: auto; }
   .main_content--macro:nth-child(2n) .list__element {
     justify-content: right; }
-  .main_content--macro:nth-child(2n) .list__title {
+  .main_content--macro:nth-child(2n) .list__title--macro {
     transition-property: right, transform;
     left: unset;
     right: 20px; }
-  .main_content--macro:hover {
-    box-shadow: 0 0 20px #00000060; }
-    .main_content--macro:hover .list__title {
-      left: 50%;
-      transform: translate(-50%, 0); }
 
 .page_container--macro {
   max-width: 95%; }
@@ -728,7 +745,7 @@ body {
   flex-direction: row;
   align-self: baseline;
   width: 100%; }
-.list__title {
+.list__title--macro {
   position: relative;
   left: 20px;
   font-size: 30px;
@@ -737,11 +754,11 @@ body {
   background-color: unset;
   transition-property: left, transform;
   transition-duration: 0.3s; }
-  .list__title a {
+  .list__title--macro a {
     transition-property: opacity;
     transition-duration: 0.5s;
     text-decoration-style: unset; }
-  .list__title:hover a {
+  .list__title--macro:hover a {
     opacity: 0.5; }
 
 .title--macro {
@@ -803,11 +820,30 @@ body {
     font-size: 25px; }
 
   .title--macro {
-    font-size: 45px;
-    top: 200px; } }
+    font-size: 45px; } }
+@media only screen and (min-width: 750px) {
+  .main_content--macro:hover {
+    box-shadow: 0 0 20px #00000060; }
+    .main_content--macro:hover .list__title {
+      left: 50%;
+      transform: translate(-50%, 0); }
+  .main_content--macro:nth-child(2n):hover .list__title {
+    right: 50%;
+    transform: translate(50%, 0);
+    left: unset; } }
+@media only screen and (max-width: 750px) {
+  .main_content--macro:nth-child(2n) .list__title--macro {
+    right: unset; }
+
+  .list__title--macro {
+    margin: auto;
+    left: unset; } }
 @media only screen and (max-width: 600px) {
   .main_content__image--macro {
-    height: 300px; } }
+    height: 300px; }
+
+  .title--macro {
+    top: 170px; } }
 @media only screen and (max-width: 500px) {
   .main_content__image--macro {
     height: 250px; } }
@@ -1023,8 +1059,13 @@ body {
       font-size: 30px; }
     .header_home .button {
       font-size: 18px; }
-    .header_home.over_header .logo {
-      font-size: 30px; }
+    .header_home.over_header {
+      height: 76px; }
+      .header_home.over_header .logo {
+        font-size: 30px; }
+
+  .main_content__image--home {
+    height: 200px; }
 
   .main_title--home {
     font-size: 30px;
@@ -1101,9 +1142,8 @@ body {
 .page_container--category {
   width: 100%;
   max-width: 1300px;
-  position: relative;
-  top: -50px;
-  font-size: 40px; }
+  font-size: 40px;
+  margin: 150px auto; }
 
 .title--category {
   text-decoration: unset;
@@ -1123,7 +1163,9 @@ body {
   width: 100%;
   height: 200px;
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  transition-property: opacity;
+  transition-duration: 0.3s; }
 
 .list__title--category {
   text-align: center;
@@ -1131,11 +1173,14 @@ body {
   text-decoration: unset;
   font-size: 30px;
   letter-spacing: 3px;
-  font-weight: lighter; }
+  font-weight: lighter;
+  margin: auto;
+  transition-property: opacity;
+  transition-duration: 0.3s; }
 
 .container_list--category {
   width: 100%;
-  margin: 200px 0 150px 0;
+  margin: 80px 0 150px 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap; }
@@ -1145,8 +1190,10 @@ body {
     margin: auto;
     padding: 0 40px 80px 40px;
     width: 25%; }
+    .container_list--category a:hover .list__image--category {
+      opacity: 0.7; }
     .container_list--category a:hover .list__title--category {
-      color: rgba(21, 21, 21, 0.5); }
+      opacity: 0.7; }
 
 @media only screen and (max-width: 1300px) {
   .main_container--category {
@@ -1163,7 +1210,7 @@ body {
     margin: auto 50px; }
 
   .container_list--category {
-    margin: 150px auto; } }
+    margin: 60px 0; } }
 @media only screen and (max-width: 700px) {
   .main_image--category {
     height: 370px; }
@@ -1175,7 +1222,10 @@ body {
     font-size: 20px; }
 
   .container_list--category {
-    margin: 150px auto; }
+    margin: 40px auto; }
+
+  .page_container--category {
+    margin: 110px auto; }
 
   .list_element--category {
     height: 250px; }
@@ -1195,12 +1245,19 @@ body {
     font-size: 18px; }
 
   .list_element--category {
-    height: 200px; }
+    height: 200px;
+    max-width: 250px;
+    min-width: 250px; }
 
   .list__image--category {
     height: 130px; }
   .list__title--category {
-    font-size: 23px; } }
+    font-size: 23px; }
+
+  .container_list--category a {
+    margin: 20px auto 40px auto;
+    padding: 0;
+    width: 20%; } }
 .main_container--ingredients {
   padding: 100px 0 40px 0; }
 
@@ -1316,7 +1373,8 @@ body {
 
   .main_text--ingredients {
     font-size: 18px;
-    padding: 0 20px; }
+    padding: 0 20px;
+    margin: 40px auto 60px auto; }
 
   .main_content--ingredients {
     margin: 10px auto 50px auto; }
@@ -1324,7 +1382,9 @@ body {
     height: 250px;
     background-position: center; }
   .main_content__text--ingredients {
-    font-size: 18px; }
+    font-size: 18px;
+    width: 90%;
+    margin: auto; }
 
   .title--ingredients {
     font-size: 35px;
@@ -1459,8 +1519,19 @@ body {
     font-size: 50px; }
 
   .main_content__text--ingredient {
-    font-size: 18px; }
+    font-size: 18px;
+    width: 85%; }
   .main_content__image--ingredient {
-    height: 200px; } }
+    height: 200px; }
+
+  .header {
+    padding: 20px 10px 10px 10px;
+    box-shadow: 1px 1px 1px rgba(21, 21, 21, 0.11); }
+
+  .buttonContainer {
+    margin: 5px 0 22px 10px; } }
+@media only screen and (max-width: 420px) {
+  .buttonContainer {
+    margin: auto 0 auto 10px; } }
 
 /*# sourceMappingURL=main.css.map */

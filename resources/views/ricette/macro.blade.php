@@ -18,7 +18,7 @@
                                 @else
                                     @foreach($macro->categories as $category)
                                         <div class="list__element">
-                                            <div class="list__title"><a href="/ricette/{{$category->url}}">{{$category->name}}</a></div>
+                                            <div class="list__title list__title--macro"><a href="/ricette/{{$category->url}}">{{$category->name}}</a></div>
                                         </div>
                                     @endforeach
                                 @endif

@@ -39,9 +39,8 @@
     &--category {
         width: 100%;
         max-width: 1300px;
-        position: relative;
-        top: -50px;
         font-size: 40px;
+        margin: 150px auto;
     }
 }
 
@@ -69,6 +68,8 @@
         height: 200px;
         background-size: cover;
         background-position: center;
+        transition-property: opacity;
+        transition-duration: 0.3s;
     }
 }
 .list__title{
@@ -79,12 +80,15 @@
         font-size: 30px;
         letter-spacing: 3px;
         font-weight: lighter;
+        margin: auto;
+        transition-property: opacity;
+        transition-duration: 0.3s;
     }
 }
 .container_list {
     &--category{
         width: 100%;
-        margin: 200px 0 150px 0;
+        margin: 80px 0 150px 0;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -96,9 +100,14 @@
             width: 25%;
         &:hover {
             .list {
+                &__image {
+                    &--category {
+                        opacity: 0.7;
+                    }
+                }
                 &__title {
                     &--category {
-                        color: $black_transparent;
+                        opacity: 0.7;
                     }
                 }
             }
@@ -130,7 +139,7 @@
     }
     .container_list {
         &--category {
-            margin: 150px auto;
+            margin: 60px 0;
         }
     }
 }
@@ -152,9 +161,15 @@
     }
     .container_list {
         &--category {
-            margin: 150px auto;
+            margin: 40px auto;
         }
     }
+    .page_container {
+        &--category {
+            margin: 110px auto;
+        }
+    }
+
     .list_element {
         &--category {
             height: 250px ;
@@ -192,6 +207,8 @@
     .list_element {
         &--category {
             height: 200px ;
+            max-width: 250px;
+            min-width: 250px;
         }
     }
     .list {
@@ -206,6 +223,14 @@
             }
         }
     }
-
+    .container_list {
+        &--category {
+            & a {
+                margin: 20px auto 40px auto;
+                padding: 0;
+                width: 20%;
+            }
+        }
+    }
 }
 
