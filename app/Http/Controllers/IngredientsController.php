@@ -93,15 +93,15 @@ class IngredientsController extends Controller
             switch ($request->request->get('action')) {
                 case 'insert':
                     $ingredientsRepository->insertIngredient($request->request->get('name'), $request->request->get('url'), $request->request->get('active'));
-                    $this->addFlashMessage("Ingrediente inserito con successo.", "successo");
+                    $this->addFlashMessage("Ingrediente inserito con successo.", "success");
                     break;
                 case 'update':
                     $ingredientsRepository->updateIngredient($request->request->get('name'), $request->request->get('url'), $request->request->get('active'), $request->request->get('id'));
-                    $this->addFlashMessage("Ingrediente modificato con successo.", "successo");
+                    $this->addFlashMessage("Ingrediente modificato con successo.", "success");
                     break;
                 case 'delete' :
                     $ingredientsRepository->deleteIngredient($request->request->get('id'));
-                    $this->addFlashMessage("Ingrediente cancellato con successo.", "successo");
+                    $this->addFlashMessage("Ingrediente cancellato con successo.", "success");
                     break;
                 default :
                     $this->addFlashMessage("Azione non valida.", "error");
@@ -143,15 +143,15 @@ class IngredientsController extends Controller
             switch ($request->request->get('action')) {
                 case 'insert':
                     $ingredientsRepository->insertIngredientDescription($url, $request->request->get('description'), $request->request->get('image'));
-                    $this->addFlashMessage("Descrizione ingrediente inserita con successo.", "successo");
+                    $this->addFlashMessage("Descrizione ingrediente inserita con successo.", "success");
                     break;
                 case 'update':
                     $ingredientsRepository->updateIngredientDescription($request->request->get('description'), $request->request->get('image'), $url, $request->request->get('id'));
-                    $this->addFlashMessage("Descrizione ingrediente modificata con successo.", "successo");
+                    $this->addFlashMessage("Descrizione ingrediente modificata con successo.", "success");
                     break;
                 case 'delete' :
                     $ingredientsRepository->deleteIngredientDescription($request->request->get('id'));
-                    $this->addFlashMessage("Descrizione ingrediente cancellata con successo.", "successo");
+                    $this->addFlashMessage("Descrizione ingrediente cancellata con successo.", "success");
                     break;
                 default :
                     $this->addFlashMessage("Azione non valida.", "error");

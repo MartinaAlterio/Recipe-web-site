@@ -419,6 +419,7 @@ class RecipesController extends Controller
         try {
             $recipesRepository->insertMacroCategories($request->request->get('id_macro'), $request->request->get('id'));
             $url = $request->request->get('url');
+            $this->addFlashMessage("Categorie associate modificate con successo.", "success");
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile aggiungere i collegamenti.", "error");
         }

@@ -285,7 +285,7 @@ class RecipesRepository
      * inserimento ingredienti di una ricetta
      *
      * @param  int  $id_recipe
-     * @param  array  $id_ingredients
+     * @param  array  $ingredients
      * @throws Exception
      */
     public function insertRecipeIngredients(int $id_recipe, array $ingredients) {
