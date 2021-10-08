@@ -29,28 +29,32 @@ class IngredientsContent{
     /**
      * @return array
      */
-    public function getUpTitle() {
+    public function getUpTitle(): array
+    {
         return $this->upTitle;
     }
 
     /**
      * @return array
      */
-    public function getUnderTitle() {
+    public function getUnderTitle(): array
+    {
         return $this->underTitle;
     }
 
     /**
      * @return array
      */
-    public function getDescription() {
+    public function getDescription(): array
+    {
         return $this->description;
     }
 
     /**
      * @return array
      */
-    public function getTitle() {
+    public function getTitle(): array
+    {
         return $this->title;
     }
 
