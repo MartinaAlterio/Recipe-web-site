@@ -12,6 +12,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+use App\Models\Ingredient;
+
 class IngredientsController extends Controller
 {
 
@@ -20,14 +22,14 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param  HomeTextRepository  $homeTextRepository
+     * @param  Ingredient  $ingredient
      * @return Application|Factory|View
-     * @throws Exception
      */
-    public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
+    public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository, Ingredient $ingredient){
         $list = [];
         $ingredients = new IngredientsContent();
         try {
-            $list = $ingredientsRepository->getActiveIngredients();
+            $list = $ingredientsRepository->getActiveIngredients($ingredient);
             $ingredients->setUpTitle($homeTextRepository->getContent('upTitle','ingredients'));
             $ingredients->setUnderTitle($homeTextRepository->getContent('underTitle','ingredients'));
             $ingredients->setDescription($homeTextRepository->getContent('description', 'ingredients'));
@@ -159,5 +161,10 @@ class IngredientsController extends Controller
             $this->addFlashMessage($e->getMessage(), 'error');
         }
         return redirect()->route('databaseDescription', ['url' => $url]);
+    }
+
+
+    public function testModel() {
+
     }
 }

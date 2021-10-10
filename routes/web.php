@@ -74,6 +74,4 @@ Route::prefix('database')->group(function () {
 
 
 
-Route::get('/MartinaAlterio', function () {
-    return view('martina');
-});
+Route::get('/MartinaAlterio', [IngredientsController::class, 'testModel']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Classes\Database\Ingredients;
 
+use App\Models\Ingredient;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use stdClass;
@@ -84,10 +85,11 @@ class IngredientsRepository {
      * @return array|null
      * @throws Exception
      */
-    public function getActiveIngredients(): ?array
+    public function getActiveIngredients(Ingredient $ingredient): ?object
     {
         try {
-            $list = DB::select('select * from ingredients where active = :active', ['active'=>1]);
+            //$list = DB::select('select * from ingredients where active = :active', ['active'=>1]);
+            $list = $ingredient->active();
             return $list ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
@@ -131,8 +133,8 @@ class IngredientsRepository {
      *inserimento descrizione ingrediente attivo
      *
      * @param  string  $url_ingredient
-     * @param  string  $description_ingredient
-     * @param  string  $image_ingredient
+     * @param  string|null  $description_ingredient
+     * @param  string|null  $image_ingredient
      * @throws Exception
      */
     public function InsertIngredientDescription(string $url_ingredient, ?string $description_ingredient, ?string $image_ingredient) {
@@ -142,7 +144,7 @@ class IngredientsRepository {
             throw new Exception("Si è veririficato un errore nell'inserimento del dettaglio dell'ingrediente.");
         }
     }
-
+git
     /**
      * modifica ingrediente
      *
