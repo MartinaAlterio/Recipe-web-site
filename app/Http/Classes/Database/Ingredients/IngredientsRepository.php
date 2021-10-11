@@ -3,6 +3,7 @@
 namespace App\Http\Classes\Database\Ingredients;
 
 use App\Models\Ingredient;
+use App\Models\IngredientDescription;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use stdClass;
@@ -69,11 +70,11 @@ class IngredientsRepository {
      * @return mixed|null
      * @throws Exception
      */
-    public function getIngredientFromUrl(string $url_ingredient): ?stdClass
+    public function getIngredientFromUrl(string $url_ingredient, Ingredient $ingredient): ?object
     {
         try {
-            $ingredient = (DB::select('select * from ingredients where url = :url and active = :active', ['url'=>$url_ingredient, 'active'=>1]));
-            return $ingredient[0] ?? null;
+            $ingredient = $ingredient->getActiveByUrl($url_ingredient);
+            return $ingredient ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dell'ingrediente tramite url.");
         }
@@ -100,13 +101,14 @@ class IngredientsRepository {
      *recupero le descrizioni di un ingrediente
      *
      * @param  string  $url_ingredient
+     * @param  IngredientDescription  $ingredientDescription
      * @return array|null
      * @throws Exception
      */
-    public function getIngredientDescription(string $url_ingredient): ?array
+    public function getIngredientDescription(string $url_ingredient, IngredientDescription $ingredientDescription)
     {
         try {
-            $description = DB::select('select * from ingredient_description where url_ingredient = :name', ['name'=>$url_ingredient]);
+            $description = $ingredientDescription->activeDescription($url_ingredient);
             return $description ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
@@ -117,7 +119,7 @@ class IngredientsRepository {
      *inserimento ingrediente
      *
      * @param  string  $name_ingredient
-     * @param  string  $url_ingredient
+     * @param  string|null  $url_ingredient
      * @param  int  $active
      * @throws Exception
      */
@@ -144,13 +146,13 @@ class IngredientsRepository {
             throw new Exception("Si è veririficato un errore nell'inserimento del dettaglio dell'ingrediente.");
         }
     }
-git
+
     /**
      * modifica ingrediente
      *
      * @param  string  $name_ingredient
-     * @param  string  $url_ingredient
-     * @param  int  $active
+     * @param  string|null  $url_ingredient
+     * @param  int|null  $active
      * @param  int  $id_ingredient
      * @throws Exception
      */

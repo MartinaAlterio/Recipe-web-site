@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Classes\Database\Texts\HomeTextRepository;
 use App\Http\Classes\Database\Ingredients\IngredientsRepository;
+use App\Models\IngredientDescription;
 use App\Models\IngredientsContent;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -45,15 +46,17 @@ class IngredientsController extends Controller
      *
      * @param  IngredientsRepository  $ingredientsRepository
      * @param $url
+     * @param  Ingredient  $ingredientModel
+     * @param  IngredientDescription  $ingredientDescription
      * @return Application|Factory|View
-     * @throws Exception
      */
-    public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
+    public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url, Ingredient $ingredientModel, IngredientDescription $ingredientDescription) {
         $ingredient = null;
+        $ingredient_description = null;
         try {
-            $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
+            $ingredient = $ingredientsRepository->getIngredientFromUrl($url, $ingredientModel);
             if (!empty($ingredient)) {
-                $ingredient->description = $ingredientsRepository->getIngredientDescription($url);
+                $ingredient_description = $ingredientsRepository->getIngredientDescription($url, $ingredientDescription);
             } else {
                 $inactive = true;
                 $this->addFlashMessage("Ingrediente non attivo.", "error");
@@ -62,7 +65,7 @@ class IngredientsController extends Controller
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare l'ingrediente selezionato.", 'error');
         }
-        return $this->render('ingredienti.detail', compact('ingredient'));
+        return $this->render('ingredienti.detail', compact('ingredient', 'ingredient_description'));
     }
 
     /**
@@ -164,7 +167,10 @@ class IngredientsController extends Controller
     }
 
 
-    public function testModel() {
+    public function testModel(IngredientDescription $ingredientDescription, IngredientsRepository $ingredientsRepository, Ingredient $ingredientModel) {
+        $ingredient = $ingredientsRepository->getIngredientFromUrl('farina', $ingredientModel);
+        $ingredient_description = $ingredientsRepository->getIngredientDescription('farina', $ingredientDescription);
+        return ($ingredient);
 
     }
 }

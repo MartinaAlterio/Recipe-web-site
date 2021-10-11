@@ -12,4 +12,11 @@ class Ingredient extends Model
                     ->orderBy('name')
                     ->get();
     }
+
+    public function getActiveByUrl(string $url) {
+        return $this->where('active', 1)
+                    ->where('url', $url)
+                    ->get()
+                    ->first();
+    }
 }
