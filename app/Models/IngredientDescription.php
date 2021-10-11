@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngredientDescription extends Model
 {
-    public function activeDescription(string $url) {
-        return $this->where('url_ingredient', $url)
+    public static function activeDescription(string $url) {
+        return IngredientDescription::where('url_ingredient', $url)
                     ->get();
+    }
+
+    public function ingredient() {
+        return $this->belongsTo(Ingredient::class);
     }
 }

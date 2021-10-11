@@ -26,11 +26,11 @@ class IngredientsController extends Controller
      * @param  Ingredient  $ingredient
      * @return Application|Factory|View
      */
-    public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository, Ingredient $ingredient){
+    public function getIngredients(IngredientsRepository $ingredientsRepository,HomeTextRepository $homeTextRepository){
         $list = [];
         $ingredients = new IngredientsContent();
         try {
-            $list = $ingredientsRepository->getActiveIngredients($ingredient);
+            $list = $ingredientsRepository->getActiveIngredients();
             $ingredients->setUpTitle($homeTextRepository->getContent('upTitle','ingredients'));
             $ingredients->setUnderTitle($homeTextRepository->getContent('underTitle','ingredients'));
             $ingredients->setDescription($homeTextRepository->getContent('description', 'ingredients'));
@@ -50,13 +50,13 @@ class IngredientsController extends Controller
      * @param  IngredientDescription  $ingredientDescription
      * @return Application|Factory|View
      */
-    public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url, Ingredient $ingredientModel, IngredientDescription $ingredientDescription) {
+    public function getDetailIngredient(IngredientsRepository $ingredientsRepository, $url) {
         $ingredient = null;
         $ingredient_description = null;
         try {
-            $ingredient = $ingredientsRepository->getIngredientFromUrl($url, $ingredientModel);
+            $ingredient = $ingredientsRepository->getIngredientFromUrl($url);
             if (!empty($ingredient)) {
-                $ingredient_description = $ingredientsRepository->getIngredientDescription($url, $ingredientDescription);
+                $ingredient_description = $ingredientsRepository->getIngredientDescription($url);
             } else {
                 $inactive = true;
                 $this->addFlashMessage("Ingrediente non attivo.", "error");
@@ -168,9 +168,7 @@ class IngredientsController extends Controller
 
 
     public function testModel(IngredientDescription $ingredientDescription, IngredientsRepository $ingredientsRepository, Ingredient $ingredientModel) {
-        $ingredient = $ingredientsRepository->getIngredientFromUrl('farina', $ingredientModel);
-        $ingredient_description = $ingredientsRepository->getIngredientDescription('farina', $ingredientDescription);
-        return ($ingredient);
+
 
     }
 }

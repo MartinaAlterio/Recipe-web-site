@@ -70,10 +70,10 @@ class IngredientsRepository {
      * @return mixed|null
      * @throws Exception
      */
-    public function getIngredientFromUrl(string $url_ingredient, Ingredient $ingredient): ?object
+    public function getIngredientFromUrl(string $url_ingredient): ?object
     {
         try {
-            $ingredient = $ingredient->getActiveByUrl($url_ingredient);
+            $ingredient = Ingredient::getActiveByUrl($url_ingredient);
             return $ingredient ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dell'ingrediente tramite url.");
@@ -86,11 +86,11 @@ class IngredientsRepository {
      * @return array|null
      * @throws Exception
      */
-    public function getActiveIngredients(Ingredient $ingredient): ?object
+    public function getActiveIngredients(): ?object
     {
         try {
             //$list = DB::select('select * from ingredients where active = :active', ['active'=>1]);
-            $list = $ingredient->active();
+            $list = Ingredient::active();
             return $list ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
@@ -105,10 +105,10 @@ class IngredientsRepository {
      * @return array|null
      * @throws Exception
      */
-    public function getIngredientDescription(string $url_ingredient, IngredientDescription $ingredientDescription)
+    public function getIngredientDescription(string $url_ingredient)
     {
         try {
-            $description = $ingredientDescription->activeDescription($url_ingredient);
+            $description = IngredientDescription::activeDescription($url_ingredient);
             return $description ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
