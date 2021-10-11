@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    use HasFactory;
+
+    public function methods() {
+
+        return $this->hasMany(RecipeMethod::class);
+    }
 }

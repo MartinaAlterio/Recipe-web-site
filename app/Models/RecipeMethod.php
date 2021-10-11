@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class RecipeMethod extends Model
 {
-    use HasFactory;
+
+    public function recipe() {
+
+        return $this->belongsTo(Recipe::class);
+    }
 }

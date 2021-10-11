@@ -27,7 +27,7 @@
                 <h2 class="title title--methods">Procedimento</h2>
                 <div class="border border--methods"> </div>
                 <ul >
-                    @foreach($recipe->methods as $method)
+                    @foreach($recipe->methods??[] as $method)
                         <div class="main_content main_content--detail">
                             <div class="main_content__text main_content__text--methods">{{$method->method}}</div>
                             @if(isset($method->image))

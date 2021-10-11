@@ -3,8 +3,11 @@
 
 namespace App\Http\Classes\Database\Recipes;
 
+use App\Models\Recipe;
+use App\Models\RecipeMethod;
 use Illuminate\Support\Facades\DB;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class RecipesRepository
@@ -137,8 +140,10 @@ class RecipesRepository
      */
     public function getRecipe(int $id_recipe) {
         try {
-            $recipe = (DB::select('select * from recipes where id = :id', ['id'=>$id_recipe]));
-            return $recipe[0] ?? null;
+            $recipe = Recipe::where('active', 1)
+                            ->where('id', $id_recipe)
+                            ->first();
+            return $recipe ?? null;
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero della ricetta tramite l'id.");
         }
@@ -171,10 +176,10 @@ class RecipesRepository
      * @return array
      * @throws Exception
      */
-    public function getAllRecipes(): array
+    public function getAllRecipes(): object
     {
         try {
-            return (DB::select('select * from recipes'));
+            Return Recipe::get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette.");
         }
@@ -200,13 +205,14 @@ class RecipesRepository
      * recupero i metodi di una data ricetta
      *
      * @param  int  $id_recipe
-     * @return array
+     * @return Collection
      * @throws Exception
      */
-    public function  getRecipeMethods (int $id_recipe): array
+    public function  getRecipeMethods (int $id_recipe): Collection
     {
         try {
-            return DB::select('select * from methods where id_recipe = :id', ['id'=>$id_recipe]);
+            return RecipeMethod::where('recipe_id', $id_recipe)
+                                ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dei procedimenti della ricetta.");
         }

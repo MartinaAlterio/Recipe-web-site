@@ -79,7 +79,7 @@ class RecipesController extends Controller
                 $linked_recipe->linked_category_url = $recipesRepository->getCategoryFromRecipe($recipe->id)->url;
             }
         } catch (Exception $e) {
-            $this->addFlashMessage("Impossibile recuperare la lista delle ricette", "error");
+            $this->addFlashMessage("Impossibile recuperare il dettaglio della ricetta", "error");
         }
         return $this->render('ricette.detail', compact('recipe'));
     }
