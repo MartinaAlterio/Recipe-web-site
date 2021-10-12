@@ -3,6 +3,7 @@
 
 namespace App\Http\Classes\Database\Recipes;
 
+use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\RecipeMethod;
 use Illuminate\Support\Facades\DB;
@@ -16,14 +17,14 @@ class RecipesRepository
     /**
      * Recupero lista macro categorie e relativi dati
      *
-     * @return array|null
+     * @return Collection|null
      * @throws Exception
      */
-    public function getListMacro(): ?array
+    public function getListMacro(): ?Collection
     {
         try {
-            $list = (DB::select('Select * from categories where macro = :macro', ['macro'=>true]));
-            return $list ?? null;
+            return Category::where('macro', 1)
+                            ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle macrocategorie.");
         }
@@ -54,14 +55,13 @@ class RecipesRepository
     /**
      * recupero l'elenco completo delle categorie e relativi dati
      *
-     * @return array|null
+     * @return Collection|null
      * @throws Exception
      */
-    public function getCategories(): ?array
+    public function getCategories(): ?Collection
     {
         try {
-            $list = DB::select('select * from categories');
-            return $list ?? null;
+            return Category::get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle categorie.");
         }
@@ -72,13 +72,14 @@ class RecipesRepository
      *recupero tutti i dati di una categoria
      *
      * @param  string  $url_category
-     * @return mixed|null
+     * @return mixed
      * @throws Exception
      */
-    public function getCategoryFromUrl(string $url_category) {
+    public function getCategoryFromUrl(string $url_category)
+    {
         try {
-            $category = DB::select('Select * from categories where url = :url', ['url'=>$url_category]);
-            return $category[0] ?? null;
+            return Category::where('url', $url_category)
+                            ->first();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero della categoria tramite url.");
         }
@@ -88,13 +89,13 @@ class RecipesRepository
      * recupero tutti i dati di una categoria
      *
      * @param  int  $id_category
-     * @return mixed|null
+     * @return mixed
      * @throws Exception
      */
     public function getCategory(int $id_category) {
         try {
-            $category = (DB::select('select * from categories where id = :id', ['id'=>$id_category]));
-            return $category[0] ?? null;
+            return Category::where('id', $id_category)
+                            ->first();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero della categoria tramite id.");
         }
@@ -105,7 +106,8 @@ class RecipesRepository
      * @return mixed|null
      * @throws Exception
      */
-    public function getCategoryFromRecipe(int $id_recipe) {
+    public function getCategoryFromRecipe(int $id_recipe)
+    {
         try {
             $category = DB::select('select * from recipe_has_categories where id_recipe = :id', ['id'=>$id_recipe]);
             return $this->getCategory($category[0]->id_category);
@@ -118,13 +120,14 @@ class RecipesRepository
      * recupero tutti i dati di una ricetta
      *
      * @param  string  $url_recipe
-     * @return mixed|null
+     * @return mixed
      * @throws Exception
      */
-    public function getRecipeFromUrl(string $url_recipe) {
+    public function getRecipeFromUrl(string $url_recipe)
+    {
         try {
-            $recipe = (DB::select('select * from recipes where url = :url', ['url'=>$url_recipe]));
-            return $recipe[0] ?? null;
+            return Recipe::where('url', $url_recipe)
+                            ->first();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero della ricetta tramite l'url.");
         }
@@ -138,7 +141,8 @@ class RecipesRepository
      * @return mixed|null
      * @throws Exception
      */
-    public function getRecipe(int $id_recipe) {
+    public function getRecipe(int $id_recipe)
+    {
         try {
             $recipe = Recipe::where('active', 1)
                             ->where('id', $id_recipe)
@@ -173,10 +177,10 @@ class RecipesRepository
     /**
      * recupero l'elenco completo delle ricette
      *
-     * @return array
+     * @return Collection|null
      * @throws Exception
      */
-    public function getAllRecipes(): object
+    public function getAllRecipes(): ?Collection
     {
         try {
             Return Recipe::get();
@@ -208,7 +212,7 @@ class RecipesRepository
      * @return Collection
      * @throws Exception
      */
-    public function  getRecipeMethods (int $id_recipe): Collection
+    public function  getRecipeMethods (int $id_recipe): ?Collection
     {
         try {
             return RecipeMethod::where('recipe_id', $id_recipe)

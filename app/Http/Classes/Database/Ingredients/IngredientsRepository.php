@@ -2,8 +2,9 @@
 
 namespace App\Http\Classes\Database\Ingredients;
 
-use App\Models\Ingredient;
 use App\Models\IngredientDescription;
+use App\Models\Ingredient;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use stdClass;
@@ -67,14 +68,15 @@ class IngredientsRepository {
      *recupero un determinato ingrediente tramite url
      *
      * @param  string  $url_ingredient
-     * @return mixed|null
+     * @return mixed
      * @throws Exception
      */
-    public function getIngredientFromUrl(string $url_ingredient): ?object
+    public function getIngredientFromUrl(string $url_ingredient)
     {
         try {
-            $ingredient = Ingredient::getActiveByUrl($url_ingredient);
-            return $ingredient ?? null;
+            return Ingredient::where('active', 1)
+                ->where('url', $url_ingredient)
+                ->first();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dell'ingrediente tramite url.");
         }
@@ -83,15 +85,15 @@ class IngredientsRepository {
     /**
      *recupero gli ingredienti attivi
      *
-     * @return array|null
+     * @return Collection
      * @throws Exception
      */
-    public function getActiveIngredients(): ?object
+    public function getActiveIngredients(): Collection
     {
         try {
-            //$list = DB::select('select * from ingredients where active = :active', ['active'=>1]);
-            $list = Ingredient::active();
-            return $list ?? null;
+            return Ingredient::where('active', 1)
+                ->orderBy('name')
+                ->get();
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
@@ -101,15 +103,14 @@ class IngredientsRepository {
      *recupero le descrizioni di un ingrediente
      *
      * @param  string  $url_ingredient
-     * @param  IngredientDescription  $ingredientDescription
-     * @return array|null
+     * @return Collection|null
      * @throws Exception
      */
-    public function getIngredientDescription(string $url_ingredient)
+    public function getIngredientDescription(string $url_ingredient): ?Collection
     {
         try {
-            $description = IngredientDescription::activeDescription($url_ingredient);
-            return $description ?? null;
+            return IngredientDescription::where('url_ingredient', $url_ingredient)
+                ->get();
         } catch(Exception $e) {
             throw new Exception("Si è veririficato un errore nel recupero degli ingredienti attivi.");
         }
