@@ -15,7 +15,11 @@ class CreatePageContentsTable extends Migration
     {
         Schema::create('page_contents', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('section', 100);
+            $table->string('page', 100);
+            $table->longText('content');
+            $table->string('image', 100);
+            //$table->timestamps();
         });
     }
 
