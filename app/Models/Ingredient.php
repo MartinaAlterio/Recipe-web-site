@@ -13,4 +13,8 @@ class Ingredient extends Model
         return $this->hasMany(IngredientDescription::class, 'url_ingredient');
     }
 
+    public function Recipes() {
+        return $this->belongsToMany(Recipe::class);
+    }
+
 }

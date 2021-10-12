@@ -12,4 +12,16 @@ class Recipe extends Model
 
         return $this->hasMany(RecipeMethod::class);
     }
+
+    public function ingredients() {
+        return $this->belongsToMany(Ingredient::class);
+    }
+
+    public function category() {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function recipe() {
+        return $this->belongsToMany(Recipe::class, 'recipe_recipe', 'recipe_id', 'linked_recipe_id' );
+    }
 }

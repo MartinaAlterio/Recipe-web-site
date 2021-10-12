@@ -37,15 +37,12 @@ class RecipesRepository
      * @return array
      * @throws Exception
      */
-    public function getCategoriesMacro(int $id_macro): array
+    public function getCategoriesMacro(int $id_macro): ?Collection
     {
         try {
-            $list = (DB::select('select id_category from category_has_categories where id_macrocategory = :id', ['id'=>$id_macro]));
-            $category = [];
-            foreach ($list as $value) {
-                $category[] = $this->getCategory($value->id_category);
-            }
-            return $category;
+            return Category::find($id_macro)
+                            ->category()
+                            ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle categorie associate alla macro.");
         }
@@ -109,8 +106,9 @@ class RecipesRepository
     public function getCategoryFromRecipe(int $id_recipe)
     {
         try {
-            $category = DB::select('select * from recipe_has_categories where id_recipe = :id', ['id'=>$id_recipe]);
-            return $this->getCategory($category[0]->id_category);
+            return Recipe::find($id_recipe)
+                            ->category()
+                            ->first();
         } catch (Exception $e) {
             throw new Exception('SI è verificato un errore nel recupero della categoria associata alla ricetta');
         }
@@ -160,15 +158,12 @@ class RecipesRepository
      * @return array
      * @throws Exception
      */
-    public function getCategoryRecipes(int $id_category): array
+    public function getCategoryRecipes(int $id_category): ?Collection
     {
         try {
-            $categories = (DB::select('select id_recipe from recipe_has_categories where id_category = :id', ['id'=>$id_category]));
-            $recipes = [];
-            foreach ($categories as $category) {
-                $recipes[] = $this->getRecipe($category->id_recipe);
-            }
-            return $recipes;
+            return Category::find($id_category)
+                            ->recipe()
+                            ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette associate alla categoria.");
         }
@@ -196,10 +191,12 @@ class RecipesRepository
      * @return array
      * @throws Exception
      */
-    public function getLinkedRecipes (int $id_recipe): array
+    public function getLinkedRecipes (int $id_recipe): ?Collection
     {
         try {
-            return DB::select('select * from recipe_has_recipes where id_recipe= :id', ['id'=>$id_recipe]);
+            return Recipe::find($id_recipe)
+                            ->recipe()
+                            ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette collegare alla ricetta.");
         }
@@ -218,6 +215,7 @@ class RecipesRepository
             return RecipeMethod::where('recipe_id', $id_recipe)
                                 ->get();
         } catch(Exception $e) {
+
             throw new Exception("Si è verificato un errore nel recupero dei procedimenti della ricetta.");
         }
     }
@@ -227,15 +225,12 @@ class RecipesRepository
      * @return array
      * @throws Exception
      */
-    public function getRecipesLinkedToRecipe(int $id_recipe) : array
+    public function getRecipesLinkedToRecipe(int $id_recipe): ?Collection
     {
         try{
-            $recipes = [];
-            $linked_recipes = DB::select('select * from recipe_has_recipes where id_recipe = :id', ['id'=>$id_recipe]);
-            foreach($linked_recipes as $linked_recipe) {
-                $recipes[] = $this->getRecipe($linked_recipe->id_linked_recipe);
-            }
-            return $recipes;
+            return Recipe::find($id_recipe)
+                            ->recipe()
+                            ->get();
         } catch (Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle ricette collegate alla ricetta");
         }
@@ -300,9 +295,9 @@ class RecipesRepository
      */
     public function insertRecipeIngredients(int $id_recipe, array $ingredients) {
         try {
-            DB::delete('delete from recipe_has_ingredients where id_recipe= :id', [$id_recipe]);
+            DB::delete('delete from ingredient_recipe where recipe_id= :id', [$id_recipe]);
             foreach ($ingredients as $ingredient) {
-                DB::insert('insert into recipe_has_ingredients (id_recipe, id_ingredient, quantity) values(?,?,?)', [$id_recipe, $ingredient['id_ingredient'], $ingredient['quantity']]);
+                DB::insert('insert into ingredient_recipe (recipe_id, ingredient_id, quantity) values(?,?,?)', [$id_recipe, $ingredient['id_ingredient'], $ingredient['quantity']]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento degli ingredienti della ricetta.");
@@ -364,9 +359,9 @@ class RecipesRepository
      */
     public function insertLinkedRecipes(int $id_recipe, array $id_linked_recipes) {
         try {
-            DB::delete('delete from recipe_has_recipes where id_Recipe= :id', [$id_recipe]);
+            DB::delete('delete from recipe_recipe  where id_Recipe= :id', [$id_recipe]);
             foreach ($id_linked_recipes as $id_linked_recipe) {
-                DB::insert('insert into recipe_has_recipes (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
+                DB::insert('insert into recipe_recipe  (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento delle ricette associate alla ricetta.");
@@ -433,9 +428,9 @@ class RecipesRepository
      */
     public function insertCategoryRecipes(int $id_category, array $id_recipes) {
       try {
-          DB::delete('delete from recipe_has_categories where id_category= :id_category', [$id_category]);
+          DB::delete('delete from recipe_category where category_id= :id_category', [$id_category]);
           foreach ($id_recipes as $id_recipe) {
-              DB::insert('insert into recipe_has_categories (id_recipe, id_category) value (?,?)', [$id_recipe, $id_category]);
+              DB::insert('insert into recipe_category (recipe_id, category_id) value (?,?)', [$id_recipe, $id_category]);
           }
       } catch(Exception $e) {
           throw new Exception("Si è verificato un errore nell'insermiento delle ricette associate alla categoria");
@@ -451,9 +446,9 @@ class RecipesRepository
      */
     public function insertMacroCategories(int $id_macro, array $id_categories) {
         try {
-            DB::select('delete from category_has_categories where id_macrocategory= :id_macro', [$id_macro]);
+            DB::select('delete from category_category where id_macrocategory= :id_macro', [$id_macro]);
             foreach ($id_categories as $id_category) {
-                DB::insert('insert into category_has_categories (id_macrocategory, id_category) value (?,?)', [$id_macro, $id_category]);
+                DB::insert('insert into category_category (id_macrocategory, id_category) value (?,?)', [$id_macro, $id_category]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento delle categorie associate alla macro.");

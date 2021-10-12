@@ -4,7 +4,10 @@ namespace App\Http\Classes\Database\Ingredients;
 
 use App\Models\IngredientDescription;
 use App\Models\Ingredient;
+use App\Models\IngredientRecipe;
+use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use stdClass;
@@ -14,12 +17,13 @@ class IngredientsRepository {
     /**
      * recupero tutti gli ingredienti
      *
-     * @return array
+     * @return Collection|null
      * @throws Exception
      */
-    public function getAllIngredients(): array {
+    public function getAllIngredients(): ?Collection
+    {
         try {
-            return DB::select('select * from ingredients');
+            return Ingredient::get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero degli ingredienti.");
         }
@@ -32,16 +36,13 @@ class IngredientsRepository {
      * @return array
      * @throws Exception
      */
-    public function getRecipeIngredients(int $id_recipe): array {
+    //todo recuperare il quantitativo degli ingredienti (dopo aver cambiato la struttura del DB)
+    public function getRecipeIngredients(int $id_recipe): Collection
+    {
         try {
-            $list = DB::select('select * from recipe_has_ingredients where id_recipe = :id', ['id'=>$id_recipe]);
-            $ingredients = [];
-            foreach ($list as $value) {
-                $ingredient = $this->getIngredient($value->id_ingredient);
-                $ingredient->quantity = $value->quantity;
-                $ingredients[] = $ingredient;
-            }
-            return $ingredients;
+            return Recipe::find($id_recipe)
+                                ->ingredients()
+                                ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero degli ingredienti della ricetta.");
         }
@@ -54,11 +55,11 @@ class IngredientsRepository {
      * @return mixed|null
      * @throws Exception
      */
-    public function getIngredient(int $id_ingredient): ?stdClass
+    public function getIngredient(int $id_ingredient)
     {
         try {
-            $ingredient = (DB::select('select * from ingredients where id = :id', ['id'=>$id_ingredient]));
-            return $ingredient[0] ?? null;
+            return Ingredient::where('id', $id_ingredient)
+                                ->first();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero dell'ingrediente tramite id.");
         }
