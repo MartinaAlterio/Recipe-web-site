@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class IngredientRecipe extends Model
+class CategoryRecipe extends Model
 {
-    protected $table = 'ingredient_recipe';
+    protected $table = 'category_recipe';
 
     public $timestamps = false;
 }

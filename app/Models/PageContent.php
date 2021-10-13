@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageContent extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 }

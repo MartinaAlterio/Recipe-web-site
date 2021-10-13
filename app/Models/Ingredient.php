@@ -17,4 +17,5 @@ class Ingredient extends Model
         return $this->belongsToMany(Recipe::class);
     }
 
+    public $timestamps = false;
 }

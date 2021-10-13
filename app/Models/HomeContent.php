@@ -100,4 +100,5 @@ class HomeContent {
     public function setAboutMe(array $about_me) {
         $this->about_me = $about_me;
     }
+
 }

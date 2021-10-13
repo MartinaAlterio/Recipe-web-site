@@ -4,8 +4,12 @@
 namespace App\Http\Classes\Database\Recipes;
 
 use App\Models\Category;
+use App\Models\CategoryCategory;
+use App\Models\CategoryRecipe;
+use App\Models\IngredientRecipe;
 use App\Models\Recipe;
 use App\Models\RecipeMethod;
+use App\Models\RecipeRecipe;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
@@ -222,7 +226,7 @@ class RecipesRepository
 
     /**
      * @param  int  $id_recipe
-     * @return array
+     * @return Collection|null
      * @throws Exception
      */
     public function getRecipesLinkedToRecipe(int $id_recipe): ?Collection
@@ -235,6 +239,7 @@ class RecipesRepository
             throw new Exception("Si è verificato un errore nel recupero delle ricette collegate alla ricetta");
         }
     }
+
     /**
      * inserimento ricetta
      *
@@ -242,12 +247,19 @@ class RecipesRepository
      * @param  string  $url_recipe
      * @param  string  $subheading_recipe
      * @param  string  $image_recipe
-     * @param  string  $active_recipe
+     * @param  int  $active_recipe
      * @throws Exception
      */
-    public function insertRecipe(string $name_recipe, string $url_recipe, string $subheading_recipe, string $image_recipe, string $active_recipe) {
+    public function insertRecipe(string $name_recipe, string $url_recipe, string $subheading_recipe, string $image_recipe, int $active_recipe) {
         try {
-            DB::insert('insert into recipes (name, url, subheading, image, active) values (?, ?, ?, ?, ?)', [$name_recipe, $url_recipe, $subheading_recipe, $image_recipe, $active_recipe]);
+            Recipe::insert([
+                'name' => $name_recipe,
+                'url' => $url_recipe,
+                'subheading' => $subheading_recipe,
+                'image' => $image_recipe,
+                'active' => $active_recipe
+            ]);
+            //DB::insert('insert into recipes (name, url, subheading, image, active) values (?, ?, ?, ?, ?)', [$name_recipe, $url_recipe, $subheading_recipe, $image_recipe, $active_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inseriemnto della ricetta.");
         }
@@ -266,7 +278,15 @@ class RecipesRepository
      */
     public function updateRecipe(?string $name_recipe, ?string $url_recipe, ?string $subheading_recipe, ?string $image_recipe, ?int $active_recipe, int $id_recipe) {
         try {
-            DB::update('update recipes set name= :name, url= :url, subheading= :subheading, image= :image, active= :active where id = :id', ['name'=>$name_recipe, 'url'=>$url_recipe, 'subheading'=>$subheading_recipe, 'image'=>$image_recipe, 'active'=>$active_recipe, 'id'=>$id_recipe]);
+            Recipe::where('id', $id_recipe)
+                    ->update([
+                        'name' => $name_recipe,
+                        'url' => $url_recipe,
+                        'subheading' => $subheading_recipe,
+                        'image' => $image_recipe,
+                        'active' => $active_recipe
+                    ]);
+            //DB::update('update recipes set name= :name, url= :url, subheading= :subheading, image= :image, active= :active where id = :id', ['name'=>$name_recipe, 'url'=>$url_recipe, 'subheading'=>$subheading_recipe, 'image'=>$image_recipe, 'active'=>$active_recipe, 'id'=>$id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella modifica della ricetta.");
         }
@@ -280,7 +300,9 @@ class RecipesRepository
      */
     public function deleteRecipe(int $id_recipe) {
         try {
-            DB::delete('delete from recipes where id= :id', ['id'=>$id_recipe]);
+            Recipe::where('id', $id_recipe)
+                    ->delete();
+            //DB::delete('delete from recipes where id= :id', ['id'=>$id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella cancellazione della ricetta.");
         }
@@ -295,9 +317,16 @@ class RecipesRepository
      */
     public function insertRecipeIngredients(int $id_recipe, array $ingredients) {
         try {
-            DB::delete('delete from ingredient_recipe where recipe_id= :id', [$id_recipe]);
+            IngredientRecipe::where('recipe_id', $id_recipe)
+                            ->delete();
+            //DB::delete('delete from ingredient_recipe where recipe_id= :id', [$id_recipe]);
             foreach ($ingredients as $ingredient) {
-                DB::insert('insert into ingredient_recipe (recipe_id, ingredient_id, quantity) values(?,?,?)', [$id_recipe, $ingredient['id_ingredient'], $ingredient['quantity']]);
+                IngredientRecipe::insert([
+                    'recipe_id' => $id_recipe,
+                    'ingredient_id' => $ingredient['id_ingredient'],
+                    'quantity' => $ingredient['quantity']
+                ]);
+                //DB::insert('insert into ingredient_recipe (recipe_id, ingredient_id, quantity) values(?,?,?)', [$id_recipe, $ingredient['id_ingredient'], $ingredient['quantity']]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento degli ingredienti della ricetta.");
@@ -314,7 +343,12 @@ class RecipesRepository
      */
     public function insertMethod (string $method, string $image, int $id_recipe) {
         try {
-            DB::insert('insert into methods (method, image, id_recipe) value (?,?,?)', [$method, $image, $id_recipe]);
+            RecipeMethod::insert([
+                'method' => $method,
+                'image' => $image,
+                'recipe_id' => $id_recipe
+            ]);
+            //DB::insert('insert into methods (method, image, id_recipe) value (?,?,?)', [$method, $image, $id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero delle categorie associate alla macro.");
         }
@@ -328,9 +362,14 @@ class RecipesRepository
      * @param  int  $id_recipe
      * @throws Exception
      */
-    public function updateMethod(string $method, string $image, int $id_recipe) {
+    public function updateMethod(string $method, string $image, int $id_method) {
         try {
-            DB::update('update methods set method= :method, image= :image where id= :id', ['method'=>$method, 'image'=>$image, 'id'=>$id_recipe]);
+            RecipeMethod::where('id', $id_method)
+                        ->update([
+                            'method' => $method,
+                            'image' => $image
+                        ]);
+            //DB::update('update methods set method= :method, image= :image where id= :id', ['method'=>$method, 'image'=>$image, 'id'=>$id_recipe]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella modifica del procediemtno della ricetta.");
         }
@@ -339,12 +378,14 @@ class RecipesRepository
     /**
      *cancellazione metodo e immagine ricetta
      *
-     * @param  int  $id
+     * @param  int  $id_method
      * @throws Exception
      */
-    public function deleteMethod(int $id) {
+    public function deleteMethod(int $id_method) {
         try {
-            DB::delete('delete from methods where id= :id', ['id'=>$id]);
+            RecipeMethod::where('id', $id_method)
+                        ->delete();
+            //DB::delete('delete from methods where id= :id', ['id'=>$id]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella cancellazione del procedimento della ricetta.");
         }
@@ -359,9 +400,15 @@ class RecipesRepository
      */
     public function insertLinkedRecipes(int $id_recipe, array $id_linked_recipes) {
         try {
-            DB::delete('delete from recipe_recipe  where id_Recipe= :id', [$id_recipe]);
+            RecipeRecipe::where('recipe_id', $id_recipe)
+                        ->delete();
+            //DB::delete('delete from recipe_recipe  where id_Recipe= :id', [$id_recipe]);
             foreach ($id_linked_recipes as $id_linked_recipe) {
-                DB::insert('insert into recipe_recipe  (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
+                RecipeRecipe::insert([
+                    'recipe_id' => $id_recipe,
+                    'linked_recipe_id' => $id_linked_recipe
+                ]);
+                //DB::insert('insert into recipe_recipe  (id_recipe, id_linked_Recipe) value (?,?)', [$id_recipe, $id_linked_recipe]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento delle ricette associate alla ricetta.");
@@ -380,7 +427,14 @@ class RecipesRepository
      */
     public function insertCategory(string $name_category, string $url_category, int $macro_category, string $image_category, string $description_category){
         try {
-            DB::insert('insert into categories (name, url, macro, image, description) value (?,?,?,?,?)', [$name_category, $url_category, $macro_category, $image_category, $description_category]);
+            Category::insert([
+                'name' => $name_category,
+                'url' => $url_category,
+                'macro' => $macro_category,
+                'image' => $image_category,
+                'description' => $description_category
+            ]);
+            //DB::insert('insert into categories (name, url, macro, image, description) value (?,?,?,?,?)', [$name_category, $url_category, $macro_category, $image_category, $description_category]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento della categoria.");
         }
@@ -399,7 +453,15 @@ class RecipesRepository
      */
     public function updateCategory(string $name_category, ?string $url_category, ?int $macro_category, ?string $image_category, ?string $description_category, int $id_category){
         try {
-            DB::update('update categories set name= :name, url= :url, macro= :macro, image= :image, description= :description where id= :id', ['name'=>$name_category, 'url'=>$url_category, 'macro'=>$macro_category, 'image'=>$image_category, 'description'=>$description_category, 'id'=>$id_category]);
+            Category::where('id', $id_category)
+                    ->update([
+                        'name' => $name_category,
+                        'url' => $url_category,
+                        'macro' => $macro_category,
+                        'image' => $image_category,
+                        'description' => $description_category
+                    ]);
+            //DB::update('update categories set name= :name, url= :url, macro= :macro, image= :image, description= :description where id= :id', ['name'=>$name_category, 'url'=>$url_category, 'macro'=>$macro_category, 'image'=>$image_category, 'description'=>$description_category, 'id'=>$id_category]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella modifica della categoria.");
         }
@@ -413,7 +475,9 @@ class RecipesRepository
      */
     public function deleteCategory(int $id_category){
         try {
-            DB::delete('delete from categories where id= :id', [$id_category]);
+            Category::where('id', $id_category)
+                    ->delete();
+            //DB::delete('delete from categories where id= :id', [$id_category]);
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nella cancellazione della categoria.");
         }
@@ -428,9 +492,15 @@ class RecipesRepository
      */
     public function insertCategoryRecipes(int $id_category, array $id_recipes) {
       try {
-          DB::delete('delete from recipe_category where category_id= :id_category', [$id_category]);
+          CategoryRecipe::where('category_id', $id_category)
+                        ->delete();
+          //DB::delete('delete from recipe_category where category_id= :id_category', [$id_category]);
           foreach ($id_recipes as $id_recipe) {
-              DB::insert('insert into recipe_category (recipe_id, category_id) value (?,?)', [$id_recipe, $id_category]);
+              CategoryRecipe::insert([
+                  'category_id' => $id_category,
+                  'recipe_id' => $id_recipe
+              ]);
+              //DB::insert('insert into recipe_category (recipe_id, category_id) value (?,?)', [$id_recipe, $id_category]);
           }
       } catch(Exception $e) {
           throw new Exception("Si è verificato un errore nell'insermiento delle ricette associate alla categoria");
@@ -446,9 +516,15 @@ class RecipesRepository
      */
     public function insertMacroCategories(int $id_macro, array $id_categories) {
         try {
-            DB::select('delete from category_category where id_macrocategory= :id_macro', [$id_macro]);
+            CategoryCategory::where('macrocategory_id', $id_macro)
+                            ->delete();
+            //DB::select('delete from category_category where id_macrocategory= :id_macro', [$id_macro]);
             foreach ($id_categories as $id_category) {
-                DB::insert('insert into category_category (id_macrocategory, id_category) value (?,?)', [$id_macro, $id_category]);
+                CategoryCategory::insert([
+                    'macrocategory_id' => $id_macro,
+                    'category_id' => $id_category
+                ]);
+                //DB::insert('insert into category_category (id_macrocategory, id_category) value (?,?)', [$id_macro, $id_category]);
             }
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nell'inserimento delle categorie associate alla macro.");

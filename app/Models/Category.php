@@ -14,4 +14,6 @@ class Category extends Model
     public function recipe() {
         return $this->belongsToMany(Recipe::class);
     }
+
+    public $timestamps = false;
 }

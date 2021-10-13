@@ -150,7 +150,7 @@ class IngredientsController extends Controller
                     $this->addFlashMessage("Descrizione ingrediente inserita con successo.", "success");
                     break;
                 case 'update':
-                    $ingredientsRepository->updateIngredientDescription($request->request->get('description'), $request->request->get('image'), $url, $request->request->get('id'));
+                    $ingredientsRepository->updateIngredientDescription($request->request->get('description'), $request->request->get('image'),  $request->request->get('id'));
                     $this->addFlashMessage("Descrizione ingrediente modificata con successo.", "success");
                     break;
                 case 'delete' :

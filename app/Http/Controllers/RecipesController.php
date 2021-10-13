@@ -262,7 +262,7 @@ class RecipesController extends Controller
             $linked_recipes= $recipesRepository->getLinkedRecipes($main_recipe->id);
             $recipes = $recipesRepository->getAllRecipes();
             foreach ($linked_recipes as $linked_recipe) {
-                $linked_recipes_id[] = $linked_recipe->id_linked_recipe;
+                $linked_recipes_id[] = $linked_recipe->id;
             }
         } catch (Exception $e) {
             $this->addFlashMessage("Impossibile recuperare l'elenco delle ricette.", "error");

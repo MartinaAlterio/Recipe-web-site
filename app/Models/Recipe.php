@@ -24,4 +24,6 @@ class Recipe extends Model
     public function recipe() {
         return $this->belongsToMany(Recipe::class, 'recipe_recipe', 'recipe_id', 'linked_recipe_id' );
     }
+
+    public $timestamps = false;
 }
