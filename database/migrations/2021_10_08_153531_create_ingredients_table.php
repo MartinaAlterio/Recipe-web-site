@@ -18,8 +18,8 @@ class CreateIngredientsTable extends Migration
             $table->string('name', 100);
             $table->string('url', 100);
             $table->integer('active')->default(0);
-            $table->string('image', 100)->default(null);
-            $table->longText('description')->default(null);
+            $table->string('image', 100)->nullable(true);
+            $table->longText('description')->nullable(true);
             //$table->timestamps();
         });
     }

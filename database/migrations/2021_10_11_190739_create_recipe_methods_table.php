@@ -15,8 +15,8 @@ class CreateRecipeMethodsTable extends Migration
     {
         Schema::create('recipe_method', function (Blueprint $table) {
             $table->id();
-            $table->longText('method')->default(null);
-            $table->string('image', 100)->default(null);
+            $table->longText('method')->nullable(true);
+            $table->string('image', 100)->nullable(true);
             $table->integer('recipe_id');
             //$table->timestamps();
         });

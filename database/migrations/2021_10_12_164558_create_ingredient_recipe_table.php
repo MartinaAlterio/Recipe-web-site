@@ -17,7 +17,7 @@ class CreateIngredientRecipeTable extends Migration
             $table->id();
             $table->integer('recipe_id');
             $table->integer('ingredient_id');
-            $table->string('quantity', 100)->default(null);
+            $table->string('quantity', 100)->nullable(true);
             //$table->timestamps();
         });
     }

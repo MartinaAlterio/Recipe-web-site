@@ -17,8 +17,8 @@ class CreateRecipesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('url', 100);
-            $table->longText('subheading')->default(null);
-            $table->string('image', 100)->default(null);
+            $table->longText('subheading')->nullable(true);
+            $table->string('image', 100)->nullable(true);
             $table->integer('active')->default(0);
             $table->integer('important')->default(0);
             //$table->timestamps();

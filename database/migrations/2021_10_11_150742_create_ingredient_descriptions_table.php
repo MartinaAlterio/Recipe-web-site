@@ -15,8 +15,8 @@ class CreateIngredientDescriptionsTable extends Migration
     {
         Schema::create('ingredient_descriptions', function (Blueprint $table) {
             $table->id();
-            $table->longText('description')->default(null);
-            $table->string('image', 100)->default(null);
+            $table->longText('description')->nullable(true);
+            $table->string('image', 100)->nullable(true);
             $table->string('url_ingredient', 100);
             //$table->timestamps();
         });

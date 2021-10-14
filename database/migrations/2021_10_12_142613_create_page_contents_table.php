@@ -17,8 +17,8 @@ class CreatePageContentsTable extends Migration
             $table->id();
             $table->string('section', 100);
             $table->string('page', 100);
-            $table->longText('content')->default(null);
-            $table->string('image', 100)->default(null);
+            $table->longText('content')->nullable(true);
+            $table->string('image', 100)->nullable(true);
             //$table->timestamps();
         });
     }
