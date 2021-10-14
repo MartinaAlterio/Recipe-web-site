@@ -152,7 +152,7 @@ class RecipesController extends Controller
             $recipe_ingredients_list = $ingredientsRepository->getRecipeIngredients($recipe->id);
             foreach ($recipe_ingredients_list as $recipe_ingredient) {
                 $recipe_ingredients[$recipe_ingredient->id] = [
-                    "quantity"=> $recipe_ingredient->quantity
+                    "quantity"=> $recipe_ingredient->pivot->quantity
                 ];
             }
         } catch (Exception $e) {

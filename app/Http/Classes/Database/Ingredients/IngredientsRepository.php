@@ -33,16 +33,15 @@ class IngredientsRepository {
      * recupero ingredienti di una ricetta
      *
      * @param  int  $id_recipe
-     * @return array
+     * @return Collection
      * @throws Exception
      */
-    //todo recuperare il quantitativo degli ingredienti (dopo aver cambiato la struttura del DB)
     public function getRecipeIngredients(int $id_recipe): Collection
     {
         try {
             return Recipe::find($id_recipe)
-                                ->ingredients()
-                                ->get();
+                        ->ingredients()
+                        ->get();
         } catch(Exception $e) {
             throw new Exception("Si è verificato un errore nel recupero degli ingredienti della ricetta.");
         }

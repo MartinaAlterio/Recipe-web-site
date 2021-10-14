@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Classes\Database\Texts\HomeTextRepository;
 use App\Http\Classes\Database\Ingredients\IngredientsRepository;
 use App\Models\IngredientDescription;
+use App\Models\IngredientRecipe;
 use App\Models\IngredientsContent;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -167,8 +168,7 @@ class IngredientsController extends Controller
     }
 
 
-    public function testModel(IngredientDescription $ingredientDescription, IngredientsRepository $ingredientsRepository, Ingredient $ingredientModel) {
-
+    public function testModel() {
 
     }
 }

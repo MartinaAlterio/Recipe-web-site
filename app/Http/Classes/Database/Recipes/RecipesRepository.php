@@ -38,7 +38,7 @@ class RecipesRepository
      * id delle categorie associate ad una macro e relativi dati
      *
      * @param  int  $id_macro
-     * @return array
+     * @return Collection|null
      * @throws Exception
      */
     public function getCategoriesMacro(int $id_macro): ?Collection
