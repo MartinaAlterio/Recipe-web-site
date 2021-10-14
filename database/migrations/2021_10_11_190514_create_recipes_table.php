@@ -17,10 +17,10 @@ class CreateRecipesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('url', 100);
-            $table->longText('subheading');
-            $table->string('image', 100);
-            $table->integer('active');
-            $table->integer('important');
+            $table->longText('subheading')->default(null);
+            $table->string('image', 100)->default(null);
+            $table->integer('active')->default(0);
+            $table->integer('important')->default(0);
             //$table->timestamps();
         });
     }

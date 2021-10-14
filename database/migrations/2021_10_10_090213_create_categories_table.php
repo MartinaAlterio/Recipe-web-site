@@ -17,9 +17,9 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('url', 100);
-            $table->integer('macro');
-            $table->string('image', 100);
-            $table->longText('description');
+            $table->integer('macro')->default(0);
+            $table->string('image', 100)->default(null);
+            $table->longText('description')->default(null);
             //$table->timestamps();
         });
     }
